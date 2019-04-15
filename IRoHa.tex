@@ -1,7 +1,8 @@
 \documentclass[10pt,a4paper]{ltjsarticle}
 
 \usepackage{graphicx}
-\usepackage{amsmath,booktabs,subfig}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,subfig}
 \usepackage{pifont}
 \usepackage{url}
 \usepackage{cite}
@@ -104,16 +105,16 @@
 で表される量を空洞の$Q$値といい、これも空洞の特性を表す重要なパラメータとなっている。
 
 \begin{tcolorbox}[title=\textgt{ARESとSCCの空洞損失}]
-  ARESの場合、$Q_{0}=1.33\times10^5$、$R_{sh}=1.7\,\mathrm{M}\Omega$で、空洞一台当たりの加速電圧を$V_{c}=0.5\,\mathrm{MV}$とすると、
+  ARESの場合、$Q_{0}=\num{1.33e5}$、$R_{sh}=\SI{1.7}{\mega \ohm}$で、空洞一台当たりの加速電圧を$V_{c}=\SI{0.5}{\mega\volt}$とすると、
 %
 \begin{equation*}
-  P_{c} = \frac{V_{c}^2}{R_{sh}}=147\,\mathrm{kW}
+  P_{c} = \frac{V_{c}^2}{R_{sh}}=\SI{147}{\kilo \watt}
 \end{equation*}
 
-一方SCCの場合、$Q_{0}=1\times10^9$、$R_{sh}=93\times 10^3\,\mathrm{M}\Omega$で、空洞一台当たりの加速電圧を$V_{c}=1.5\,\mathrm{MV}$とすると、
+一方SCCの場合、$Q_{0}=\num{1e9}$、$R_{sh}=\SI{93e3}{\mega\ohm}$で、空洞一台当たりの加速電圧を$V_{c}=\SI{1.5}{\mega\volt}$とすると、
 %
 \begin{equation*}
-  P_{c} = \frac{V_{c}^2}{R_{sh}}=24\,\mathrm{W}
+  P_{c} = \frac{V_{c}^2}{R_{sh}}=\SI{24}{\watt}
 \end{equation*}
 %
 となり、SCCの方が圧倒的に損失が少ない。（流石超電導！）
@@ -170,8 +171,8 @@
 \begin{tcolorbox}[title=\textgt{KEKBにおける$f_0$, $f_{RF}$, $h$}の関係]
 %
 \begin{gather}
-  f_0 = \frac{1}{T_0}=\frac{c}{C}=\frac{2.99792458\times 10^8\,\mathrm{m/s}}{3016.26\,\mathrm{m}}=99.39\,\mathrm{kHz} \notag \\
-  f_{RF}=508.887\,\mathrm{MHz},\,h=5120 \notag
+  f_0 = \frac{1}{T_0}=\frac{c}{C}=\frac{\SI{2.99792458e8}{\meter / \second}}{\SI{3016.26}{\meter}}=\SI{99.39}{\kilo\hertz} \notag \\
+  f_{RF}=\SI{508.887}{\mega\hertz},\,h=5120 \notag
 \end{gather}
 %
 となり、確かに(\ref{harmonic})を満たしている。
@@ -213,7 +214,7 @@
   \bibitem{Wolski}
   Andy Wolski, Beam Dynamics in High Energy Particle Accelerators,  Imperial College Pr (2014).
   \bibitem{Lee}
-  S. Y. Lee, Accelerator physics, World Scientific (2004).
+  S. Y. Lee, Accelerator physics, World Scientific (2004), ISBN 9789812562005.
 \end{thebibliography}
 %
 \end{document}
