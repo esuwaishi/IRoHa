@@ -1,0 +1,239 @@
+\documentclass[10pt,a4paper]{ltjsarticle}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,subfig}
+\usepackage{pifont}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{ulem}
+
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{shadows}
+\usetikzlibrary{calc}
+\usepackage{circuitikz}
+
+\usepackage{tcolorbox}
+
+\usepackage{luatexja-fontspec}
+%\setmainfont[Ligatures=TeX]{TeXGyreTermes}
+%\setsansfont[Ligatures=TeX]{TeXGyreHeros}
+\setmainfont{TimesNewRoman}
+\setsansfont{Arial}
+\defaultjfontfeatures{Scale=1.0}
+\setmainjfont[BoldFont=IPAexGothic]{IPAexMincho}
+%\setmainjfont[BoldFont=HiraMinProN-W6]{HiraMinProN-W3}
+%\setmainjfont[BoldFont=IPAexGothic]{KozMinPr6N-Light}
+%\setmainjfont[BoldFont=IPAexGothic]{MS-PMincho}
+\setsansjfont{IPAexGothic}
+%\setsansjfont{MS-PGothic}
+%\setsansjfont[BoldFont=HiraginoSans-W8]{HiraginoSans-W4}
+
+\begin{document}
+\title{シンクロトロン振動のほへと}
+\author{吉本伸一}
+\maketitle
+\tableofcontents
+\clearpage
+
+\section{Synchrotron motion}
+偏向電磁石によって分散 (dispersion) が発生する為、シンクロトロン蓄積リングでは、粒子の横方向と縦方向の運動が結合する。リングを周回する粒子による縦方向の振動 (シンクロトロン振動) において、横方向と縦方向の運動のカップリングが重要な役割を演じる。
+シンクロトロン振動は基準粒子（設計軌道を設計速度で運動する粒子）に対する、到着時間と運動量偏差の振動である。
+
+\begin{enumerate}
+    \item 粒子の速度の違い
+    \item 軌道の長さの違い
+\end{enumerate}
+
+\subsection{Transition}
+運動量偏差 (momentum deviation)
+\begin{equation}
+    \delta_p = \frac{p-p_0}{p_0}=\frac{\Delta p}{p_0}
+\end{equation}
+%
+momentum compaction factor
+%
+\begin{equation}
+    \frac{\Delta C}{C_0}=\alpha_p\frac{\Delta p}{p_0}=\alpha_p\delta_p
+\end{equation}
+%
+phase slip factor
+\begin{equation}
+    \frac{\Delta T}{T_0}=\eta_p\frac{\Delta p}{p_0}
+\end{equation}
+%
+周長を$C$、粒子の速度を$v$とすると回転周期$T$は
+%
+\begin{equation}
+    T=\frac{C}{v}
+\end{equation}
+%
+となるので、両辺を$v$で微分すると、
+%
+\begin{align}
+    \frac{dT}{dv} &= \frac{1}{v}\frac{dC}{dv}-\frac{C}{v^2} \notag \\
+    & = \frac{T}{C}\frac{dC}{dv} - \frac{T}{v}
+\end{align}
+%
+したがって、
+%
+\begin{equation}
+    \frac{dT}{T} = \frac{dC}{C} - \frac{dv}{v}
+\end{equation}
+%
+これより
+%
+\begin{equation}
+    \frac{\Delta T}{T_0} = \frac{\Delta C}{C_0} - \frac{\Delta v}{v_0}
+\end{equation}
+%
+この式より、到着時間の変動 ($\Delta T/T_0$) をもたらす要因が、軌道の長さの違い ($\Delta C/C_0$) と粒子の速度の違い ($\Delta v/v_0$)である事が分かる。
+%
+\begin{equation}
+    \frac{\Delta v}{v_0}=\frac{1}{\gamma_0^2}\frac{\Delta p}{p_0}
+    \label{delta_v}
+\end{equation}
+%
+したがって、
+%
+\begin{equation}
+    \frac{\Delta T}{T_0} = \left(\alpha_p - \frac{1}{\gamma_0^2}\right)\frac{\Delta p}{p_0}
+\end{equation}
+%
+\begin{tcolorbox}[title=相対論のおさらい]
+    \begin{equation}
+        \gamma = \frac{E}{E_0}=\frac{m}{m_0}=\frac{1}{\sqrt{1-\beta^2}}, \quad \beta = \frac{v}{c} \tag{A.1}
+    \end{equation}
+
+    \begin{equation}
+        p = mv = \gamma m_0 v \tag{A.2}
+    \end{equation}
+\end{tcolorbox}
+    %
+\begin{tcolorbox}[title=式 (\ref{delta_v}) の導出]
+    \begin{equation}
+        \frac{dp}{dv} = m_0\frac{d}{dv}(\gamma v)
+        = m_0 \left(\gamma + v \frac{d\gamma}{dv}\right) \notag
+    \end{equation}
+    %
+    \begin{align}
+        \frac{d\gamma}{dv} & = \frac{1}{c}\frac{d\gamma}{d\beta}= \frac{1}{c}\frac{d}{d\beta}\left(\frac{1}{\sqrt{1-\beta^2}}\right) \notag \\
+        & = \frac{1}{c} \beta \underset{\gamma^{-2}}{\underbrace{(1-\beta^2)}}^{-\frac{3}{2}} = \frac{\beta \gamma^3}{c} \notag \\
+        & = \frac{1}{c} \beta \underset{\gamma^{-2}}{\uwave{(1-\beta^2)}}^{-\frac{3}{2}} = \frac{\beta \gamma^3}{c} \notag
+    \end{align}
+    %
+    これより、
+    \begin{align}
+        \frac{dp}{dv} & = m_0 \left(\gamma + v \frac{\beta \gamma^3}{c}\right)
+        = m_0 \gamma \underset{\gamma^2}{\uwave{(1 + \beta^2 \gamma^2)}}
+        = \frac{\gamma^2 p}{v} \notag
+    \end{align}
+    %
+    \begin{equation}
+        \therefore \quad \frac{dv}{v} = \frac{1}{\gamma^2}\frac{dp}{p} \tag{B.1}
+    \end{equation}
+\end{tcolorbox}
+%
+\begin{equation}
+    \alpha_p = \frac{1}{C_0}\left.\frac{dC}{d\delta_p}\right|_{\delta_p = 0}
+\end{equation}
+%
+\subsection{Phase slip factor}
+\begin{equation}
+    \frac{\Delta T}{T_0}=\eta\frac{\Delta p}{p_0}
+    \label{slip}
+\end{equation}
+
+\begin{equation}
+    \eta_p = \frac{1}{T_0}\left. \frac{dT}{d\delta_p}\right|_{\delta_p = 0}
+\end{equation}
+
+\begin{equation}
+    \eta_p=\alpha_p - \frac{1}{\gamma_0^2}
+    \label{alppha_slip}
+\end{equation}
+\begin{equation}
+    \gamma = \frac{1}{\sqrt{1-\beta^2}}\, , \quad \beta = \frac{v}{c}
+\end{equation}
+
+正の運動量圧縮率$\alpha_p>0$を持つ電磁石の配列を考えます。このような磁石の配列では、粒子のエネルギーを増加させると経路長が増加する。 しかしながら、粒子が光の速度よりも十分低い速度を有するようにビームが低エネルギーである場合、粒子のエネルギーを増加させることはその速度の増加をもたらし、それは経路長の増加を補償する以上のことがあり得る。その結果、粒子は単位時間あたりの回転数が多くなります。
+
+しかしながら、超相対論的粒子の場合、粒子はすでに光速に非常に近いところを移動しているので、エネルギーの増加はごくわずかな速度の増加をもたらす。 この場合、光路長の増加は速度の増加よりも優先され、粒子は単位時間あたりの回転数が少なくなります。
+
+これら2つの体制の間にあるエネルギーでは、回転数はエネルギーに依存しません。 このエネルギーは遷移エネルギーとして知られています。
+
+\subsection{シンクロトロン振動の方程式}
+%
+\begin{equation}
+    \Delta \phi = \omega_{RF} \Delta T = \omega_{RF} T_0 \eta_p\frac{\Delta p}{p_0}
+\end{equation}
+
+\begin{equation}
+    \frac{\Delta p}{p_0} = \frac{1}{\beta_0^2}\frac{\Delta E}{E_0}
+    \label{delta_p}
+\end{equation}
+
+\begin{equation}
+    \Delta \phi = \frac{\omega_{RF} T_0 \eta_p}{\beta_0^2 E_0}\Delta E
+\end{equation}
+
+\begin{equation}
+    \frac{d\phi}{dt} \simeq \frac{\Delta\phi}{T_0} = \frac{\omega_{RF}\eta_p}{\beta_0^2 E_0}\Delta E
+\end{equation}
+
+\begin{equation}
+    \Delta E = e V_c (\sin \phi - \sin \phi_s)
+\end{equation}
+
+\begin{equation}
+    \frac{d\Delta E}{dt} \simeq \frac{\Delta E}{T_0}= \frac{e V_c (\sin\phi - \sin\phi_s)}{T_0}
+\end{equation}
+
+\begin{tcolorbox}[title=式 (\ref{delta_p}) の導出]
+    
+    \begin{align}
+        p = mv = m_0 c \gamma \beta \,  , \quad E = \gamma E_0 = m_0 c \gamma \notag
+    \end{align}
+    %
+    \begin{equation}
+        \gamma \beta = \gamma \sqrt{1-\frac{1}{\gamma^2}} \notag = \sqrt{\gamma^2 -1} \notag
+    \end{equation}
+    %
+    \begin{align}
+        \frac{dp}{dE} & = \frac{1}{c}\frac{d(\gamma \beta)}{d\gamma} = \frac{1}{c}\frac{d}{d\gamma}\sqrt{\gamma^2 -1} \notag \\
+        & = \frac{\gamma}{c} \underset{\gamma^2\beta^2}{(\uwave{\gamma^2 -1}})^{-\frac{1}{2}} = \frac{1}{c\beta}
+        = \frac{p}{\beta^2 E}\notag
+    \end{align}
+    %
+    \begin{equation}
+        \therefore \quad \frac{dp}{p} = \frac{1}{\beta^2}\frac{dE}{E} \tag{C.1}
+    \end{equation}
+    %
+\end{tcolorbox}
+%
+\begin{tcolorbox}[title=スムーズ近似]
+    \begin{align}
+        \frac{1}{\omega} \dot{E} - \frac{1}{\omega_0} \dot{E_0}
+        & = \frac{1}{\omega_0} \dot{\Delta E} - \dot{E}\frac{\Delta \omega}{\omega_0^2} \notag \\
+        & \thickapprox \frac{1}{\omega_0} \dot{\Delta E} + \left[\dot{E}\frac{\Delta \left(1 / \omega_0\right)}{\Delta E} \right] + \dots \notag \\
+        & = \frac{d}{dt}\left(\frac{\Delta E}{\omega_0}\right) \notag
+    \end{align}
+\end{tcolorbox}
+%
+\section{Longitudinal Dynamics}
+\subsection{6-D Phase Space}
+\begin{align}
+    (x, x^{'}, y, y^{'}, z, \delta_p) \notag \\
+    z = -ct, \quad \delta_p =\frac{p-p_0}{p_0} \notag
+\end{align}
+%
+\begin{thebibliography}{9}
+    \bibitem{Wolski}
+    Andy Wolski, Beam Dynamics in High Energy Particle Accelerators,  Imperial College Pr (2014).
+    \bibitem{Lee}
+    S. Y. Lee, Accelerator physics, World Scientific (2004), ISBN 9789812562005.
+\end{thebibliography}
+
+\end{document}
