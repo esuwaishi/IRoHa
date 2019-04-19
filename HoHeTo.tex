@@ -7,15 +7,14 @@
 \usepackage{url}
 \usepackage{cite}
 \usepackage{ulem}
-
 \usepackage{siunitx}
 \usepackage{float}
+\usepackage{tcolorbox}
+
 \usepackage{tikz}
+\usepackage{circuitikz}
 \usetikzlibrary{shadows}
 \usetikzlibrary{calc}
-\usepackage{circuitikz}
-
-\usepackage{tcolorbox}
 
 \usepackage{luatexja-fontspec}
 %\setmainfont[Ligatures=TeX]{TeXGyreTermes}
@@ -104,11 +103,19 @@ phase slip factor
 %
 \begin{tcolorbox}[title=相対論のおさらい]
     \begin{equation}
-        \gamma = \frac{E}{E_0}=\frac{m}{m_0}=\frac{1}{\sqrt{1-\beta^2}}, \quad \beta = \frac{v}{c} \tag{A.1}
+        E_0 = m_0 c^2 ,\quad E = \sqrt{E_0^2 + p^2 c^2} \tag{A.1}
     \end{equation}
 
     \begin{equation}
-        p = mv = \gamma m_0 v \tag{A.2}
+        \beta = \frac{v}{c}\,,\quad \gamma = \frac{E}{E_0}=\frac{m}{m_0}=\frac{1}{\sqrt{1-\beta^2}} \tag{A.2}
+    \end{equation}
+
+    \begin{equation}
+        p = mv = \gamma m_0 v = \gamma m_0 \beta c \tag{A.3}
+    \end{equation}
+
+    \begin{equation}
+        \frac{p}{E} = \frac{\gamma m_0 \beta c}{\gamma m_0 c^2} = \frac{\beta}{c} \tag{A.4}
     \end{equation}
 \end{tcolorbox}
     %
@@ -194,7 +201,7 @@ phase slip factor
 \begin{tcolorbox}[title=式 (\ref{delta_p}) の導出]
     
     \begin{align}
-        p = mv = m_0 c \gamma \beta \,  , \quad E = \gamma E_0 = m_0 c \gamma \notag
+        p = mv = \gamma m_0 \beta c\,  , \quad E = \gamma E_0 = \gamma m_0 c^2 \notag
     \end{align}
     %
     \begin{equation}
@@ -212,28 +219,79 @@ phase slip factor
     \end{equation}
     %
 \end{tcolorbox}
-%
-\begin{tcolorbox}[title=スムーズ近似]
-    \begin{align}
-        \frac{1}{\omega} \dot{E} - \frac{1}{\omega_0} \dot{E_0}
-        & = \frac{1}{\omega_0} \dot{\Delta E} - \dot{E}\frac{\Delta \omega}{\omega_0^2} \notag \\
-        & \thickapprox \frac{1}{\omega_0} \dot{\Delta E} + \left[\dot{E}\frac{\Delta \left(1 / \omega_0\right)}{\Delta E} \right] + \dots \notag \\
-        & = \frac{d}{dt}\left(\frac{\Delta E}{\omega_0}\right) \notag
-    \end{align}
-\end{tcolorbox}
+
 %
 \section{Longitudinal Dynamics}
 \subsection{6-D Phase Space}
+canonical variables: $(x, x^{'}, y, y^{'}, z, \delta_p)$ synchronous phase: $\phi_s =\omega_{RF} t_0$
+%
 \begin{align}
-    (x, x^{'}, y, y^{'}, z, \delta_p) \notag \\
-    z = -ct, \quad \delta_p =\frac{p-p_0}{p_0} \notag
+     z = -v(t-t_0) \notag \\
+     \delta_p =\frac{p-p_0}{p_0} \notag
 \end{align}
 %
+\subsection{Energy Equation}
+The energy of a particle at the (n+1)-th turn $E_{n+1}$ is expressed by the energy $E_n$ and RF phase $\phi_n$ at the n-th turn as
+%
+\begin{equation}
+    E_{n+1} = E_n + e V \sin\phi_n
+\end{equation}
+%
+For a synchronous particle with suffix 0,
+%
+\begin{equation}
+    (E_0)_{n+1} = (E_0)_n + e V \sin\phi_s
+\end{equation}
+%
+Thus, the energy error, $\Delta E = E - E_0$, is expressed as
+%
+\begin{equation}
+    \Delta E_{n+1} = \Delta E_n + e V (\sin\phi_n - \sin\phi_s)
+\end{equation}
+%
+ここで、
+%
+\begin{equation}
+    \delta = \frac{\Delta p}{p_0} = \frac{1}{\beta_0^2}\frac{\Delta E}{E_0}
+\end{equation}
+%
+より、
+%
+\begin{equation}
+    \Delta E_{n+1} - \Delta E_n = \beta^2 E_0 (\delta_{n+1} - \delta_n)
+\end{equation}
+%
+したがって、
+%
+\begin{equation}
+    \delta_{n+1} - \delta_n = \frac{e V}{\beta_0^2 E_0}(\sin\phi_n -\sin\phi_s)
+\end{equation}
+%
+
+\begin{figure}[hbt]
+    \begin{center}
+      \includegraphics[width=15cm,clip]{coordinates.pdf}
+      \caption{Relative and absolute coodinates. ($h=1$)}
+      \label{coordinates}
+    \end{center}
+  \end{figure}
+
+粒子がエネルギー$E_n$でリングを$n$周回し、加速空洞で加速されエネルギーが$E_{n+1}$増えた時、$n+1$周回し再び加速空洞で加速する時間$T_{n+1}$は、
+%
+\begin{equation}
+    \Delta \tau_{n+1} = \tau_{n+1} - \tau_{n} = T_{n+1} - T_0
+\end{equation}
+%
+\begin{equation}
+    \phi_{n+1} - \phi_{n} = \omega_{RF} \Delta\tau_{n+1} = \omega_{RF} (T_{n+1}-T_0)
+\end{equation}
 \begin{thebibliography}{9}
     \bibitem{Wolski}
     Andy Wolski, Beam Dynamics in High Energy Particle Accelerators,  Imperial College Pr (2014).
     \bibitem{Lee}
     S. Y. Lee, Accelerator physics, World Scientific (2004), ISBN 9789812562005.
+    \bibitem{Edwards}
+    D.A. Edwards, M.J. Syphers, `An introduction to the physics of high energy accelerators', Wiley (1993).
 \end{thebibliography}
-
+%
 \end{document}
