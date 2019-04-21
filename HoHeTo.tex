@@ -10,6 +10,9 @@
 \usepackage{siunitx}
 \usepackage{float}
 \usepackage{tcolorbox}
+\usepackage{cancel}
+\usepackage{color}
+\renewcommand{\CancelColor}{\color{red}}
 
 \usepackage{tikz}
 \usepackage{circuitikz}
@@ -38,15 +41,82 @@
 \clearpage
 
 \section{Synchrotron motion}
-偏向電磁石によって分散 (dispersion) が発生する為、シンクロトロン蓄積リングでは、粒子の横方向と縦方向の運動が結合する。リングを周回する粒子による縦方向の振動 (シンクロトロン振動) において、横方向と縦方向の運動のカップリングが重要な役割を演じる。
-シンクロトロン振動は基準粒子（設計軌道を設計速度で運動する粒子）に対する、到着時間と運動量偏差の振動である。
+シンクロトロン蓄積リングでは、偏向電磁石によって分散 (dispersion) が発生する為、粒子の横方向と縦方向の運動が結合する。この結合が、リングを周回する粒子の縦方向の振動 (シンクロトロン振動) において重要な役割を演じる。
+%シンクロトロン振動は基準粒子（設計軌道を設計速度で運動する粒子）に対する、到着時間と運動量偏差の振動である。
 
-\begin{enumerate}
-    \item 粒子の速度の違い
-    \item 軌道の長さの違い
-\end{enumerate}
+\subsection{Synchronous particle}
+運動量$p_0$を持つ粒子が、基準軌道\footnote{粒子の運動量に対応して、一定の閉じた軌道 (閉軌道) が存在する。}\ を周期$T_0$で周回し、高周波加速空洞を同じ位相$\phi_s$で通過する時、このような粒子のことを同期粒子 (synchronous particle) と呼ぶ。同期粒子であるためには、周回周波数$f_0 (= 1/T_0)$と空洞のRF周波数$f_{RF}$の間に
+%
+\begin{equation}
+    f_{RF} = h f_0
+    \label{harmonic}
+\end{equation}
+%
+という関係が必要である。整数$h$をharmonic numberと言い、周波数$f_{RF}$で加速できる最大の粒子数になる。この時、空洞の加速電圧は
+%
+\begin{equation}
+    V_c (\phi) = V_0 \sin (\phi),\:\phi = \omega_{RF} t + \phi_s
+\end{equation}
+%
+となる。図\ref{synchronous}は、$h=2$の時の空洞電圧と同期粒子の関係を表してる。
+
+\begin{figure}[hbt]
+    \begin{center}
+      \includegraphics[width=15cm,clip]{synchronous.pdf}
+      \caption{$f_{RF} = h f_0$ ($h=2$)}
+      \label{synchronous}
+    \end{center}
+\end{figure}
+
+\begin{tcolorbox}[title=\textgt{SuperKEKBにおける$f_{RF}$, $f_{0}$, $h$}の関係]
+    SuperKEKBのリングでは、電子と陽電子は、ほぼ光速$c$で回っており、周長$C_0$は$\SI{3016.315}{\meter}$なので周回周波数$f_0$は
+    %
+    \begin{equation}
+      f_0 = \frac{1}{T_0}=\frac{c}{C_0}=\frac{\SI{2.99792458e8}{\meter / \second}}{\SI{3016.315}{\meter}}=\SI{99.39}{\kilo\hertz} \notag
+    \end{equation}
+    %
+    一方、RF周波数$f_{RF}$は$\SI{508.887}{\mega\hertz}$なので
+    %
+    \begin{equation}
+        f_{RF} = 5120 f_0 \notag
+    \end{equation}
+    となり、確かに(\ref{harmonic})を満たしている。
+\end{tcolorbox}
 
 \subsection{Transition}
+同期粒子が平衡軌道$C_0$を速度$v_0$で周回する時、回転周期は
+%
+\begin{equation}
+    T_0 = \frac{C_0}{v_0} \notag
+\end{equation}
+%
+となる。今、$v = v_0 + \Delta v$, $C = C_0 + \Delta C$, $T=T_0 + \Delta T$
+%
+\begin{equation}
+    T = T_0 + \Delta T = \frac{C_0 + \Delta C}{v_0 + \Delta v}\notag
+\end{equation}
+%
+これより
+%
+\begin{align}
+    & (T_0 + \Delta T)(v_0 + \Delta v) = C_0 + \Delta C \notag \\
+    \Longleftrightarrow\quad & \underset{C_0}{\uwave{\cancel{v_0 T_0}}} + \Delta v T_0 + v_0 \Delta T +
+    \underset{0}{\uwave{\cancel{\Delta v \Delta T}}}
+    = \cancel{C_0} + \Delta C \notag \\
+    \Longleftrightarrow\quad & v_0 \Delta T = \Delta C- \Delta v T_0 \notag \\
+    \Longleftrightarrow\quad & \frac{\Delta T}{T_0} = \frac{\Delta C_0}{\underset{C_0}{\uwave{v_0 T_0}}} - \frac{\Delta v}{v_0} \notag
+\end{align}
+%
+したがって、
+%
+\begin{equation}
+    \frac{\Delta T}{T_0} = \frac{\Delta C}{C_0} - \frac{\Delta v}{v_0}
+\end{equation}
+%
+この式より、回転周期の変動 ($\Delta T/T_0$) をもたらす要因として、軌道の長さの変動 ($\Delta C/C_0$) と粒子の速度の変動 ($\Delta v/v_0$)である事が分かる。
+
+
+
 運動量偏差 (momentum deviation)
 \begin{equation}
     \delta_p = \frac{p-p_0}{p_0}=\frac{\Delta p}{p_0}
@@ -82,13 +152,7 @@ phase slip factor
     \frac{dT}{T} = \frac{dC}{C} - \frac{dv}{v}
 \end{equation}
 %
-これより
-%
-\begin{equation}
-    \frac{\Delta T}{T_0} = \frac{\Delta C}{C_0} - \frac{\Delta v}{v_0}
-\end{equation}
-%
-この式より、到着時間の変動 ($\Delta T/T_0$) をもたらす要因が、軌道の長さの違い ($\Delta C/C_0$) と粒子の速度の違い ($\Delta v/v_0$)である事が分かる。
+
 %
 \begin{equation}
     \frac{\Delta v}{v_0}=\frac{1}{\gamma_0^2}\frac{\Delta p}{p_0}
@@ -237,10 +301,10 @@ The energy of a particle at the (n+1)-th turn $E_{n+1}$ is expressed by the ener
     E_{n+1} = E_n + e V \sin\phi_n
 \end{equation}
 %
-For a synchronous particle with suffix 0,
+For a synchronous particle with suffix s,
 %
 \begin{equation}
-    (E_0)_{n+1} = (E_0)_n + e V \sin\phi_s
+    E_{0, n+1} = E_{0, n} + e V \sin\phi_s
 \end{equation}
 %
 Thus, the energy error, $\Delta E = E - E_0$, is expressed as
@@ -285,6 +349,22 @@ Thus, the energy error, $\Delta E = E - E_0$, is expressed as
 \begin{equation}
     \phi_{n+1} - \phi_{n} = \omega_{RF} \Delta\tau_{n+1} = \omega_{RF} (T_{n+1}-T_0)
 \end{equation}
+%
+\begin{equation}
+    \frac{\Delta T}{T_0} = \eta\delta
+\end{equation}
+%
+\begin{equation}
+    \phi_{n+1} - \phi_{n} = \omega_{RF} T_0 \eta \delta_{n+1}
+\end{equation}
+%
+以上より、
+%
+\begin{align}
+    \delta_{n+1} - \delta_n &= \frac{e V}{\beta_0^2 E_0}(\sin\phi_n -\sin\phi_s) \\
+    \phi_{n+1} - \phi_{n} &= \omega_{RF} T_0 \eta \delta_{n+1}
+\end{align}
+%
 \begin{thebibliography}{9}
     \bibitem{Wolski}
     Andy Wolski, Beam Dynamics in High Energy Particle Accelerators,  Imperial College Pr (2014).
