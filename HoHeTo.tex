@@ -83,7 +83,7 @@
     となり、確かに(\ref{harmonic})を満たしている。
 \end{tcolorbox}
 
-\subsection{Transition}
+\subsection{各パラメータの運動量依存性}
 同期粒子が平衡軌道$C_0$を速度$v_0$で周回する時、回転周期は
 %
 \begin{equation}
@@ -116,7 +116,7 @@
 この式より、回転周期の変動 ($\Delta T/T_0$) をもたらす要因として、軌道の長さの変動 ($\Delta C/C_0$) と粒子の速度の変動 ($\Delta v/v_0$)である事が分かる。
 
 
-
+\subsection{Transition}
 運動量偏差 (momentum deviation)
 \begin{equation}
     \delta_p = \frac{p-p_0}{p_0}=\frac{\Delta p}{p_0}
@@ -132,27 +132,6 @@ phase slip factor
 \begin{equation}
     \frac{\Delta T}{T_0}=\eta_p\frac{\Delta p}{p_0}
 \end{equation}
-%
-周長を$C$、粒子の速度を$v$とすると回転周期$T$は
-%
-\begin{equation}
-    T=\frac{C}{v}
-\end{equation}
-%
-となるので、両辺を$v$で微分すると、
-%
-\begin{align}
-    \frac{dT}{dv} &= \frac{1}{v}\frac{dC}{dv}-\frac{C}{v^2} \notag \\
-    & = \frac{T}{C}\frac{dC}{dv} - \frac{T}{v}
-\end{align}
-%
-したがって、
-%
-\begin{equation}
-    \frac{dT}{T} = \frac{dC}{C} - \frac{dv}{v}
-\end{equation}
-%
-
 %
 \begin{equation}
     \frac{\Delta v}{v_0}=\frac{1}{\gamma_0^2}\frac{\Delta p}{p_0}
@@ -207,28 +186,6 @@ phase slip factor
     \end{equation}
 \end{tcolorbox}
 %
-\begin{equation}
-    \alpha_p = \frac{1}{C_0}\left.\frac{dC}{d\delta_p}\right|_{\delta_p = 0}
-\end{equation}
-%
-\subsection{Phase slip factor}
-\begin{equation}
-    \frac{\Delta T}{T_0}=\eta\frac{\Delta p}{p_0}
-    \label{slip}
-\end{equation}
-
-\begin{equation}
-    \eta_p = \frac{1}{T_0}\left. \frac{dT}{d\delta_p}\right|_{\delta_p = 0}
-\end{equation}
-
-\begin{equation}
-    \eta_p=\alpha_p - \frac{1}{\gamma_0^2}
-    \label{alppha_slip}
-\end{equation}
-\begin{equation}
-    \gamma = \frac{1}{\sqrt{1-\beta^2}}\, , \quad \beta = \frac{v}{c}
-\end{equation}
-
 正の運動量圧縮率$\alpha_p>0$を持つ電磁石の配列を考えます。このような磁石の配列では、粒子のエネルギーを増加させると経路長が増加する。 しかしながら、粒子が光の速度よりも十分低い速度を有するようにビームが低エネルギーである場合、粒子のエネルギーを増加させることはその速度の増加をもたらし、それは経路長の増加を補償する以上のことがあり得る。その結果、粒子は単位時間あたりの回転数が多くなります。
 
 しかしながら、超相対論的粒子の場合、粒子はすでに光速に非常に近いところを移動しているので、エネルギーの増加はごくわずかな速度の増加をもたらす。 この場合、光路長の増加は速度の増加よりも優先され、粒子は単位時間あたりの回転数が少なくなります。
@@ -294,6 +251,44 @@ canonical variables: $(x, x^{'}, y, y^{'}, z, \delta_p)$ synchronous phase: $\ph
      \delta_p =\frac{p-p_0}{p_0} \notag
 \end{align}
 %
+\subsection{Phase slip factor}
+\begin{equation}
+    \frac{\Delta T}{T_0}=\eta\frac{\Delta p}{p_0}
+    \label{slip}
+\end{equation}
+
+\begin{equation}
+    \eta_p = \frac{1}{T_0}\left. \frac{dT}{d\delta_p}\right|_{\delta_p = 0}
+\end{equation}
+
+\begin{equation}
+    \eta_p=\alpha_p - \frac{1}{\gamma_0^2}
+    \label{alppha_slip}
+\end{equation}
+\begin{equation}
+    \gamma = \frac{1}{\sqrt{1-\beta^2}}\, , \quad \beta = \frac{v}{c}
+\end{equation}
+
+周長を$C$、粒子の速度を$v$とすると回転周期$T$は
+%
+\begin{equation}
+    T=\frac{C}{v}
+\end{equation}
+%
+となるので、両辺を$v$で微分すると、
+%
+\begin{align}
+    \frac{dT}{dv} &= \frac{1}{v}\frac{dC}{dv}-\frac{C}{v^2} \notag \\
+    & = \frac{T}{C}\frac{dC}{dv} - \frac{T}{v}
+\end{align}
+%
+したがって、
+%
+\begin{equation}
+    \frac{dT}{T} = \frac{dC}{C} - \frac{dv}{v}
+\end{equation}
+%
+
 \subsection{Energy Equation}
 The energy of a particle at the (n+1)-th turn $E_{n+1}$ is expressed by the energy $E_n$ and RF phase $\phi_n$ at the n-th turn as
 %
@@ -343,15 +338,15 @@ Thus, the energy error, $\Delta E = E - E_0$, is expressed as
 粒子がエネルギー$E_n$でリングを$n$周回し、加速空洞で加速されエネルギーが$E_{n+1}$増えた時、$n+1$周回し再び加速空洞で加速する時間$T_{n+1}$は、
 %
 \begin{equation}
-    \Delta \tau_{n+1} = \tau_{n+1} - \tau_{n} = T_{n+1} - T_0
+    \Delta \tau_{n+1} = \tau_{n+1} - \tau_{n} = T_{n+1} - T_{0,n+1}
 \end{equation}
 %
 \begin{equation}
-    \phi_{n+1} - \phi_{n} = \omega_{RF} \Delta\tau_{n+1} = \omega_{RF} (T_{n+1}-T_0)
+    \phi_{n+1} - \phi_{n} = \omega_{RF} \Delta\tau_{n+1} = \omega_{RF} (T_{n+1}-T_{0,n+1})
 \end{equation}
 %
 \begin{equation}
-    \frac{\Delta T}{T_0} = \eta\delta
+    \frac{T_{n+1}-T_{0,n+1}}{T_{0,n+1}} = \eta \delta_{n+1}
 \end{equation}
 %
 \begin{equation}
@@ -365,7 +360,136 @@ Thus, the energy error, $\Delta E = E - E_0$, is expressed as
     \phi_{n+1} - \phi_{n} &= \omega_{RF} T_0 \eta \delta_{n+1}
 \end{align}
 %
+\section{Transverse–Longitudinal Coupling}
+\subsection{Dispersion}
+運動量偏差 (momentum deviation)
+%
+\begin{equation}
+    \delta_p = \frac{p-p_0}{p_0}=\frac{\Delta p}{p_0}
+\end{equation}
+%
+分散 (dispersion)
+%
+\begin{equation}
+    x(\delta_p) = \left. x \right|_{\delta_p = 0} + \eta_x \delta_p + \eta_x^{(2)}\delta_p^2 + \dots
+\end{equation}
+%
+\subsection{Momentum compaction factor}
+momentum compaction factor
+%
+\begin{equation}
+    \alpha_p = \frac{1}{C_0}\left.\frac{dC}{d\delta_p}\right|_{\delta_p = 0}
+\end{equation}
+%
+\subsection{$\delta$ and $\delta_p$}
+Note that the momentum deviation $\delta_p$ is not the same as the energy deviation $\delta$. To proceed, it is useful to have a relationship between the derivative with respect to $\delta_p$ and the derivative with respect to $\delta$.
+%
+\subsubsection{energy deviation}
+%
+\begin{equation}
+    \delta \equiv \frac{E}{P_0 c} -\frac{1}{\beta_0}
+\end{equation}
+%
+$E =\gamma m c^2$, $P_0 =\beta_0\gamma_0 mc$より
+%
+\begin{align}
+    \delta &= \frac{\gamma m c^2}{c(\beta_0\gamma_0 m c)} - \frac{1}{\beta_0} \notag \\
+    & = \frac{1}{\beta_0}\left(\frac{\gamma}{\gamma_0} - 1\right) \notag \\
+    & = \frac{1}{\beta_0}\left(\frac{E}{E_0}-1\right)
+\end{align}
+%
+\subsubsection{momentum deviation}
+%
+\begin{equation}
+    \delta_p = \frac{P}{P_0} -1
+\end{equation}
+%
+Since $\delta_p = 0$ when $\delta = 0$, we can write:
+%
+\section{Difference Equations for Longitudinal Motion in a Synchrotron}
+The relative time $\tau$ and the relative phase $\phi$ are measured with respect to the zero crossing of the gap voltage. 
+%
+\begin{equation}
+    \tau(n+1) - \tau(n) = T(n+1) -T_0(n+1)
+\end{equation}
+%
+$\phi(n) = \omega_{RF}(n) \tau(n)$と置くと
+\begin{align}
+    \phi(n+1) &= \omega_{RF}(n+1)\tau(n+1) \notag \\
+    &=\omega_{RF}(n+1)\{\tau(n) + T(n+1) -T_0(n+1)\} \notag \\
+    &= \frac{\omega_{RF}(n+1)}{\omega_{RF}(n)} \phi(n) + \omega_{RF}(n+1)\{T(n+1) -T_0(n+1)\}  \notag
+\end{align}
+%
+ここで、
+%
+\begin{equation}
+    \frac{T(n+1)-T_0(n+1)}{T_0(n+1)} = \eta \delta_p(n+1)
+\end{equation}
+%
+\begin{align}
+    \phi(n+1) &= \frac{\omega_{RF}(n+1)}{\omega_{RF}(n)}\phi(n) + \omega_{RF}(n+1)T_0(n+1)\eta \delta_p(n+1) \notag \\
+    &=\frac{\omega_{RF}(n+1)}{\omega_{RF}(n)}\phi(n) + 2\pi h \eta \delta_p(n+1)
+\end{align}
+%
+\begin{equation}
+    \frac{\omega_{RF}(n+1)}{\omega_{RF}(n)}\phi(n) \approx 1
+\end{equation}
+%
+\begin{equation}
+    \phi(n+1) = \phi(n) + 2\pi h \eta \delta_p(n+1)
+\end{equation}
+
+The energy of a particle at the (n+1)-th turn $E(n+1)$ is expressed by the energy $E(n)$ and RF phase $\phi(n)$ at the n-th turn as
+%
+\begin{equation}
+    E(n+1) = E(n) + e V \sin\phi (n)
+\end{equation}
+%
+For a synchronous particle with suffix 0,
+%
+\begin{equation}
+    E_0(n+1) = E_0(n) + e V \sin\phi_s
+\end{equation}
+%
+Thus, the energy error, $\Delta E = E - E_0$, is expressed as
+%
+\begin{equation}
+    \Delta E(n+1) = \Delta E(n) + e V (\sin\phi(n) - \sin\phi_s)
+\end{equation}
+%
+ここで、
+%
+\begin{equation}
+    \delta_p = \frac{\Delta p}{p_0} = \frac{1}{\beta_0^2}\frac{\Delta E}{E_0}
+\end{equation}
+%
+より、
+%
+\begin{equation}
+    \Delta E(n+1) - \Delta E(n) = \beta^2 E_0 \{\delta_p(n+1) - \delta_p(n)\}
+\end{equation}
+%
+したがって、
+%
+\begin{equation}
+    \delta_p(n+1) - \delta_p(n) = \frac{e V}{\beta_0^2 E_0}(\sin\phi(n) -\sin\phi_s)
+\end{equation}
+%
+
+the symplectic mapping equation:
+
+\begin{align}
+    \begin{split}
+        &\delta_p(n+1) - \delta_p(n) = \frac{e V}{\beta_0^2 E_0}(\sin\phi(n) -\sin\phi_s) \\
+        &\phi(n+1) = \phi(n) + 2\pi h \eta \delta_p(n+1)
+    \end{split}
+\end{align}
+%
 \begin{thebibliography}{9}
+    \bibitem{Chao}
+    A. Chao, K. Mess, M. Tigner, and F. Zimmermann, Handbook of Accelerator Physics and Engineering (2nd Edition), World Scientific Publishing Company Incorporated, Singapore (2013)
+    \bibitem{a}
+    A.W.Chao and M.Tigner,editors.Handbook of Accelerator Physics and Engineering. World Scientific Pub. Co., 3rd printing edition, 2009.
     \bibitem{Wolski}
     Andy Wolski, Beam Dynamics in High Energy Particle Accelerators,  Imperial College Pr (2014).
     \bibitem{Lee}
