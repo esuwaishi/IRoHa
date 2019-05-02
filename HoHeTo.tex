@@ -482,8 +482,47 @@ the symplectic mapping equation:
     \begin{split}
         &\delta_p(n+1) - \delta_p(n) = \frac{e V}{\beta_0^2 E_0}(\sin\phi(n) -\sin\phi_s) \\
         &\phi(n+1) = \phi(n) + 2\pi h \eta \delta_p(n+1)
+        \label{map}
     \end{split}
 \end{align}
+%
+\section{Differential Equations for Longitudinal Motion in a Synchrotron}
+The difference equations (\ref{map}) can be written as continuous differential equations, if the assumption is made that the change of the variables $\phi$ and $\delta_p$ during one turn in the ring is not too large. In this case, the difference quotient can be approximated by the differential quotient
+%
+\begin{equation}
+    \frac{\delta_p(n+1)-\delta_p(n)}{T_0(n+1)} \approx \frac{d\delta_p}{dt}=\dot{\delta_p},\quad 
+    \frac{\phi(n+1)-\phi(n)}{T_0(n+1)} \approx \frac{d\phi}{dt}= \dot{\phi}
+\end{equation}
+%
+\begin{align}
+    \begin{split}
+        \dot{\delta_p} &= \frac{e V \omega_0}{2\pi \beta_0^2 E_0}(\sin\phi - \sin\phi_s) \\
+        \dot{\phi} &= h \omega_0 \eta \delta_p
+    \end{split}
+\end{align}
+%
+\begin{equation}
+    \ddot{\phi} = \frac{e V h \eta \omega_0^2}{2\pi\beta_0^2 E_0}(\sin\phi-\sin\phi_s)
+\end{equation}
+%
+\subsection{Small amplitude approximation}
+$\Delta\phi = \phi - \phi_s$が非常に小さい時、
+%
+\begin{equation}
+    \sin\phi = \sin(\phi_s+\Delta\phi) \approx \sin\phi_s + \cos\phi_s \Delta\phi
+\end{equation}
+%
+より
+%
+\begin{equation}
+    \ddot{\Delta\phi} = \frac{e V h \eta \omega_0^2}{2\pi \beta_0^2 E_0} \cos\phi_s \Delta\phi = - \omega_s^2 \Delta\phi
+\end{equation}
+%
+ただし、
+%
+\begin{equation}
+    \omega_s = \sqrt{-\frac{e V h \eta \omega_0^2 \cos\phi_s}{2\pi \beta_0^2 E_0}}
+\end{equation}
 %
 \begin{thebibliography}{9}
     \bibitem{Chao}
