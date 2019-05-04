@@ -83,211 +83,129 @@
     となり、確かに(\ref{harmonic})を満たしている。
 \end{tcolorbox}
 
-\subsection{各パラメータの運動量依存性}
-同期粒子が平衡軌道$C_0$を速度$v_0$で周回する時、回転周期は
+\subsection{Dispersion effects in a synchrotron}
+粒子の運動量が変化すると、速度や軌道長も変わる。今、運動量偏差 (momentum deviation) を
 %
-\begin{equation}
-    T_0 = \frac{C_0}{v_0} \notag
-\end{equation}
-%
-となる。今、$v = v_0 + \Delta v$, $C = C_0 + \Delta C$, $T=T_0 + \Delta T$
-%
-\begin{equation}
-    T = T_0 + \Delta T = \frac{C_0 + \Delta C}{v_0 + \Delta v}\notag
-\end{equation}
-%
-これより
-%
-\begin{align}
-    & (T_0 + \Delta T)(v_0 + \Delta v) = C_0 + \Delta C \notag \\
-    \Longleftrightarrow\quad & \underset{C_0}{\uwave{\cancel{v_0 T_0}}} + \Delta v T_0 + v_0 \Delta T +
-    \underset{0}{\uwave{\cancel{\Delta v \Delta T}}}
-    = \cancel{C_0} + \Delta C \notag \\
-    \Longleftrightarrow\quad & v_0 \Delta T = \Delta C- \Delta v T_0 \notag \\
-    \Longleftrightarrow\quad & \frac{\Delta T}{T_0} = \frac{\Delta C_0}{\underset{C_0}{\uwave{v_0 T_0}}} - \frac{\Delta v}{v_0} \notag
-\end{align}
-%
-したがって、
-%
-\begin{equation}
-    \frac{\Delta T}{T_0} = \frac{\Delta C}{C_0} - \frac{\Delta v}{v_0}
-\end{equation}
-%
-この式より、回転周期の変動 ($\Delta T/T_0$) をもたらす要因として、軌道の長さの変動 ($\Delta C/C_0$) と粒子の速度の変動 ($\Delta v/v_0$)である事が分かる。
-
-
-\subsection{Transition}
-運動量偏差 (momentum deviation)
 \begin{equation}
     \delta_p = \frac{p-p_0}{p_0}=\frac{\Delta p}{p_0}
 \end{equation}
 %
-momentum compaction factor
+とし、同期粒子より運動量が大きい粒子 ($\delta_p >0$) が偏光磁石を通過する場合を考える (図\ref{dispersion})。
+%
+\begin{figure}[hbt]
+    \begin{center}
+      \includegraphics[width=15cm,clip]{dispersion.pdf}
+      \caption{Dispersion}
+      \label{dispersion}
+    \end{center}
+\end{figure}
+%
+その粒子は曲げられにくい為、基準軌道とは異なる軌道を通ることになる。この軌道のずれ$x(s)$は分散関数 (dispersion function) $D_x(s)$を用いて、
+%
+\begin{equation}
+    x(s) = D_x(s)\frac{\Delta p}{p_0} = D_x(s)\delta_p 
+\end{equation}
+%
+と表される。今、基準軌道の曲率半径を$\rho$とすると$ds = \rho d\theta$より、
+%
+\begin{equation}
+    dC = (\rho + x) d\theta = (\rho + x) \frac{ds}{\rho}
+\end{equation}
+%
+したがって、この粒子の軌道長 $C$ は、
+%
+\begin{align}
+    C &= \oint (\rho + x)\frac{ds}{\rho} = \int_0^{C_0} ds + \int_0^{C_0}\frac{x}{\rho} ds \notag \\
+    &= C_0 + \delta_p \int_0^{C_0}\frac{D_x(s)}{\rho} ds
+\end{align}
+%
+ここで運動量圧縮率 (momentum compaction factor) $\alpha_p$ を
+%
+\begin{equation}
+    \alpha_p \equiv \frac{1}{C_0} \oint \frac{D(s)}{\rho} ds
+\end{equation}
+%
+と定義すると、$\Delta C = C-C_0$として
 %
 \begin{equation}
     \frac{\Delta C}{C_0}=\alpha_p\frac{\Delta p}{p_0}=\alpha_p\delta_p
+    \label{delta_C}
 \end{equation}
 %
-phase slip factor
+となり$\alpha_p$は運動量の変化による相対的な軌道長の変化を表していることになる。
+%
+同様に、運動量の変化による相対的な回転周期$T$の変化率をphase slip factor $\eta_p$と言い、以下のように定義されている。
+%
 \begin{equation}
-    \frac{\Delta T}{T_0}=\eta_p\frac{\Delta p}{p_0}
+    \frac{\Delta T}{T_0} \equiv \eta_p \delta_p
 \end{equation}
+
+今、同期粒子が基準軌道$C_0$を速度$v_0$で周回する時、回転周期は $T_0 = C_0 / v_0$ となるので、運動量の変化から速度、回転周期がそれぞれ$v = v_0 + \Delta v$, $T=T_0 + \Delta T$と変化した時、
+%
+\begin{equation}
+    \frac{\Delta T}{T_0} = \frac{\Delta C}{C_0} - \frac{\Delta v}{v_0}
+    \label{delta_T}
+\end{equation}
+%
+この式より、回転周期の変化 ($\Delta T/T_0$) をもたらす要因として、軌道長の変化 ($\Delta C/C_0$) と粒子の速度の変化 ($\Delta v/v_0$)である事が分かる。(\ref{dv_dp}) より
 %
 \begin{equation}
     \frac{\Delta v}{v_0}=\frac{1}{\gamma_0^2}\frac{\Delta p}{p_0}
     \label{delta_v}
 \end{equation}
 %
-したがって、
+(\ref{delta_T}) に (\ref{delta_C}) と (\ref{delta_v})を代入すると、
 %
 \begin{equation}
-    \frac{\Delta T}{T_0} = \left(\alpha_p - \frac{1}{\gamma_0^2}\right)\frac{\Delta p}{p_0}
+    \frac{\Delta T}{T_0} = \left(\alpha_p - \frac{1}{\gamma_0^2}\right)\frac{\Delta p}{p_0} = \eta_p \delta_p
 \end{equation}
 %
-\begin{tcolorbox}[title=相対論のおさらい]
-    \begin{equation}
-        E_0 = m_0 c^2 ,\quad E = \sqrt{E_0^2 + p^2 c^2} \tag{A.1}
-    \end{equation}
-
-    \begin{equation}
-        \beta = \frac{v}{c}\,,\quad \gamma = \frac{E}{E_0}=\frac{m}{m_0}=\frac{1}{\sqrt{1-\beta^2}} \tag{A.2}
-    \end{equation}
-
-    \begin{equation}
-        p = mv = \gamma m_0 v = \gamma m_0 \beta c \tag{A.3}
-    \end{equation}
-
-    \begin{equation}
-        \frac{p}{E} = \frac{\gamma m_0 \beta c}{\gamma m_0 c^2} = \frac{\beta}{c} \tag{A.4}
-    \end{equation}
-\end{tcolorbox}
-    %
-\begin{tcolorbox}[title=式 (\ref{delta_v}) の導出]
-    \begin{equation}
-        \frac{dp}{dv} = m_0\frac{d}{dv}(\gamma v)
-        = m_0 \left(\gamma + v \frac{d\gamma}{dv}\right) \notag
-    \end{equation}
-    %
-    \begin{align}
-        \frac{d\gamma}{dv} & = \frac{1}{c}\frac{d\gamma}{d\beta}= \frac{1}{c}\frac{d}{d\beta}\left(\frac{1}{\sqrt{1-\beta^2}}\right) \notag \\
-        & = \frac{1}{c} \beta \underset{\gamma^{-2}}{\underbrace{(1-\beta^2)}}^{-\frac{3}{2}} = \frac{\beta \gamma^3}{c} \notag \\
-        & = \frac{1}{c} \beta \underset{\gamma^{-2}}{\uwave{(1-\beta^2)}}^{-\frac{3}{2}} = \frac{\beta \gamma^3}{c} \notag
-    \end{align}
-    %
-    これより、
-    \begin{align}
-        \frac{dp}{dv} & = m_0 \left(\gamma + v \frac{\beta \gamma^3}{c}\right)
-        = m_0 \gamma \underset{\gamma^2}{\uwave{(1 + \beta^2 \gamma^2)}}
-        = \frac{\gamma^2 p}{v} \notag
-    \end{align}
-    %
-    \begin{equation}
-        \therefore \quad \frac{dv}{v} = \frac{1}{\gamma^2}\frac{dp}{p} \tag{B.1}
-    \end{equation}
-\end{tcolorbox}
+ただし、
 %
+\begin{equation}
+    \eta_p=\alpha_p - \frac{1}{\gamma_0^2}
+    \label{alppha_slip}
+\end{equation}
+
 正の運動量圧縮率$\alpha_p>0$を持つ電磁石の配列を考えます。このような磁石の配列では、粒子のエネルギーを増加させると経路長が増加する。 しかしながら、粒子が光の速度よりも十分低い速度を有するようにビームが低エネルギーである場合、粒子のエネルギーを増加させることはその速度の増加をもたらし、それは経路長の増加を補償する以上のことがあり得る。その結果、粒子は単位時間あたりの回転数が多くなります。
 
 しかしながら、超相対論的粒子の場合、粒子はすでに光速に非常に近いところを移動しているので、エネルギーの増加はごくわずかな速度の増加をもたらす。 この場合、光路長の増加は速度の増加よりも優先され、粒子は単位時間あたりの回転数が少なくなります。
 
 これら2つの体制の間にあるエネルギーでは、回転数はエネルギーに依存しません。 このエネルギーは遷移エネルギーとして知られています。
 
-\subsection{シンクロトロン振動の方程式}
-%
-\begin{equation}
-    \Delta \phi = \omega_{RF} \Delta T = \omega_{RF} T_0 \eta_p\frac{\Delta p}{p_0}
-\end{equation}
+\vspace{\baselineskip}
 
-\begin{equation}
-    \frac{\Delta p}{p_0} = \frac{1}{\beta_0^2}\frac{\Delta E}{E_0}
-    \label{delta_p}
-\end{equation}
-
-\begin{equation}
-    \Delta \phi = \frac{\omega_{RF} T_0 \eta_p}{\beta_0^2 E_0}\Delta E
-\end{equation}
-
-\begin{equation}
-    \frac{d\phi}{dt} \simeq \frac{\Delta\phi}{T_0} = \frac{\omega_{RF}\eta_p}{\beta_0^2 E_0}\Delta E
-\end{equation}
-
-\begin{equation}
-    \Delta E = e V_c (\sin \phi - \sin \phi_s)
-\end{equation}
-
-\begin{equation}
-    \frac{d\Delta E}{dt} \simeq \frac{\Delta E}{T_0}= \frac{e V_c (\sin\phi - \sin\phi_s)}{T_0}
-\end{equation}
-
-\begin{tcolorbox}[title=式 (\ref{delta_p}) の導出]
-    
-    \begin{align}
-        p = mv = \gamma m_0 \beta c\,  , \quad E = \gamma E_0 = \gamma m_0 c^2 \notag
-    \end{align}
-    %
+\begin{tcolorbox}[title=式 (\ref{delta_T}) の導出]
+    $v = v_0 + \Delta v$, $C=C_0 + \Delta C$, $T = T_0 + \Delta T$ とすると $T = C/v$ より、
     \begin{equation}
-        \gamma \beta = \gamma \sqrt{1-\frac{1}{\gamma^2}} \notag = \sqrt{\gamma^2 -1} \notag
+        T_0 + \Delta T = \frac{C_0 + \Delta C}{v_0 + \Delta v} \notag
     \end{equation}
     %
+    分母を払って整理すると、(二次の微小量は無視する)
+    %
     \begin{align}
-        \frac{dp}{dE} & = \frac{1}{c}\frac{d(\gamma \beta)}{d\gamma} = \frac{1}{c}\frac{d}{d\gamma}\sqrt{\gamma^2 -1} \notag \\
-        & = \frac{\gamma}{c} \underset{\gamma^2\beta^2}{(\uwave{\gamma^2 -1}})^{-\frac{1}{2}} = \frac{1}{c\beta}
-        = \frac{p}{\beta^2 E}\notag
+        & (T_0 + \Delta T)(v_0 + \Delta v) = C_0 + \Delta C \notag \\
+        \Longleftrightarrow\quad & \underset{C_0}{\uwave{\cancel{v_0 T_0}}} + \Delta v T_0 + v_0 \Delta T +
+        \underset{0}{\uwave{\cancel{\Delta v \Delta T}}}
+        = \cancel{C_0} + \Delta C \notag \\
+        \Longleftrightarrow\quad & v_0 \Delta T = \Delta C- \Delta v T_0 \notag \\
+        \Longleftrightarrow\quad & \frac{\Delta T}{T_0} = \frac{\Delta C_0}{\underset{C_0}{\uwave{v_0 T_0}}} - \frac{\Delta v}{v_0} \notag \\
+        \Longleftrightarrow\quad & \frac{\Delta T}{T_0} = \frac{\Delta C_0}{C_0} - \frac{\Delta v}{v_0} \notag
     \end{align}
-    %
-    \begin{equation}
-        \therefore \quad \frac{dp}{p} = \frac{1}{\beta^2}\frac{dE}{E} \tag{C.1}
-    \end{equation}
-    %
 \end{tcolorbox}
 
-%
-\section{Longitudinal Dynamics}
-\subsection{6-D Phase Space}
-canonical variables: $(x, x^{'}, y, y^{'}, z, \delta_p)$ synchronous phase: $\phi_s =\omega_{RF} t_0$
-%
-\begin{align}
-     z = -v(t-t_0) \notag \\
-     \delta_p =\frac{p-p_0}{p_0} \notag
-\end{align}
-%
-\subsection{Phase slip factor}
-\begin{equation}
-    \frac{\Delta T}{T_0}=\eta\frac{\Delta p}{p_0}
-    \label{slip}
-\end{equation}
+\clearpage
 
-\begin{equation}
-    \eta_p = \frac{1}{T_0}\left. \frac{dT}{d\delta_p}\right|_{\delta_p = 0}
-\end{equation}
+\section{Phase stability}
 
-\begin{equation}
-    \eta_p=\alpha_p - \frac{1}{\gamma_0^2}
-    \label{alppha_slip}
-\end{equation}
-\begin{equation}
-    \gamma = \frac{1}{\sqrt{1-\beta^2}}\, , \quad \beta = \frac{v}{c}
-\end{equation}
+\begin{figure}[hbt]
+    \begin{center}
+      \includegraphics[width=15cm,clip]{phase_stability.pdf}
+      \caption{phase stability}
+      \label{phase_stability}
+    \end{center}
+\end{figure}
 
-周長を$C$、粒子の速度を$v$とすると回転周期$T$は
-%
-\begin{equation}
-    T=\frac{C}{v}
-\end{equation}
-%
-となるので、両辺を$v$で微分すると、
-%
-\begin{align}
-    \frac{dT}{dv} &= \frac{1}{v}\frac{dC}{dv}-\frac{C}{v^2} \notag \\
-    & = \frac{T}{C}\frac{dC}{dv} - \frac{T}{v}
-\end{align}
-%
-したがって、
-%
-\begin{equation}
-    \frac{dT}{T} = \frac{dC}{C} - \frac{dv}{v}
-\end{equation}
-%
 
 \subsection{Energy Equation}
 The energy of a particle at the (n+1)-th turn $E_{n+1}$ is expressed by the energy $E_n$ and RF phase $\phi_n$ at the n-th turn as
@@ -524,6 +442,74 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
     \omega_s = \sqrt{-\frac{e V h \eta \omega_0^2 \cos\phi_s}{2\pi \beta_0^2 E_0}}
 \end{equation}
 %
+\clearpage
+
+\appendix
+\renewcommand{\theequation}{\Alph{section}.\arabic{equation} }
+\setcounter{equation}{0}
+
+\section{相対論のおさらい}
+\begin{equation}
+    E_0 = m_0 c^2 ,\quad E = \sqrt{E_0^2 + p^2 c^2}
+\end{equation}
+
+\begin{equation}
+    \beta = \frac{v}{c}\,,\quad \gamma = \frac{E}{E_0}=\frac{m}{m_0}=\frac{1}{\sqrt{1-\beta^2}}
+\end{equation}
+
+\begin{equation}
+    p = mv = \gamma m_0 v = \gamma m_0 \beta c
+\end{equation}
+
+\begin{equation}
+    \frac{p}{E} = \frac{\gamma m_0 \beta c}{\gamma m_0 c^2} = \frac{\beta}{c}
+\end{equation}
+
+式 (\ref{delta_v}) の導出
+
+\begin{equation}
+    \frac{dp}{dv} = m_0\frac{d}{dv}(\gamma v)
+    = m_0 \left(\gamma + v \frac{d\gamma}{dv}\right) \notag
+\end{equation}
+%
+\begin{align}
+    \frac{d\gamma}{dv} & = \frac{1}{c}\frac{d\gamma}{d\beta}= \frac{1}{c}\frac{d}{d\beta}\left(\frac{1}{\sqrt{1-\beta^2}}\right) \notag \\
+    & = \frac{1}{c} \beta \underset{\gamma^{-2}}{\underbrace{(1-\beta^2)}}^{-\frac{3}{2}} = \frac{\beta \gamma^3}{c} \notag \\
+    & = \frac{1}{c} \beta \underset{\gamma^{-2}}{\uwave{(1-\beta^2)}}^{-\frac{3}{2}} = \frac{\beta \gamma^3}{c} \notag
+\end{align}
+%
+これより、
+\begin{align}
+    \frac{dp}{dv} & = m_0 \left(\gamma + v \frac{\beta \gamma^3}{c}\right)
+    = m_0 \gamma \underset{\gamma^2}{\uwave{(1 + \beta^2 \gamma^2)}}
+    = \frac{\gamma^2 p}{v} \notag
+\end{align}
+%
+\begin{equation}
+    \therefore \quad \frac{dv}{v} = \frac{1}{\gamma^2}\frac{dp}{p}
+    \label{dv_dp}
+\end{equation}
+
+\begin{align}
+    p = mv = \gamma m_0 \beta c\,  , \quad E = \gamma E_0 = \gamma m_0 c^2 \notag
+\end{align}
+%
+\begin{equation}
+    \gamma \beta = \gamma \sqrt{1-\frac{1}{\gamma^2}} \notag = \sqrt{\gamma^2 -1} \notag
+\end{equation}
+%
+\begin{align}
+    \frac{dp}{dE} & = \frac{1}{c}\frac{d(\gamma \beta)}{d\gamma} = \frac{1}{c}\frac{d}{d\gamma}\sqrt{\gamma^2 -1} \notag \\
+    & = \frac{\gamma}{c} \underset{\gamma^2\beta^2}{(\uwave{\gamma^2 -1}})^{-\frac{1}{2}} = \frac{1}{c\beta}
+    = \frac{p}{\beta^2 E}\notag
+\end{align}
+%
+\begin{equation}
+    \therefore \quad \frac{dp}{p} = \frac{1}{\beta^2}\frac{dE}{E}
+\end{equation}
+
+\section{その他}
+
 \begin{thebibliography}{9}
     \bibitem{Chao}
     A. Chao, K. Mess, M. Tigner, and F. Zimmermann, Handbook of Accelerator Physics and Engineering (2nd Edition), World Scientific Publishing Company Incorporated, Singapore (2013)
