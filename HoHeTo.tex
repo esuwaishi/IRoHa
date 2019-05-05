@@ -33,6 +33,10 @@
 %\setsansjfont{MS-PGothic}
 %\setsansjfont[BoldFont=HiraginoSans-W8]{HiraginoSans-W4}
 
+%\renewcommand{\figurename}{Fig.~}
+\renewcommand{\figurename}{Figure~}
+\renewcommand{\tablename}{Table~}
+
 \begin{document}
 \title{シンクロトロン振動のほへと}
 \author{吉本伸一}
@@ -40,11 +44,11 @@
 \tableofcontents
 \clearpage
 
-\section{Synchrotron motion}
+\section{はじめに}
 シンクロトロン蓄積リングでは、偏向電磁石によって分散 (dispersion) が発生する為、粒子の横方向と縦方向の運動が結合する。この結合が、リングを周回する粒子の縦方向の振動 (シンクロトロン振動) において重要な役割を演じる。
 %シンクロトロン振動は基準粒子（設計軌道を設計速度で運動する粒子）に対する、到着時間と運動量偏差の振動である。
 
-\subsection{Synchronous particle}
+\section{Synchronous particle}
 運動量$p_0$を持つ粒子が、基準軌道\footnote{粒子の運動量に対応して、一定の閉じた軌道 (閉軌道) が存在する。}\ を周期$T_0$で周回し、高周波加速空洞を同じ位相$\phi_s$で通過する時、このような粒子のことを同期粒子 (synchronous particle) と呼ぶ。同期粒子であるためには、周回周波数$f_0 (= 1/T_0)$と空洞のRF周波数$f_{RF}$の間に
 %
 \begin{equation}
@@ -83,19 +87,19 @@
     となり、確かに(\ref{harmonic})を満たしている。
 \end{tcolorbox}
 
-\subsection{Dispersion effects in a synchrotron}
+\section{Dispersion effects in a synchrotron}
 粒子の運動量が変化すると、速度や軌道長も変わる。今、運動量偏差 (momentum deviation) を
 %
 \begin{equation}
     \delta_p = \frac{p-p_0}{p_0}=\frac{\Delta p}{p_0}
 \end{equation}
 %
-とし、同期粒子より運動量が大きい粒子 ($\delta_p >0$) が偏光磁石を通過する場合を考える (図\ref{dispersion})。
+とし、同期粒子より運動量が大きい粒子 ($\delta_p >0$) が偏光磁石を通過する場合を考える (Figure~\ref{dispersion})。
 %
 \begin{figure}[hbt]
     \begin{center}
       \includegraphics[width=15cm,clip]{dispersion.pdf}
-      \caption{Dispersion}
+      \caption{Change in path length for a particle in a dipole magnet (with bending radius $\rho$) resulting from the horizontal displacement of the particle from the reference trajectory.}
       \label{dispersion}
     \end{center}
 \end{figure}
@@ -194,136 +198,23 @@
     \end{align}
 \end{tcolorbox}
 
-\clearpage
+%\clearpage
 
 \section{Phase stability}
-
+ビームの中には多くの粒子があり、色々な運動量を持つ粒子で構成されている。同期粒子と異なる運動量を持つ粒子が加速空洞を通過する時、どのように加速されるかについて考えてみる。
+%
 \begin{figure}[hbt]
     \begin{center}
       \includegraphics[width=15cm,clip]{phase_stability.pdf}
-      \caption{phase stability}
+      \caption{Schematic drawing of an rf wave, and the rf phase angles for a synchronous, a higher, and a lower energy particles.
+      For a stable synchrotron motion, the phase focusing principle requires $0 < \phi_s \leq \pi/2$ for $\eta_p < 0$,
+      and $\pi/2 < \phi_s \leq \pi$ for $\eta_p > 0$.}
       \label{phase_stability}
     \end{center}
 \end{figure}
 
+$\eta_p < 0$ の時、同期粒子より大きい運動量を持つ粒子は、同期粒子より回転周期が短いので、同期粒子より早く加速空洞に到着する。したがって、同期位相$\phi_s$を$0<\phi_s<\pi/2$に選べば、より大きい運動量を持つ粒子は、同期粒子より少ないエネルギーを加速空洞から得ることになる。同様に、同期粒子より小さな運動量を持つ粒子は、同期粒子より遅く加速空洞に到達するので、同期粒子より多いエネルギーを加速空洞から得る。この過程を繰り返すことで、同期粒子の持つ運動量から外れた運動量を持つ粒子は同期粒子の周りを安定に運動することが分かる。$\eta_p > 0$ の時は、同期位相を$\pi/2<\phi_s<\pi$に選べば同様にこの運動は安定である。
 
-\subsection{Energy Equation}
-The energy of a particle at the (n+1)-th turn $E_{n+1}$ is expressed by the energy $E_n$ and RF phase $\phi_n$ at the n-th turn as
-%
-\begin{equation}
-    E_{n+1} = E_n + e V \sin\phi_n
-\end{equation}
-%
-For a synchronous particle with suffix s,
-%
-\begin{equation}
-    E_{0, n+1} = E_{0, n} + e V \sin\phi_s
-\end{equation}
-%
-Thus, the energy error, $\Delta E = E - E_0$, is expressed as
-%
-\begin{equation}
-    \Delta E_{n+1} = \Delta E_n + e V (\sin\phi_n - \sin\phi_s)
-\end{equation}
-%
-ここで、
-%
-\begin{equation}
-    \delta = \frac{\Delta p}{p_0} = \frac{1}{\beta_0^2}\frac{\Delta E}{E_0}
-\end{equation}
-%
-より、
-%
-\begin{equation}
-    \Delta E_{n+1} - \Delta E_n = \beta^2 E_0 (\delta_{n+1} - \delta_n)
-\end{equation}
-%
-したがって、
-%
-\begin{equation}
-    \delta_{n+1} - \delta_n = \frac{e V}{\beta_0^2 E_0}(\sin\phi_n -\sin\phi_s)
-\end{equation}
-%
-
-\begin{figure}[hbt]
-    \begin{center}
-      \includegraphics[width=15cm,clip]{coordinates.pdf}
-      \caption{Relative and absolute coodinates. ($h=1$)}
-      \label{coordinates}
-    \end{center}
-  \end{figure}
-
-粒子がエネルギー$E_n$でリングを$n$周回し、加速空洞で加速されエネルギーが$E_{n+1}$増えた時、$n+1$周回し再び加速空洞で加速する時間$T_{n+1}$は、
-%
-\begin{equation}
-    \Delta \tau_{n+1} = \tau_{n+1} - \tau_{n} = T_{n+1} - T_{0,n+1}
-\end{equation}
-%
-\begin{equation}
-    \phi_{n+1} - \phi_{n} = \omega_{RF} \Delta\tau_{n+1} = \omega_{RF} (T_{n+1}-T_{0,n+1})
-\end{equation}
-%
-\begin{equation}
-    \frac{T_{n+1}-T_{0,n+1}}{T_{0,n+1}} = \eta \delta_{n+1}
-\end{equation}
-%
-\begin{equation}
-    \phi_{n+1} - \phi_{n} = \omega_{RF} T_0 \eta \delta_{n+1}
-\end{equation}
-%
-以上より、
-%
-\begin{align}
-    \delta_{n+1} - \delta_n &= \frac{e V}{\beta_0^2 E_0}(\sin\phi_n -\sin\phi_s) \\
-    \phi_{n+1} - \phi_{n} &= \omega_{RF} T_0 \eta \delta_{n+1}
-\end{align}
-%
-\section{Transverse–Longitudinal Coupling}
-\subsection{Dispersion}
-運動量偏差 (momentum deviation)
-%
-\begin{equation}
-    \delta_p = \frac{p-p_0}{p_0}=\frac{\Delta p}{p_0}
-\end{equation}
-%
-分散 (dispersion)
-%
-\begin{equation}
-    x(\delta_p) = \left. x \right|_{\delta_p = 0} + \eta_x \delta_p + \eta_x^{(2)}\delta_p^2 + \dots
-\end{equation}
-%
-\subsection{Momentum compaction factor}
-momentum compaction factor
-%
-\begin{equation}
-    \alpha_p = \frac{1}{C_0}\left.\frac{dC}{d\delta_p}\right|_{\delta_p = 0}
-\end{equation}
-%
-\subsection{$\delta$ and $\delta_p$}
-Note that the momentum deviation $\delta_p$ is not the same as the energy deviation $\delta$. To proceed, it is useful to have a relationship between the derivative with respect to $\delta_p$ and the derivative with respect to $\delta$.
-%
-\subsubsection{energy deviation}
-%
-\begin{equation}
-    \delta \equiv \frac{E}{P_0 c} -\frac{1}{\beta_0}
-\end{equation}
-%
-$E =\gamma m c^2$, $P_0 =\beta_0\gamma_0 mc$より
-%
-\begin{align}
-    \delta &= \frac{\gamma m c^2}{c(\beta_0\gamma_0 m c)} - \frac{1}{\beta_0} \notag \\
-    & = \frac{1}{\beta_0}\left(\frac{\gamma}{\gamma_0} - 1\right) \notag \\
-    & = \frac{1}{\beta_0}\left(\frac{E}{E_0}-1\right)
-\end{align}
-%
-\subsubsection{momentum deviation}
-%
-\begin{equation}
-    \delta_p = \frac{P}{P_0} -1
-\end{equation}
-%
-Since $\delta_p = 0$ when $\delta = 0$, we can write:
-%
 \section{Difference Equations for Longitudinal Motion in a Synchrotron}
 The relative time $\tau$ and the relative phase $\phi$ are measured with respect to the zero crossing of the gap voltage. 
 %
@@ -331,6 +222,14 @@ The relative time $\tau$ and the relative phase $\phi$ are measured with respect
     \tau(n+1) - \tau(n) = T(n+1) -T_0(n+1)
 \end{equation}
 %
+\begin{figure}[hhbt]
+    \begin{center}
+      \includegraphics[width=15cm,clip]{coordinates.pdf}
+      \caption{Relative and absolute coodinates. ($h=1$)}
+      \label{coordinates}
+    \end{center}
+\end{figure}
+
 $\phi(n) = \omega_{RF}(n) \tau(n)$と置くと
 \begin{align}
     \phi(n+1) &= \omega_{RF}(n+1)\tau(n+1) \notag \\
@@ -395,7 +294,7 @@ Thus, the energy error, $\Delta E = E - E_0$, is expressed as
 %
 
 the symplectic mapping equation:
-
+%
 \begin{align}
     \begin{split}
         &\delta_p(n+1) - \delta_p(n) = \frac{e V}{\beta_0^2 E_0}(\sin\phi(n) -\sin\phi_s) \\
@@ -404,6 +303,7 @@ the symplectic mapping equation:
     \end{split}
 \end{align}
 %
+
 \section{Differential Equations for Longitudinal Motion in a Synchrotron}
 The difference equations (\ref{map}) can be written as continuous differential equations, if the assumption is made that the change of the variables $\phi$ and $\delta_p$ during one turn in the ring is not too large. In this case, the difference quotient can be approximated by the differential quotient
 %
@@ -507,8 +407,6 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
 \begin{equation}
     \therefore \quad \frac{dp}{p} = \frac{1}{\beta^2}\frac{dE}{E}
 \end{equation}
-
-\section{その他}
 
 \begin{thebibliography}{9}
     \bibitem{Chao}

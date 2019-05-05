@@ -5,6 +5,12 @@ import longitudinal as lde
 #%matplotlib notebook
 
 # %%
+alpha_p_LER = 3.20e-4
+alpha_p_HER = 4.55e-4
+gamma_t_LER = 1/np.sqrt(alpha_p_LER)
+gamma_t_HER = 1/np.sqrt(alpha_p_HER)
+
+# %%
 turns=500
 sin_phi_s=0.5
 #phi_s=0
@@ -64,25 +70,6 @@ for i in range(len(energy_list)):
                                        update_eta= update_eta
                                       )
     result_g2.append(temp)
-
-
-for i in range(2):
-    ax[i].set_aspect('auto')
-    ax[i].set_title("{} GeV".format(energy_list[i]/1e9))
-    ax[i].set_xlabel('Phase [rad]')
-    
-    ax[i].set_xlim([-np.pi,2*np.pi])
-    
-    #ax[i].set_prop_cycle(plt.cycler('color', plt.cm.Oranges(np.linspace(0.3, 0.8, npar))))
-    ax[i].set_prop_cycle(plt.cycler('color', plt.cm.Oranges(np.linspace(0.3, 0.8, npar))))
-    ax[i].plot(result_g1[i][0], result_g1[i][1], linestyle=None)
-    ax[i].set_prop_cycle(plt.cycler('color', plt.cm.Blues(np.linspace(0.3, 0.8, npar))))
-    ax[i].plot(result_g2[i][0], result_g2[i][1], linestyle=None)
-    ax[i].set_xticks([-np.pi, -0.5*np.pi, 0., .5*np.pi, np.pi, 1.5*np.pi, 2*np.pi])
-    ax[i].set_xticklabels([r"$-\pi$", r"$-\frac{1}{2}\pi$", "$0$", r"$\frac{1}{2}\pi$",
-                     r"$\pi$", r"$\frac{3}{2}\pi$", r"$2\pi$"])
-ax[0].set_ylabel(r'$\delta=dp/p_0$')
-plt.tight_layout()
 
 # %%
 fig,ax=plt.subplots()
