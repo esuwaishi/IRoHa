@@ -48,64 +48,68 @@
 
 シンクロトロンでは、偏向電磁石によって分散 (dispersion) が発生する為、粒子の横方向と縦方向の運動が結合する。この結合が、リングを周回する粒子の縦方向の振動 (シンクロトロン振動) において重要な役割を演じる。
 
-\section{静電場による繰り返し加速}
-静電場を用いて荷電粒子を加速する場合、同じ加速電場を使って何度も繰り返し加速する事はできない。例えばFig.~\ref{dc_circular}のように磁場を使って荷電粒子を曲げ、何度も同じ電極を通過させた場合を考えてみる。粒子は電極を通る時に加速されるが、電極の外では逆に減速され加速した分が相殺されてしまう。このように、静電場を使って繰り返し加速はできないため、繰り返し加速を行う場合は、高周波電場を使うことになる。ただし、この図のように単純に平行平板の電極に高周波電圧を加えただけでは、静電場の時と同じように電極外で粒子が減速されてしまう場合がある。そこで、電磁場が外部に漏れないよう導体の壁によって囲まれた高周波加速空洞を使って繰り返し加速を行うことになる。
+
+\section{シンクロトロンの基礎の基礎}
+リングに一台の加速空洞が設置してあり、加速電圧
+%
+\begin{equation}
+  V_c(t) = V_0 \sin \phi_{RF}(t)
+\end{equation}
+%
+を発生しているとする。(Fig.~\ref{rf_circular})
 %
 \begin{figure}[hbt]
   \begin{center}
-    \includegraphics[width=10cm,clip]{dc_circular.pdf}
-    \caption{静電場による繰り返し加速}
-   \label{dc_circular}
-  \end{center}
-\end{figure}
-
-\section{シンクロトロンの基礎の基礎}
-
-\begin{figure}[hbt]
-  \begin{center}
     \includegraphics[width=15cm,clip]{rf_circular.pdf}
-    \caption{静電場による繰り返し加速}
+    \caption{シンクロトロンのモデル}
    \label{rf_circular}
   \end{center}
 \end{figure}
 
+粒子の運動方程式は、
+%
 \begin{equation}
   \frac{d\bm{p}}{dt} = -e (\bm{E} + \bm{v}\times \bm{B})
 \end{equation}
 %
-動径方向の運動を考えると
+となるが、動径方向の運動を考えると
 %
 \begin{equation}
-  \frac{m v^2}{\rho} = \bm{F_r} = e v B
+  \frac{m v^2}{\rho} = |\bm{F_r}| = e v B
 \end{equation}
-
+%
+したがって、粒子の運動量と磁場の間には次の関係が成り立つ。
+%
 \begin{equation}
-  p = mv = e \rho B 
+  p = mv = e \rho B
+  \label{momentum}
 \end{equation}
+%
+加速空洞で加速された粒子は運動量が増加するため、同じ軌道を維持するためには (\ref{momentum}) より運動量の変化に応じて磁場$B$を変える必要がある。同様に粒子の速度も増加するため周回周波数$f_0$も高くなるので、それに合わせて加速周波数$f_{RF}$も追随する必要がある。
 %
 \section{同期粒子}
-運動量$p_0$を持つ粒子が、基準軌道\footnote{粒子の運動量に対応して、一定の閉じた軌道 (閉軌道) が存在する。}\ を周期$T_0$で周回し、高周波加速空洞を同じ位相$\phi_s$で通過する時、このような粒子のことを同期粒子 (synchronous particle) と呼ぶ。同期粒子であるためには、周回周波数$f_0 (= 1/T_0)$と空洞のRF周波数$f_{RF}$の間に
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=15cm,clip]{synchronous.pdf}
+    \caption{$f_{RF} = h f_0$ ($h=2$)}
+    \label{synchronous}
+  \end{center}
+\end{figure}
+
+基準軌道を周回し、毎周同じ位相で加速空洞を通過する粒子を同期粒子 (synchronous particle) と呼び、その位相$\phi_s$のことを同期位相 (synchronous phase) と言う。同期粒子であるためには、周回周波数$f_0$と空洞の加速周波数$f_{RF}$の間に、ある整数$h$を用いて、
 %
 \begin{equation}
     f_{RF} = h f_0
     \label{harmonic}
 \end{equation}
 %
-という関係が必要である。整数$h$をharmonic numberと言い、周波数$f_{RF}$で加速できる最大の粒子数になる。この時、空洞の加速電圧は
+という関係が必要である。この整数$h$のことをharmonic numberと言い、加速周波数$f_{RF}$で加速できる最大の粒子数になる。この時、空洞の加速電圧は
 %
 \begin{equation}
-    V_c (\phi) = V_0 \sin \phi(t),\:\phi(t) = \int\omega_{RF}(t) dt + \phi_s
+    V_c (t) = V_0 \sin \phi_{RF}(t),\:\phi_{RF}(t) = \int_0^t \omega_{RF}(t) dt
 \end{equation}
 %
-となる。図\ref{synchronous}は、$h=2$の時の空洞電圧と同期粒子の関係を表してる。
-
-\begin{figure}[hbt]
-    \begin{center}
-      \includegraphics[width=15cm,clip]{synchronous.pdf}
-      \caption{$f_{RF} = h f_0$ ($h=2$)}
-      \label{synchronous}
-    \end{center}
-\end{figure}
+となる。Fig.~\ref{synchronous}は、$h=2$の時の空洞電圧と同期粒子の関係を表してる。
 
 \vspace{\baselineskip}
 
@@ -132,7 +136,7 @@
     \delta_p = \frac{p-p_0}{p_0}=\frac{\Delta p}{p_0}
 \end{equation}
 %
-とし、同期粒子より運動量が大きい粒子 ($\delta_p >0$) が偏光磁石を通過する場合を考える (Figure~\ref{dispersion})。
+とし、同期粒子より運動量が大きい粒子 ($\delta_p >0$) が偏光磁石を通過する場合を考える (Fig.~\ref{dispersion})。
 %
 \begin{figure}[hbt]
     \begin{center}
@@ -412,7 +416,6 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
 %
 \begin{align}
     \frac{d\gamma}{dv} & = \frac{1}{c}\frac{d\gamma}{d\beta}= \frac{1}{c}\frac{d}{d\beta}\left(\frac{1}{\sqrt{1-\beta^2}}\right) \notag \\
-    & = \frac{1}{c} \beta \underset{\gamma^{-2}}{\underbrace{(1-\beta^2)}}^{-\frac{3}{2}} = \frac{\beta \gamma^3}{c} \notag \\
     & = \frac{1}{c} \beta \underset{\gamma^{-2}}{\uwave{(1-\beta^2)}}^{-\frac{3}{2}} = \frac{\beta \gamma^3}{c} \notag
 \end{align}
 %
