@@ -408,6 +408,86 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
     \therefore \quad \frac{dp}{p} = \frac{1}{\beta^2}\frac{dE}{E}
 \end{equation}
 
+\section{高周波加速空洞の基礎の基礎}
+図~\ref{cavity1}はインダクタンス$L$とキャパシタンス$C$のよく知られた共振回路であり、この回路の共振周波数は、
+
+\begin{equation}
+  \omega = \frac{1}{\sqrt{LC}}
+  \label{LC}
+\end{equation}
+
+で与えられる。いま、共振周波数が高いとき、(\ref{LC})より$L$と$C$は小さな値でもよく、極端な話、コイルの部分を引き伸ばして一本の線にした図~\ref{cavity2}のような回路でも共振回路として動作する。
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=8cm,clip]{cavity1.pdf}
+    \caption{$LC$共振回路}
+   \label{cavity1}
+  \end{center}
+\end{figure}
+
+次に、この回路を$z$軸の周りに回転させると図~\ref{cavity3}のような金属の壁で囲まれたものが出来上がる。これも同様に共振回路として働き、空洞共振器と呼ばれる。空洞内では図に示すように。磁場は動径方向を周り、電場はギャップ部分に集中している。このギャップ部分に生じた高周波電場を使って荷電粒子を加速する装置が高周波加速空洞と言うことになる。
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=8cm,clip]{cavity2.pdf}
+    \caption{$LC$共振回路}
+   \label{cavity2}
+  \end{center}
+\end{figure}
+
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=6cm,clip]{cavity3.pdf}
+    \caption{高周波加速空洞}
+   \label{cavity3}
+  \end{center}
+\end{figure}
+
+加速空洞の内面では、動径方向に走る磁場によって高周波電流が流れるので、空洞内面が持つ抵抗によって電力を損失する。したがって、共振状態を維持するためには外部より電力を供給する必要がある。いま、空洞の加速電圧を$V_{c}$、この電圧を維持するために必要な電力を$P_{c}$とすると、
+%
+\begin{equation}
+  R_{sh} \equiv \frac{V_{c}^2}{P_{c}}
+  \label{sh}
+\end{equation}
+%
+で定義される量をシャントインピーダンスといい、空洞の特性を表す重要なパラメータの一つである。また、空洞内に蓄えられる電磁場のエネルギー$U$と空洞内の損失$P_{c}$を用いて、
+%
+\begin{equation}
+  Q = \frac{\omega U}{P_{c}}
+  \label{q_val}
+\end{equation}
+%
+で表される量を空洞の$Q$値といい、これも空洞の特性を表す重要なパラメータとなっている。
+
+\begin{tcolorbox}[title=\textgt{ARESとSCCの空洞損失}]
+  ARESの場合、$Q_{0}=\num{1.33e5}$、$R_{sh}=\SI{1.7}{\mega \ohm}$で、空洞一台当たりの加速電圧を$V_{c}=\SI{0.5}{\mega\volt}$とすると、
+%
+\begin{equation*}
+  P_{c} = \frac{V_{c}^2}{R_{sh}}=\SI{147}{\kilo \watt}
+\end{equation*}
+
+一方SCCの場合、$Q_{0}=\num{1e9}$、$R_{sh}=\SI{93e3}{\mega\ohm}$で、空洞一台当たりの加速電圧を$V_{c}=\SI{1.5}{\mega\volt}$とすると、
+%
+\begin{equation*}
+  P_{c} = \frac{V_{c}^2}{R_{sh}}=\SI{24}{\watt}
+\end{equation*}
+%
+となり、SCCの方が圧倒的に損失が少ない。（流石超電導！）
+\end{tcolorbox}
+
+\section{放射光によるエネルギー損失}
+高エネルギーの荷電粒子が磁場によって曲げられる時、その進行方向に向かって電磁波を放射してエネルギーを失う。この現象のことをシンクロトロン放射と呼び、放射された電磁波を放射光という。シンクロトロン放射によって単位時間に放射されるエネルギーは、荷電粒子の質量の4乗に逆比例することが知られており、電子（陽電子）のように軽い粒子ほど放射されるエネルギーは大きくなる。実際、同じエネルギーを持つ電子と陽子が放射するエネルギーの比は、
+%
+\begin{equation}
+  \frac{P_{p}}{P_{e}} = \left(\frac{m_e}{m_p}\right)=\left(\frac{9.1093897\times 10^{-31}\,\mathrm{kg}}{1.6726231\times 10^{-27}\,\mathrm{kg}}\right)=8.80\times 10^{-14}
+  \label{eq4}
+\end{equation}
+%
+となり。電子の方が圧倒的に多くのエネルギーを放射する。このように、シンクロトロン放射光によるエネルギー損失は、電子や陽電子のような非常に軽い粒子を加速するリングのみに現れてくる問題である。
+
+詳しい計算によると
+
 \begin{thebibliography}{9}
     \bibitem{Chao}
     A. Chao, K. Mess, M. Tigner, and F. Zimmermann, Handbook of Accelerator Physics and Engineering (2nd Edition), World Scientific Publishing Company Incorporated, Singapore (2013)
