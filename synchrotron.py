@@ -9,6 +9,12 @@ alpha_p_LER = 3.20e-4
 alpha_p_HER = 4.55e-4
 gamma_t_LER = 1/np.sqrt(alpha_p_LER)
 gamma_t_HER = 1/np.sqrt(alpha_p_HER)
+E0 = 0.5109989461e6
+Et_LER = gamma_t_LER * E0
+Et_HER = gamma_t_HER * E0
+
+print(gamma_t_LER, gamma_t_HER)
+print(Et_LER*1e-6, Et_HER*1e-6)
 
 # %%
 turns=500
