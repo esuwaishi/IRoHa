@@ -44,25 +44,17 @@
 \clearpage
 
 \section{はじめに}
-シンクロトロンでは，ビームに対して横方向（水平，垂直方向）へは四極磁石による収束力、縦方向（到着時間のずれ―エネルギー空間）へは高周波加速による収束力を発生させて、それぞれの方向へのポテンシャルを作り出し、ビームをその平衡点に閉じ込めている。横方向の振動をベータトロン振動、縦方向の振動をシンクロトロン振動とよぶ。
-
-シンクロトロンでは、偏向電磁石によって分散 (dispersion) が発生する為、粒子の横方向と縦方向の運動が結合する。この結合が、リングを周回する粒子の縦方向の振動 (シンクロトロン振動) において重要な役割を演じる。
-
+シンクロトロンでは，ビームに対して横方向（水平，垂直方向）へは四極磁石による収束力を、縦方向（進行方向）へは高周波加速による収束力を発生させて、ビームはその平衡点に閉じ込めている。横方向の振動をベータトロン振動と呼び、縦方向の振動をシンクロトロン振動と呼ぶ。ここでは、主に縦方向の運動について考えていくことにする。
 
 \section{シンクロトロンの基礎の基礎}
-リングに一台の加速空洞が設置してあり、加速電圧
-%
-\begin{equation}
-  V_c(t) = V_0 \sin \phi_{RF}(t)
-\end{equation}
-%
-を発生しているとする。(Fig.~\ref{rf_circular})
+シンクロトロンは、荷電粒子が偏向電磁石によって曲げられ、高周波加速空洞によって加速される円形加速器である (Fig.~\ref{synchrotron}) 。
+シンクロトロンでは、線形加速器とは異なり、粒子は閉軌道を周回し、加速空洞で繰り返し加速される。
 %
 \begin{figure}[hbt]
   \begin{center}
-    \includegraphics[width=15cm,clip]{rf_circular.pdf}
-    \caption{シンクロトロンのモデル}
-   \label{rf_circular}
+    \includegraphics[width=12cm,clip]{synchrotron.pdf}
+    \caption{シンクロトロンの概略図}
+   \label{synchrotron}
   \end{center}
 \end{figure}
 
@@ -85,8 +77,8 @@
   \label{momentum}
 \end{equation}
 %
-加速空洞で加速された粒子は運動量が増加するため、同じ軌道を維持するためには (\ref{momentum}) より運動量の変化に応じて磁場$B$を変える必要がある。同様に粒子の速度も増加するため周回周波数$f_0$も高くなるので、それに合わせて加速周波数$f_{RF}$も追随する必要がある。
-%
+粒子のエネルギーと運動量は加速空洞で加速される毎に増加するので、曲率半径と周回軌道を一定に保つためには、(\ref{momentum}) より、偏向電磁石の磁場$B$は運動量に比例して増加しなければならない。また、回転周波数$f_0$もエネルギーと共に増加するので、粒子と加速電圧の同期を維持するために加速周波数$f_{RF}$も追随する必要がある\footnote{電子リングでは、電子の速度が光速で一定であるから加速周波数は固定されている}。
+
 \section{同期粒子}
 \begin{figure}[hbt]
   \begin{center}
@@ -114,7 +106,7 @@
 \vspace{\baselineskip}
 
 \begin{tcolorbox}[title=\textgt{SuperKEKBにおける$f_{RF}$, $f_{0}$, $h$}の関係]
-  SuperKEKBのリングでは、電子と陽電子は、ほぼ光速$c$で回っており、周長$C_0$は$\SI{3016.315}{\meter}$なので周回周波数$f_0$は
+  SuperKEKBの主リングでは、電子と陽電子は、ほぼ光速$c$で回っており、周長$C_0$は$\SI{3016.315}{\meter}$なので周回周波数$f_0$は
   %
   \begin{equation}
     f_0 = \frac{1}{T_0}=\frac{c}{C_0}=\frac{\SI{2.99792458e8}{\meter / \second}}{\SI{3016.315}{\meter}}=\SI{99.39}{\kilo\hertz} \notag
@@ -128,7 +120,9 @@
   となり、確かに(\ref{harmonic})を満たしている。
 \end{tcolorbox}
 
-\section{Dispersion effects in a synchrotron}
+\section{シンクロトロンにおける分散の効果}
+シンクロトロンでは、偏向電磁石によって分散 (dispersion) が発生する為、粒子の横方向と縦方向の運動が結合する。この結合が、リングを周回する粒子の縦方向の運動において重要な役割を演じる。
+
 粒子の運動量が変化すると、速度や軌道長も変わる。今、運動量偏差 (momentum deviation) を
 %
 \begin{equation}
@@ -180,6 +174,7 @@
 %
 となり$\alpha_p$は運動量の変化による相対的な軌道長の変化を表していることになる。
 
+\section{トランジション}
 次に、運動量の変化が回転周期に及ぼす影響を考える事にする。運動量の変化$\Delta p$によって、速度と回転周期がそれぞれ $v=v_0+\Delta v$ と $T=T_0+\Delta T$ に変化した時、回転周期は $T=C/v$ だから、
 %
 \begin{equation}
@@ -235,20 +230,20 @@
   \gamma_t = \frac{1}{\sqrt{\alpha_p}}
 \end{equation}
 %
-では回転周期は運動量に依存しない。この$\gamma_t$を遷移エネルギー (transition energy) と言う。
+では回転周期は運動量に依存しない。この$\gamma_t$をトランジション・エネルギー (transition energy) と言う。
 
 \vspace{\baselineskip}
 
 \begin{tcolorbox}[title=\textgt{SuperKEKB LERのtransition energy}]
-  SuperKEKBの陽電子リングLERの運動量圧縮率は$\alpha_p = 3.20 \times 10^{-4}$なので、
+  SuperKEKBの陽電子リングLERの運動量圧縮率は$\alpha_p = 3.2 \times 10^{-4}$なので、
   %
   \begin{equation}
-    \gamma_t = \frac{1}{\sqrt{\alpha_p}}= \frac{1}{\sqrt{3.20 \times 10^{-4}}} = 55.9 \notag
+    \gamma_t = \frac{1}{\sqrt{\alpha_p}}= \frac{1}{\sqrt{3.2 \times 10^{-4}}} = 55.9 \notag
   \end{equation}
   %
   陽電子の静止質量は$E_0 = \SI{0.5109989461}{\mega\electronvolt}$だから
   \begin{equation}
-    E = \gamma_t E_0 = \SI{28.57}{\mega\electronvolt} \notag
+    E = \gamma_t E_0 = \SI{28.6}{\mega\electronvolt} \notag
   \end{equation}
   %
   となり、入射器からの入射エネルギー$\SI{4}{\giga\electronvolt}$の方がtransition energyより十分高い。
@@ -270,7 +265,7 @@
 $\eta_p < 0$ の時、同期粒子より大きい運動量を持つ粒子は、同期粒子より回転周期が短いので、同期粒子より早く加速空洞に到着する。したがって、同期位相$\phi_s$を$0<\phi_s<\pi/2$に選べば、より大きい運動量を持つ粒子は、同期粒子より少ないエネルギーを加速空洞から得ることになる。同様に、同期粒子より小さな運動量を持つ粒子は、同期粒子より遅く加速空洞に到達するので、同期粒子より多いエネルギーを加速空洞から得る。この過程を繰り返すことで、同期粒子の持つ運動量から外れた運動量を持つ粒子は同期粒子の周りを安定に運動することが分かる。$\eta_p > 0$ の時は、同期位相を$\pi/2<\phi_s<\pi$に選べば同様にこの運動は安定である。
 
 \section{Difference Equations for Longitudinal Motion in a Synchrotron}
-ここでは、粒子の周回毎の縦方向の運動について考える。リングに加速空洞は一台だけ設置されており、空洞電圧のゼロクロス点からの相対時間を$\tau$、相対位相を$\phi\pmod{2\pi}$とする (Fig.~\ref{coordinates})。今、$n+1$周回目の粒子の空洞への到着時間$\tau(n+1)$と$n$周回目の到着時間$\tau(n)$との差は、粒子の$n+1$周回目の回転周期$T(n+1)$と同期粒子の回転周期$T_0(n+1)$との差に等しいので、
+ここでは、粒子の周回毎の縦方向の運動について、これまでと同様にリングに加速空洞は一台だけ設置されている場合を考える。空洞電圧のゼロクロス点からの相対時間を$\tau$、相対位相を$\phi\pmod{2\pi}$とする (Fig.~\ref{coordinates})。今、$n+1$周回目の粒子の空洞への到着時間$\tau(n+1)$と$n$周回目の到着時間$\tau(n)$との差は、粒子の$n+1$周回目の回転周期$T(n+1)$と同期粒子の回転周期$T_0(n+1)$との差に等しいので、
 %
 \begin{equation}
   \tau(n+1) - \tau(n) = T(n+1) -T_0(n+1)
