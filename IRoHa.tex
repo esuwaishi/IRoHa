@@ -121,9 +121,7 @@
 \end{tcolorbox}
 
 \section{シンクロトロンにおける分散の効果}
-シンクロトロンでは、偏向電磁石によって分散 (dispersion) が発生する為、粒子の横方向と縦方向の運動が結合する。この結合が、リングを周回する粒子の縦方向の運動において重要な役割を演じる。
-
-粒子の運動量が変化すると、速度や軌道長も変わる。今、運動量偏差 (momentum deviation) を
+シンクロトロンでは、偏向電磁石によって分散 (dispersion) が発生する為、粒子の横方向と縦方向の運動が結合する。この結合が、リングを周回する粒子の縦方向の運動において重要な役割を演じる。今、運動量偏差 (momentum deviation) を
 %
 \begin{equation}
   \delta_p = \frac{p-p_0}{p_0}=\frac{\Delta p}{p_0}
@@ -140,17 +138,25 @@
   \end{center}
 \end{figure}
 %
-その粒子は曲げられにくい為、基準軌道とは異なる軌道を通ることになる。この軌道のずれ$x(s)$は分散関数 (dispersion function) $D_x(s)$を用いて、
+運動量の大きな粒子ほど曲げられにくく、基準軌道とは異なる軌道を通ることになる。この軌道のずれ$x(s)$は分散関数 (dispersion function) $D_x(s)$を用いて、
 %
 \begin{equation}
   x(s) = D_x(s)\frac{\Delta p}{p_0} = D_x(s)\delta_p 
 \end{equation}
 %
-と表される。今、基準軌道の曲率半径を$\rho$とすると$ds = \rho d\theta$より、
+と表される。今、基準軌道の曲率半径を$\rho$とすると$ds = \rho d\theta$より (Fig.~\ref{momentum_compaction})、
 %
 \begin{equation}
   dC = (\rho + x) d\theta = (\rho + x) \frac{ds}{\rho}
 \end{equation}
+%
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=10cm,clip]{momentum_compaction.pdf}
+    \caption{Momentum compaction factor.}
+    \label{momentum_compaction}
+  \end{center}
+\end{figure}
 %
 したがって、この粒子の軌道長 $C$ は、
 %
@@ -174,7 +180,7 @@
 %
 となり$\alpha_p$は運動量の変化による相対的な軌道長の変化を表していることになる。
 
-\section{トランジション}
+\section{トランジション・エネルギー}
 次に、運動量の変化が回転周期に及ぼす影響を考える事にする。運動量の変化$\Delta p$によって、速度と回転周期がそれぞれ $v=v_0+\Delta v$ と $T=T_0+\Delta T$ に変化した時、回転周期は $T=C/v$ だから、
 %
 \begin{equation}

@@ -5,6 +5,21 @@ import longitudinal as lde
 #%matplotlib notebook
 
 # %%
+fig, ax = plt.subplots()
+
+E0 = 0.5109989461e6
+Et = np.arange(1e8)
+gamma = Et/E0
+y = np.emath.sqrt(1-1/gamma)
+dt = 0.01
+t = np.arange(1e5)
+
+ax.semilogx(Et, y)
+ax.grid()
+
+plt.show()
+
+# %%
 alpha_p_LER = 3.20e-4
 alpha_p_HER = 4.55e-4
 gamma_t_LER = 1/np.sqrt(alpha_p_LER)
