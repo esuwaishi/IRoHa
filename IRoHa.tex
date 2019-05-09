@@ -44,7 +44,7 @@
 \clearpage
 
 \section{はじめに}
-シンクロトロンでは，ビームに対して横方向（水平，垂直方向）へは四極磁石による収束力を、縦方向（進行方向）へは高周波加速による収束力を発生させて、ビームはその平衡点に閉じ込めている。横方向の振動をベータトロン振動と呼び、縦方向の振動をシンクロトロン振動と呼ぶ。ここでは、主に縦方向の運動について考えていくことにする。
+シンクロトロンでは，ビームに対して横方向（水平，垂直方向）へは四極磁石による収束力を、縦方向（進行方向）へは高周波加速による収束力を発生させて、ビームをその平衡点に閉じ込めている。横方向の振動をベータトロン振動と呼び、縦方向の振動をシンクロトロン振動と呼ぶ。ここでは、主に縦方向の運動について考えていくことにする。
 
 \section{シンクロトロンの基礎の基礎}
 シンクロトロンは、荷電粒子が偏向電磁石によって曲げられ、高周波加速空洞によって加速される円形加速器である (Fig.~\ref{synchrotron}) 。
@@ -77,13 +77,13 @@
   \label{momentum}
 \end{equation}
 %
-粒子のエネルギーと運動量は加速空洞で加速される毎に増加するので、曲率半径と周回軌道を一定に保つためには、(\ref{momentum}) より、偏向電磁石の磁場$B$は運動量に比例して増加しなければならない。また、回転周波数$f_0$もエネルギーと共に増加するので、粒子と加速電圧の同期を維持するために加速周波数$f_{RF}$も追随する必要がある\footnote{電子リングでは、電子の速度が光速で一定であるから加速周波数は固定されている}。
+粒子の運動量は加速空洞で加速される毎に増加するので、曲率半径と周回軌道を一定に保つためには、(\ref{momentum}) より、偏向電磁石の磁場$B$は運動量に比例して増加しなければならない。また、回転周波数$f_0$も運動量と共に増加するので、粒子と加速電圧の同期を維持するために加速周波数$f_{RF}$も追随する必要がある\footnote{電子リングでは、電子の速度が光速で一定であるから加速周波数は固定されている}。
 
 \section{同期粒子}
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=15cm,clip]{synchronous.pdf}
-    \caption{$f_{RF} = h f_0$ ($h=2$)}
+    \caption{同期粒子と空洞電圧　($h=2$ の場合)}
     \label{synchronous}
   \end{center}
 \end{figure}
@@ -413,22 +413,48 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
 \setcounter{equation}{0}
 
 \section{相対論のおさらい}
+静止エネルギー$E_0$, 静止質量$m_0$, 光速$c$, 運動エネルギー$E_k$, 全エネルギー$E$として、
+%
 \begin{equation}
-    E_0 = m_0 c^2 ,\quad E = \sqrt{E_0^2 + p^2 c^2}
+  E_0 = m_0 c^2 ,\quad E = E_0 + E_k = mc^2
+  \label{energy}
 \end{equation}
-
+%
 \begin{equation}
-    \beta = \frac{v}{c}\,,\quad \gamma = \frac{E}{E_0}=\frac{m}{m_0}=\frac{1}{\sqrt{1-\beta^2}}
+  \beta =\frac{v}{c}, \quad \gamma = \frac{E}{E_0}=\frac{m}{m_0}=\frac{1}{\sqrt{1-\beta^2}}
+  \label{gamma}
 \end{equation}
-
+%
+また、運動量$p$とエネルギー$E$は
+\begin{align}
+  p &= mv = \gamma m_0 v = \gamma m_0 \beta c \\
+  E &= \gamma E_0 = \gamma m_0 c^2
+\end{align}
+%
+これより、
+%
 \begin{equation}
-    p = mv = \gamma m_0 v = \gamma m_0 \beta c
+  \frac{p}{E} = \frac{\gamma m_0 \beta c}{\gamma m_0 c^2} = \frac{\beta}{c}
 \end{equation}
-
+%
+(\ref{energy}), (\ref{gamma})より、
+%
 \begin{equation}
-    \frac{p}{E} = \frac{\gamma m_0 \beta c}{\gamma m_0 c^2} = \frac{\beta}{c}
+  \beta = \sqrt{1-\frac{1}{\left(1+ E_k/E_0\right)^2}}
 \end{equation}
-
+%
+電子の静止質量$E_0 = \SI{0.511}{\mega\electronvolt}$, 陽電子の静止質量$E_0 = \SI{938}{\mega\electronvolt}$であるので、運動エネルギーとそれぞれの粒子の速度の関係をプロットすると、
+%
+\begin{figure}[hhbt]
+  \begin{center}
+    \includegraphics[width=12cm,clip]{velocity.pdf}
+    \caption{電子と陽子の運動エネルギーと速度の関係}
+    \label{velocity}
+  \end{center}
+\end{figure}
+%
+このグラフより、電子の速度は十分低いエネルギーでほぼ光速になっていることが分かる。
+%
 \paragraph{(\ref{delta_v}) の導出}
 
 \begin{equation}

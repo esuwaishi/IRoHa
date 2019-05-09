@@ -7,15 +7,20 @@ import longitudinal as lde
 # %%
 fig, ax = plt.subplots()
 
-E0 = 0.5109989461e6
-Et = np.arange(1e8)
-gamma = Et/E0
-y = np.emath.sqrt(1-1/gamma)
-dt = 0.01
-t = np.arange(1e5)
+E0_e = 0.5109989461e6/1e3
+E0_p = 938e6/1e3
+Et = np.linspace(0,1e12, 100000000)/1e3
+gamma_e = Et/E0_e
+gamma_p = Et/E0_p
 
-ax.semilogx(Et, y)
+y1 = np.sqrt(1-1/gamma_e**2)
+y2 = np.sqrt(1-1/gamma_p**2)
+
+ax.semilogx(Et, y1)
+ax.semilogx(Et, y2)
 ax.grid()
+
+fig.savefig("test.pdf")
 
 plt.show()
 
