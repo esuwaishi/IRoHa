@@ -369,12 +369,14 @@ $\phi(n+1) = \omega_{RF}(n+1) \tau(n+1)$から、この関係を用いると、
 が導かれた。これらの式を使ってparticle tracking simulationを行うことができる。
 
 \section{Differential Equations for Longitudinal Motion in a Synchrotron}
-The difference equations (\ref{map}) can be written as continuous differential equations, if the assumption is made that the change of the variables $\phi$ and $\delta_p$ during one turn in the ring is not too large. In this case, the difference quotient can be approximated by the differential quotient
+$\phi$と$\delta_p$のリング一周あたりの変化が十分小さい時、離散的な差分方程式である (\ref{map}) は、連続的な微分方程式に書き換えることができる。この場合、$\phi$と$\delta_p$のリング一周あたりの変化はそれぞれ、近似的に
 %
 \begin{equation}
     \frac{\delta_p(n+1)-\delta_p(n)}{T_0(n+1)} \approx \frac{d\delta_p}{dt}=\dot{\delta_p},\quad 
     \frac{\phi(n+1)-\phi(n)}{T_0(n+1)} \approx \frac{d\phi}{dt}= \dot{\phi}
 \end{equation}
+%
+と書けるので、(\ref{map}) は
 %
 \begin{align}
     \begin{split}
@@ -383,28 +385,32 @@ The difference equations (\ref{map}) can be written as continuous differential e
     \end{split}
 \end{align}
 %
+この二つの式をまとめると、
+%
 \begin{equation}
-    \ddot{\phi} = \frac{e V h \eta \omega_0^2}{2\pi\beta_0^2 E_0}(\sin\phi-\sin\phi_s)
+  \ddot{\phi} = \frac{e V h \eta \omega_0^2}{2\pi\beta_0^2 E_0}(\sin\phi-\sin\phi_s)
+  \label{ddot_phi}
 \end{equation}
 %
-\subsection{Small amplitude approximation}
 $\Delta\phi = \phi - \phi_s$が非常に小さい時、
 %
 \begin{equation}
     \sin\phi = \sin(\phi_s+\Delta\phi) \approx \sin\phi_s + \cos\phi_s \Delta\phi
 \end{equation}
 %
-より
+より (\ref{ddot_phi}) は
 %
 \begin{equation}
     \ddot{\Delta\phi} = \frac{e V h \eta \omega_0^2}{2\pi \beta_0^2 E_0} \cos\phi_s \Delta\phi = - \omega_s^2 \Delta\phi
 \end{equation}
 %
-ただし、
+となり、この運動は$\phi_s$の周りの単振動であることが分かる。ここで、この振動の振動数は
 %
 \begin{equation}
     \omega_s = \sqrt{-\frac{e V h \eta \omega_0^2 \cos\phi_s}{2\pi \beta_0^2 E_0}}
 \end{equation}
+%
+となり、これをシンクロトロン振動数と呼ぶ。
 %
 \clearpage
 

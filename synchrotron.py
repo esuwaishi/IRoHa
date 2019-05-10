@@ -1,8 +1,28 @@
 # %%
+import matplotlib
 import numpy as np
+import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 import longitudinal as lde
 #%matplotlib notebook
+
+# %%
+delta = 0.025
+delta = 0.1
+x = np.arange(-2*np.pi, 2*np.pi, delta)
+y = np.arange(-3.0, 3.0, delta)
+X, Y = np.meshgrid(x, y)
+Z1 = Y**2/2
+Z2 = 2*np.sin(X/2)**2
+Z = Z1 + Z2
+
+fig, ax = plt.subplots()
+CS = ax.contour(X, Y, Z, 12, colors='w')
+#ax.grid()
+#ax.clabel(CS, inline=1, fontsize=10)
+#ax.set_title('Simplest default with labels')
+
+plt.show()
 
 # %%
 fig, ax = plt.subplots()
