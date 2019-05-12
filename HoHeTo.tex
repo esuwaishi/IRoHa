@@ -1,7 +1,9 @@
 \documentclass[10pt,a4paper]{ltjsarticle}
 
 \usepackage{graphicx}
+\usepackage[pdfencoding=auto]{hyperref}
 \usepackage{amsmath,amssymb}
+\usepackage{bm}
 \usepackage{booktabs,subfig}
 \usepackage{pifont}
 \usepackage{url}
@@ -15,9 +17,9 @@
 \renewcommand{\CancelColor}{\color{red}}
 
 \usepackage{tikz}
-\usepackage{circuitikz}
 \usetikzlibrary{shadows}
 \usetikzlibrary{calc}
+\usepackage{circuitikz}
 
 \usepackage{luatexja-fontspec}
 %\setmainfont[Ligatures=TeX]{TeXGyreTermes}
@@ -32,10 +34,16 @@
 \setsansjfont{IPAexGothic}
 %\setsansjfont{MS-PGothic}
 %\setsansjfont[BoldFont=HiraginoSans-W8]{HiraginoSans-W4}
-
-%\renewcommand{\figurename}{Fig.~}
-\renewcommand{\figurename}{Figure~}
+\renewcommand{\figurename}{Fig.~}
 \renewcommand{\tablename}{Table~}
+
+\hypersetup{
+  colorlinks=false, % リンクに色をつけない設定
+  bookmarks=true, % 以下ブックマークに関する設定
+  bookmarksnumbered=true,
+  pdfborder={0 0 0},
+  bookmarkstype=toc
+}
 
 \begin{document}
 \title{シンクロトロン振動のほへと}
