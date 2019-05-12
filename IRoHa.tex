@@ -77,7 +77,7 @@
   \label{momentum}
 \end{equation}
 %
-粒子の運動量は加速空洞で加速される毎に増加するので、曲率半径と周回軌道を一定に保つためには、(\ref{momentum}) より、偏向電磁石の磁場$B$は運動量に比例して増加しなければならない。また、回転周波数$f_{rev}$も運動量と共に増加するので、粒子と加速電圧の同期を維持するために加速周波数$f_{RF}$も追随する必要がある\footnote{電子リングでは、電子の速度が光速で一定であるから加速周波数は固定されている}。
+粒子の運動量は加速空洞で加速される毎に増加するので、曲率半径と周回軌道を一定に保つためには、(\ref{momentum}) より、偏向電磁石の磁場$B$は運動量に比例して増加しなければならない。また、回転周波数$f_{rev}$も運動量と共に増加するので、粒子と加速電圧の同期を維持するために加速周波数$f_{RF}$も追随する必要がある\footnote{電子リングでは、電子の速度が光速で一定であるから加速周波数は一定である}。
 
 \section{同期粒子}
 \begin{figure}[hbt]
@@ -112,10 +112,10 @@
     f_{rev} = \frac{1}{T_{rev}}=\frac{c}{C_0}=\frac{\SI{2.99792458e8}{\meter / \second}}{\SI{3016.315}{\meter}}=\SI{99.39}{\kilo\hertz} \notag
   \end{equation}
   %
-  一方、RF周波数$f_{RF}$は$\SI{508.887}{\mega\hertz}$なので
+  一方、加速周波数$f_{RF}$は$\SI{508.887}{\mega\hertz}$なので
   %
   \begin{equation}
-      f_{RF} = 5120 f_{rev} \notag
+      f_{RF} = 5120 \times f_{rev} \notag
   \end{equation}
   となり、確かに(\ref{harmonic})を満たしている。
 \end{tcolorbox}
@@ -132,8 +132,7 @@
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=15cm,clip]{dispersion.pdf}
-    \caption{Change in path length for a particle in a dipole magnet (with bending radius $\rho$) resulting from the horizontal
-    displacement of the particle from the reference trajectory.}
+    \caption{偏光電磁石による基準軌道からのずれ (dispersion)}
     \label{dispersion}
   \end{center}
 \end{figure}
@@ -261,9 +260,7 @@
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=15cm,clip]{phase_stability.pdf}
-    \caption{Schematic drawing of an rf wave, and the rf phase angles for a synchronous, a higher, and a lower energy particles.
-    For a stable synchrotron motion, the phase focusing principle requires $0 < \phi_s \leq \pi/2$ for $\eta_p < 0$,
-    and $\pi/2 < \phi_s \leq \pi$ for $\eta_p > 0$.}
+    \caption{空洞電圧と同期粒子、より高いエネルーを持つ粒子、より低いエネルギーを持つ粒子の位相関係}
     \label{phase_stability}
   \end{center}
 \end{figure}
@@ -281,7 +278,7 @@ $\eta_p < 0$ の時、同期粒子より大きい運動量を持つ粒子は、�
 \begin{figure}[hhbt]
   \begin{center}
     \includegraphics[width=15cm,clip]{coordinates.pdf}
-    \caption{Relative and absolute coodinates. ($h=1$)}
+    \caption{空洞電圧と相対時間$\tau$、相対位相$\phi$の関係. ($h=1$の場合)}
     \label{coordinates}
   \end{center}
 \end{figure}
@@ -372,16 +369,16 @@ $\phi(n+1) = \omega_{RF}(n+1) \tau(n+1)$から、この関係を用いると、
 $\phi$と$\delta_p$のリング一周あたりの変化が十分小さい時、離散的な差分方程式である (\ref{map}) は、連続的な微分方程式に書き換えることができる。この場合、$\phi$と$\delta_p$のリング一周あたりの変化はそれぞれ、近似的に
 %
 \begin{equation}
-    \frac{\delta_p(n+1)-\delta_p(n)}{T_{rev}(n+1)} \approx \frac{d\delta_p}{dt}=\dot{\delta_p},\quad 
-    \frac{\phi(n+1)-\phi(n)}{T_{rev}(n+1)} \approx \frac{d\phi}{dt}= \dot{\phi}
+  \frac{\delta_p(n+1)-\delta_p(n)}{T_{rev}(n+1)} \approx \frac{d\delta_p}{dt}=\dot{\delta_p},\quad 
+  \frac{\phi(n+1)-\phi(n)}{T_{rev}(n+1)} \approx \frac{d\phi}{dt}= \dot{\phi}
 \end{equation}
 %
 と書けるので、(\ref{map}) は
 %
 \begin{align}
     \begin{split}
-        \dot{\delta_p} &= \frac{e V \omega_{rev}}{2\pi \beta_s^2 E_s}(\sin\phi - \sin\phi_s) \\
-        \dot{\phi} &= h \omega_{rev} \eta \delta_p
+      \dot{\delta_p} &= \frac{e V \omega_{rev}}{2\pi \beta_s^2 E_s}(\sin\phi - \sin\phi_s) \\
+      \dot{\phi} &= h \omega_{rev} \eta \delta_p
     \end{split}
 \end{align}
 %
@@ -395,23 +392,25 @@ $\phi$と$\delta_p$のリング一周あたりの変化が十分小さい時、�
 $\Delta\phi = \phi - \phi_s$が非常に小さい時、
 %
 \begin{equation}
-    \sin\phi = \sin(\phi_s+\Delta\phi) \approx \sin\phi_s + \cos\phi_s \Delta\phi
+  \sin\phi = \sin(\phi_s+\Delta\phi) \approx \sin\phi_s + \cos\phi_s \Delta\phi
 \end{equation}
 %
 より (\ref{ddot_phi}) は
 %
 \begin{equation}
-    \ddot{\Delta\phi} = \frac{e V h \eta \omega_{rev}^2}{2\pi \beta_s^2 E_s} \cos\phi_s \Delta\phi = - \omega_s^2 \Delta\phi
+  \ddot{\Delta\phi} = \frac{e V h \eta \omega_{rev}^2}{2\pi \beta_s^2 E_s} \cos\phi_s \Delta\phi = - \omega_s^2 \Delta\phi
 \end{equation}
 %
 となり、この運動は$\phi_s$の周りの単振動であることが分かる。ここで、この振動の振動数は
 %
 \begin{equation}
-    \omega_s = \sqrt{-\frac{e V h \eta \omega_{rev}^2 \cos\phi_s}{2\pi \beta_s^2 E_s}}
+  \omega_s = \sqrt{-\frac{e V h \eta \omega_{rev}^2 \cos\phi_s}{2\pi \beta_s^2 E_s}}
 \end{equation}
 %
 となり、これをシンクロトロン振動数と呼ぶ。
 %
+\vspace{\baselineskip}
+
 \clearpage
 
 \appendix
