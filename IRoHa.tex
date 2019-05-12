@@ -1,6 +1,7 @@
 \documentclass[10pt,a4paper]{ltjsarticle}
 
 \usepackage{graphicx}
+\usepackage[pdfencoding=auto]{hyperref}
 \usepackage{amsmath,amssymb}
 \usepackage{bm}
 \usepackage{booktabs,subfig}
@@ -35,6 +36,14 @@
 %\setsansjfont[BoldFont=HiraginoSans-W8]{HiraginoSans-W4}
 \renewcommand{\figurename}{Fig.~}
 \renewcommand{\tablename}{Table~}
+
+\hypersetup{
+  colorlinks=false, % リンクに色をつけない設定
+  bookmarks=true, % 以下ブックマークに関する設定
+  bookmarksnumbered=true,
+  pdfborder={0 0 0},
+  bookmarkstype=toc
+}
 
 \begin{document}
 \title{シンクロトロン振動のいろは}
@@ -511,16 +520,16 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
 
 %
 \begin{thebibliography}{9}
+  \bibitem{oho}
+  過去のOHOセミナーの教科書 \url{http://accwww2.kek.jp/oho/index.html}
   \bibitem{Chao}
-  A. Chao, K. Mess, M. Tigner, and F. Zimmermann, Handbook of Accelerator Physics and Engineering (2nd Edition), World Scientific Publishing Company Incorporated, Singapore (2013)
-  \bibitem{a}
-  A.W.Chao and M.Tigner,editors.Handbook of Accelerator Physics and Engineering. World Scientific Pub. Co., 3rd printing edition, 2009.
+  A. W. Chao and M. Tigner, Handbook of Accelerator Physics and Engineering. World Scientific Pub. Co. (1998).
   \bibitem{Wolski}
   Andy Wolski, Beam Dynamics in High Energy Particle Accelerators,  Imperial College Pr (2014).
   \bibitem{Lee}
-  S. Y. Lee, Accelerator physics, World Scientific (2004), ISBN 9789812562005.
+  S. Y. Lee, Accelerator physics, World Scientific (2004).
   \bibitem{Edwards}
-  D.A. Edwards, M.J. Syphers, `An introduction to the physics of high energy accelerators', Wiley (1993).
+  D.A. Edwards, M.J. Syphers, An introduction to the physics of high energy accelerators, Wiley (1993).
 \end{thebibliography}
 %
 \end{document}
