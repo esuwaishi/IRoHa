@@ -53,7 +53,7 @@
 \clearpage
 
 \section{はじめに}
-シンクロトロンでは，ビームに対して横方向（水平，垂直方向）へは四極磁石による収束力を、縦方向（進行方向）へは高周波加速による収束力を発生させて、ビームをその平衡点に閉じ込めている。横方向の振動をベータトロン振動と呼び、縦方向の振動をシンクロトロン振動と呼ぶ。ここでは、主に縦方向の運動について考えていくことにする。
+シンクロトロンでは，ビームに対して横方向（水平，垂直方向）には四極磁石による収束力を、縦方向（進行方向）には高周波加速による収束力を発生させている。これらの収束力によって、ビームはその平衡点の周りを振動しながら周回する。この横方向の振動をベータトロン振動と呼び、縦方向の振動をシンクロトロン振動と呼ぶ。ここでは、主に縦方向の運動について考えていくことにする。
 
 \section{シンクロトロンの基礎の基礎}
 シンクロトロンは、荷電粒子が偏向電磁石によって曲げられ、高周波加速空洞によって加速される円形加速器である (Fig.~\ref{synchrotron}) 。
@@ -62,7 +62,7 @@
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=12cm,clip]{synchrotron.pdf}
-    \caption{シンクロトロンの概略図}
+    \caption{シンクロトロンの概略図.}
    \label{synchrotron}
   \end{center}
 \end{figure}
@@ -86,13 +86,14 @@
   \label{momentum_B}
 \end{equation}
 %
-粒子の運動量は加速空洞で加速される毎に増加するので、曲率半径と周回軌道を一定に保つためには、(\ref{momentum_B}) より、偏向電磁石の磁場$B$は運動量に比例して増加しなければならない。また、回転周波数$f_{rev}$も運動量と共に増加するので、粒子と加速電圧の同期を維持するために加速周波数$f_{RF}$も追随する必要がある\footnote{電子リングでは、電子の速度が光速で一定であるから加速周波数は一定である}。
+粒子の運動量は加速空洞で加速される毎に増加するので、曲率半径と周回軌道を一定に保つためには、(\ref{momentum_B}) より、偏向電磁石の磁場$B$は運動量に比例して増加しなければならない。また、回転周波数$f_{rev}$も運動量と共に増加するので、粒子と加速電圧の同期を維持するために加速周波数$f_{RF}$も追随する必要がある。
 
 \section{同期粒子}
+
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=15cm,clip]{synchronous.pdf}
-    \caption{同期粒子と空洞電圧　($h=2$ の場合)}
+    \caption{同期粒子と空洞電圧の関係 ($h=2$ の場合).}
     \label{synchronous}
   \end{center}
 \end{figure}
@@ -139,7 +140,7 @@
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=15cm,clip]{dispersion.pdf}
-    \caption{偏光電磁石による基準軌道からのずれ (dispersion)}
+    \caption{偏光電磁石による基準軌道からのずれ (dispersion).}
     \label{dispersion}
   \end{center}
 \end{figure}
@@ -272,12 +273,14 @@
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=15cm,clip]{phase_stability.pdf}
-    \caption{空洞電圧と同期粒子、より高いエネルーを持つ粒子、より低いエネルギーを持つ粒子の位相関係}
+    \caption{空洞電圧と同期粒子 $(p_s)$, より高い運動量を持つ粒子 $(p>p_s)$, より低い運動量 $(p<p_s)$ を持つ粒子の位相関係.}
     \label{phase_stability}
   \end{center}
 \end{figure}
 
-ビームの中には多くの粒子があり、色々な運動量を持つ粒子で構成されている。同期粒子と異なる運動量を持つ粒子が加速空洞を通過する時、どのように加速されるかについて考えてみる (Fig.~\ref{phase_stability}) 。$\eta_p < 0$ の時、同期粒子より大きい運動量を持つ粒子は、同期粒子より回転周期が短いので、同期粒子より早く加速空洞に到着する。したがって、同期位相$\phi_s$を$0<\phi_s<\pi/2$に選べば、より大きい運動量を持つ粒子は、同期粒子より少ないエネルギーを加速空洞から得ることになる。同様に、同期粒子より小さな運動量を持つ粒子は、同期粒子より遅く加速空洞に到達するので、同期粒子より多いエネルギーを加速空洞から得る。この過程を繰り返すことで、同期粒子の持つ運動量から外れた運動量を持つ粒子は同期粒子の周りを安定に運動することが分かる。$\eta_p > 0$ の時は、同期位相を$\pi/2<\phi_s<\pi$に選べば同様にこの運動は安定である。
+ビームの中には多くの粒子があり、色々な運動量を持つ粒子で構成されている。同期粒子と異なる運動量を持つ粒子が加速空洞を通過する時、どのように加速されるかについて考えてみる (Fig.~\ref{phase_stability}) 。
+
+$\eta_p < 0$ の時、同期粒子より大きい運動量を持つ粒子 $(p>p_s$) は、同期粒子より回転周期が短いので、同期粒子より早く加速空洞に到着する。したがって、同期位相$\phi_s$を$0<\phi_s<\pi/2$に選べば、より大きい運動量を持つ粒子は、同期粒子より少ないエネルギーを加速空洞から得ることになる。同様に、同期粒子より小さな運動量を持つ粒子 $(p<p_s)$ は、同期粒子より遅く加速空洞に到達するので、同期粒子より多いエネルギーを加速空洞から得る。この過程を繰り返すことで、同期粒子の持つ運動量から外れた運動量を持つ粒子は同期粒子の周りを安定に運動することが分かる。$\eta_p > 0$ の時は、同期位相を$\pi/2<\phi_s<\pi$に選べば同様にこの運動は安定である。
 
 \section{Difference Equations for Longitudinal Motion in a Synchrotron}
 ここでは、粒子の周回毎の縦方向の運動について、これまでと同様にリングに加速空洞は一台だけ設置されている場合を考える。空洞電圧のゼロクロス点からの相対時間を$\tau$、相対位相を$\phi\pmod{2\pi}$とする (Fig.~\ref{coordinates})。今、$n+1$周回目の粒子の空洞への到着時間$\tau(n+1)$と$n$周回目の到着時間$\tau(n)$との差は、粒子の$n+1$周回目の回転周期$T(n+1)$と同期粒子の回転周期$T_{rev}(n+1)$との差に等しいので、
@@ -290,7 +293,7 @@
 \begin{figure}[hhbt]
   \begin{center}
     \includegraphics[width=15cm,clip]{coordinates.pdf}
-    \caption{空洞電圧と相対時間$\tau$、相対位相$\phi$の関係. ($h=1$の場合)}
+    \caption{空洞電圧と相対時間$\tau$, 相対位相$\phi$の関係 ($h=1$の場合).}
     \label{coordinates}
   \end{center}
 \end{figure}
@@ -465,7 +468,7 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
 \begin{figure}[hhbt]
   \begin{center}
     \includegraphics[width=12cm,clip]{velocity.pdf}
-    \caption{電子と陽子の運動エネルギーと速度の関係}
+    \caption{電子と陽子の運動エネルギーと速度の関係.}
     \label{velocity}
   \end{center}
 \end{figure}
