@@ -4,7 +4,8 @@
 \usepackage[pdfencoding=auto]{hyperref}
 \usepackage{amsmath,amssymb}
 \usepackage{bm}
-\usepackage{booktabs,subfig}
+\usepackage{booktabs}
+%\usepackage{subfig}
 \usepackage{pifont}
 \usepackage{url}
 \usepackage{cite}
@@ -19,7 +20,7 @@
 \usepackage{tikz}
 \usetikzlibrary{shadows}
 \usetikzlibrary{calc}
-\usepackage{circuitikz}
+%\usepackage{circuitikz}
 
 \usepackage{luatexja-fontspec}
 %\setmainfont[Ligatures=TeX]{TeXGyreTermes}
@@ -39,7 +40,7 @@
 
 \hypersetup{
   colorlinks=false, % リンクに色をつけない設定
-  bookmarks=true, % 以下ブックマークに関する設定
+  %bookmarks=true, % 以下ブックマークに関する設定
   bookmarksnumbered=true,
   pdfborder={0 0 0},
   bookmarkstype=toc
@@ -129,7 +130,7 @@
   となり、確かに(\ref{harmonic})を満たしている。
 \end{tcolorbox}
 
-\section{シンクロトロンにおける分散の効果}
+\section{Dispersion effects in a synchrotron}
 シンクロトロンでは、偏向電磁石によって分散 (dispersion) が発生する為、粒子の横方向と縦方向の運動が結合する。この結合が、リングを周回する粒子の縦方向の運動において重要な役割を演じる。今、同期粒子の運動量を$p_s$とし、運動量偏差 (momentum deviation) を
 %
 \begin{equation}
