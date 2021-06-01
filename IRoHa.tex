@@ -1,4 +1,5 @@
-\documentclass[10pt,a4paper]{ltjsarticle}
+\documentclass[10pt,a4paper]{jlreq}
+%\documentclass[10pt,a4paper]{ltjsarticle}
 
 \usepackage{graphicx}
 \usepackage[pdfencoding=auto]{hyperref}
@@ -23,18 +24,11 @@
 %\usepackage{circuitikz}
 
 \usepackage{luatexja-fontspec}
-%\setmainfont[Ligatures=TeX]{TeXGyreTermes}
-%\setsansfont[Ligatures=TeX]{TeXGyreHeros}
-\setmainfont{TimesNewRoman}
-\setsansfont{Arial}
-\defaultjfontfeatures{Scale=1.0}
-\setmainjfont[BoldFont=IPAexGothic]{IPAexMincho}
-%\setmainjfont[BoldFont=HiraMinProN-W6]{HiraMinProN-W3}
-%\setmainjfont[BoldFont=IPAexGothic]{KozMinPr6N-Light}
-%\setmainjfont[BoldFont=IPAexGothic]{MS-PMincho}
-\setsansjfont{IPAexGothic}
-%\setsansjfont{MS-PGothic}
-%\setsansjfont[BoldFont=HiraginoSans-W8]{HiraginoSans-W4}
+%\setmainfont{TimesNewRoman}
+%\setsansfont{Arial}
+%\defaultjfontfeatures{Scale=1.0}
+%\setmainjfont[BoldFont=IPAexGothic]{IPAexMincho}
+%\setsansjfont{IPAexGothic}
 \renewcommand{\figurename}{Fig.~}
 \renewcommand{\tablename}{Table~}
 
@@ -54,7 +48,7 @@
 \clearpage
 
 \section{はじめに}
-シンクロトロンでは，ビームに対して横方向（水平，垂直方向）には四極磁石による収束力を、縦方向（進行方向）には高周波加速による収束力を発生させている。これらの収束力によって、ビームはその平衡点の周りを振動しながら周回する。この横方向の振動をベータトロン振動と呼び、縦方向の振動をシンクロトロン振動と呼ぶ。ここでは、主に縦方向の運動について考えていくことにする。
+シンクロトロンでは、ビームに対して横方向（水平，垂直方向）には四極磁石による収束力を、縦方向（進行方向）には高周波加速による収束力を発生させている。これらの収束力によって、ビームはその平衡点の周りを振動しながら周回する。この横方向の振動をベータトロン振動と呼び、縦方向の振動をシンクロトロン振動と呼ぶ。ここでは、主に縦方向の運動について考えていくことにする。
 
 \section{シンクロトロンの基礎の基礎}
 シンクロトロンは、荷電粒子が偏向電磁石によって曲げられ、高周波加速空洞によって加速される円形加速器である (Fig.~\ref{synchrotron}) 。線形加速器とは異なり、粒子は閉軌道を周回し、加速空洞で繰り返し加速される。
@@ -108,7 +102,10 @@
 という関係が必要である。この整数$h$のことをharmonic numberと言い、加速周波数$f_{RF}$で加速できる最大の粒子数になる。この時、空洞の加速電圧は
 %
 \begin{equation}
-  V_c (t) = V_0 \sin \phi_{RF}(t),\:\phi_{RF}(t) = \int_0^t \omega_{RF}(t) dt
+  \begin{split}
+    V_c (t) = V_0 \sin \phi_{RF}(t) \\
+    \phi_{RF}(t) = \int_0^t \omega_{RF}(t) dt
+  \end{split}
 \end{equation}
 %
 となる。Fig.~\ref{synchronous}は、$h=2$の時の空洞電圧と同期粒子の関係を表してる。
@@ -116,7 +113,7 @@
 \vspace{\baselineskip}
 
 \begin{tcolorbox}[title=\textgt{SuperKEKBにおける$f_{RF}$, $f_{0}$, $h$}の関係]
-  SuperKEKBの主リングでは、電子と陽電子は、ほぼ光速$c$で回っており、周長$C_0$は$\SI{3016.315}{\meter}$なので周回周波数$f_{rev}$は
+  SuperKEKBの主リングでは、電子と陽電子はほぼ光速$c$で回っており、周長$C_0$は$\SI{3016.315}{\meter}$なので周回周波数$f_{rev}$は
   %
   \begin{equation}
     f_{rev} = \frac{1}{T_{rev}}=\frac{c}{C_0}=\frac{\SI{2.99792458e8}{\meter / \second}}{\SI{3016.315}{\meter}}=\SI{99.39}{\kilo\hertz} \notag
