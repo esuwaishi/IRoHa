@@ -14,6 +14,7 @@
 \usepackage{siunitx}
 \usepackage{float}
 \usepackage{tcolorbox}
+\tcbuselibrary{breakable}
 \usepackage{cancel}
 \usepackage{color}
 \renewcommand{\CancelColor}{\color{red}}
@@ -238,7 +239,6 @@
 %
 はphase slip factorと言い、運動量の変化による相対的な回転周期$T$の変化率を表している。
 %
-
 運動量圧縮率が正の場合 ($\alpha_p>0$) を考える。このとき、粒子の運動量を増加させると経路長が増加する。 しかし、粒子の運動量がまだ低く、光度よりも十分遅い場合、粒子の運動量の増加による速度の増加は、運動量の増加による経路長の増加を越えることがあり得る。その結果、粒子の回転周期は短くなる ($\eta_p < 0$)。
 一方、粒子の運動量が十分高く超相対論的粒子の場合、粒子の速度は既に光速に十分近く、運動量の増加による速度の増加は極僅かである。この場合、経路長の増加が速度の増加を上回り、粒子の回転周期は長くなる ($\eta_p>0$) 。$\eta_p = 0$の時、つまり
 %
@@ -423,6 +423,63 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
 %
 \vspace{\baselineskip}
 
+\begin{tcolorbox}[title=\textgt{SuperKEKBのシンクロトロン周波数}, breakable = true]
+  SuperKEKB両リングのシンクロトロン振動に関係するパラメータは、
+
+  \vspace{\baselineskip}
+
+  \begin{center}
+    \begin{tabular}{l|c|cc|c}
+      & & LER   &   HER & units \\ \hline
+      Beam Energy & $E_s$ & 4.000 & 7.007 & GeV  \\
+      Momentum Compaction & $\alpha_p$ & $3.20\times 10^{-4}$& $4.55\times 10^{-4}$ & \\
+      Total Cavity Voltage & $V_c$ & 9.4   &   15.0  &   MV \\
+      Energy Loss/turn & $U_s$   & 1.76  &   2.43  & MeV \\
+      RF frequency & $f_{RF}$ & \multicolumn{2}{c|}{508.887} & MHz \\
+      Harmonic number & $h$       &   \multicolumn{2}{c|}{5120}  &
+    \end{tabular}
+  \end{center}
+  
+  \vspace{\baselineskip}
+
+  同期位相$\phi_s$は$U_s = e V_c \sin \phi_s$から求まり、LERの場合
+  %
+  \begin{equation}
+    \sin \phi_s = \frac{U_s}{e V_c} = \frac{\SI{1.76}{\mega\electronvolt}}{\SI{9.4}{\mega\electronvolt}} \notag
+  \end{equation}
+  %
+  陽電子の静止質量$E_0 = \SI{0.5109989461}{\mega\electronvolt}$を使うと、$\gamma$、$\eta$、$\beta_s$は
+  \begin{equation}
+    \gamma = \frac{E_s}{E_0}, \; \eta = \alpha_p - \frac{1}{\gamma^2} , \; \beta = \sqrt{1-\frac{1}{\gamma^2}} \notag
+  \end{equation}
+  %
+  から求まる。また、周回周波数$f_{rev}$は
+  %
+  \begin{equation}
+    f_{rev} = \frac{f_{RF}}{h} = \frac{\SI{508.887}{\mega\hertz}}{5120} = \SI{99.39}{\kilo\hertz} \notag
+  \end{equation}
+  %
+  以上より、LERのシンクロトロン周波数は
+  %
+  \begin{equation}
+    f_s = \sqrt{\frac{e Vc h \eta f_{rev}^2 \cos \phi_s}{2\pi \beta_s E_s}} = \SI{2.438}{\kilo\hertz}\notag
+  \end{equation}
+  %
+  また、LERのシンクロトロン・チューン$\nu_s$は
+  %
+  \begin{equation}
+    \nu_s = \frac{f_s}{f_{rev}} = 0.0245 \notag
+  \end{equation}
+  %
+  となり、約41周で1回振動することになる。同様にしてHERの方も求めると
+  %
+  \begin{equation}
+    f_s = \SI{2.782}{\kilo\hertz}, \, \nu_s = 0.0280 \notag
+  \end{equation}
+  %
+  となり、約36周で1回振動することになる。何も非常にゆっくりとした振動である（ベータトロン振動と比べてみる）。
+\end{tcolorbox}
+
 \clearpage
 
 \appendix
@@ -433,13 +490,11 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
 静止エネルギー$E_0$, 静止質量$m_0$, 光速$c$, 運動エネルギー$E_k$, 全エネルギー$E$として、
 %
 \begin{equation}
-  E_0 = m_0 c^2 ,\quad E = E_0 + E_k = mc^2
-  \label{rest_energy}
-\end{equation}
-%
-\begin{equation}
-  \beta =\frac{v}{c}, \quad \gamma = \frac{E}{E_0}=\frac{m}{m_0}=\frac{1}{\sqrt{1-\beta^2}}
-  \label{gamma}
+  \begin{split}
+    E_0 = m_0 c^2 ,\quad E = E_0 + E_k = mc^2\\
+    \beta =\frac{v}{c}, \quad \gamma = \frac{E}{E_0}=\frac{m}{m_0}=\frac{1}{\sqrt{1-\beta^2}}
+    \label{rest_energy}
+  \end{split}
 \end{equation}
 %
 また、運動量$p$とエネルギー$E$は
@@ -454,14 +509,14 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
   \frac{p}{E} = \frac{\gamma m_0 \beta c}{\gamma m_0 c^2} = \frac{\beta}{c}
 \end{equation}
 %
-(\ref{rest_energy}), (\ref{gamma})より、
+(\ref{rest_energy})より、
 %
 \begin{equation}
   \beta = \sqrt{1-\frac{1}{\left(1+ E_k/E_0\right)^2}}
 \end{equation}
 %
-電子の静止質量$E_0 = \SI{0.511}{\mega\electronvolt}$, 陽電子の静止質量$E_0 = \SI{938}{\mega\electronvolt}$であるので、運動エネルギーとそれぞれの粒子の速度の関係をプロットすると、
-%
+電子の静止質量$E_0 = \SI{0.511}{\mega\electronvolt}$, 陽子の静止質量$E_0 = \SI{938}{\mega\electronvolt}$であるので、運動エネルギーとそれぞれの粒子の速度の関係をプロットすると、
+
 \begin{figure}[hhbt]
   \begin{center}
     \includegraphics[width=12cm,clip]{figs/velocity.pdf}
@@ -469,7 +524,7 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
     \label{velocity}
   \end{center}
 \end{figure}
-%
+
 このグラフより、電子の速度は十分低いエネルギーでほぼ光速になっていることが分かる。
 %
 \paragraph{(\ref{delta_v}) の導出} \leavevmode\\
@@ -481,7 +536,7 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
   = m_0 \left(\gamma + v \frac{d\gamma}{dv}\right) \notag
 \end{equation}
 %
-(\ref{gamma}) より、
+(\ref{rest_energy}) より、
 %
 \begin{align}
   \frac{d\gamma}{dv} & = \frac{1}{c}\frac{d\gamma}{d\beta}= \frac{1}{c}\frac{d}{d\beta}\left(\frac{1}{\sqrt{1-\beta^2}}\right) \notag \\
