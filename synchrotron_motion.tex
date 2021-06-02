@@ -99,110 +99,18 @@ Hamilton形式では、高周波電場は加速器内で一様に分布してい
   \begin{split}
     \delta_{n+1} &= \delta_{n} + \frac{eV}{\beta^2 E}(\sin\phi_n - \sin\phi_s) \\
     \phi_{n+1} &= \phi_{n} + 2\pi h \eta(\delta_{n+1})\delta_{n+1}
+    \label{map_eq}
   \end{split}
 \end{equation}
 %
 マッピング方程式の物理学は次のように視覚化できます。まず、粒子はrf空洞をn回目に通過する際にエネルギーを得たり失ったりします。そして、rf位相$\phi_{n+1}$は新しいオフモーメンタム座標$\delta_{n+1}$に依存します。$(\phi_n, \delta_n)$から$(\phi_{n+1}, \delta_{n+1})$へのマッピングのヤコビアンは1に等しいので、マッピングは位相空間の面積を保存することになる。
 
-\begin{figure}[hbt]
-  \begin{center}
-    \includegraphics[width=15cm,clip]{figs/synchronous.pdf}
-    \caption{同期粒子と空洞電圧の関係 ($h=2$ の場合).}
-    \label{synchronous}
-  \end{center}
-\end{figure}
+式(\ref{map_eq})では、RF空洞を加速器内の1つの塊状の要素として扱っていることに注意してください。実際には、RF空洞は不均一に分布している可能性があります。また、異なる空洞間のRF位相変化も均一ではないかもしれない。シンクロトロンの動きは通常遅いので、ハミルトニアン形式とマッピング方程式は等価です。マッピング方程式は簡単なので、通常、粒子追跡計算に使用されます。
 
-基準軌道を周回し、毎周同じ位相で加速空洞を通過する粒子を同期粒子 (synchronous particle) と呼び、その位相$\phi_s$のことを同期位相 (synchronous phase) と言う。同期粒子であるためには、周回周波数$f_{rev}$と空洞の加速周波数$f_{RF}$の間に、ある整数$h$を用いて、
-%
-\begin{equation}
-  f_{RF} = h f_{rev}
-  \label{harmonic}
-\end{equation}
-%
-という関係が必要である。この整数$h$のことをharmonic numberと言い、加速周波数$f_{RF}$で加速できる最大の粒子数になる。この時、空洞の加速電圧は
-%
-\begin{equation}
-  \begin{split}
-    V_c (t) = V_0 \sin \phi_{RF}(t) \\
-    \phi_{RF}(t) = \int_0^t \omega_{RF}(t) dt
-  \end{split}
-\end{equation}
-%
-となる。Fig.~\ref{synchronous}は、$h=2$の時の空洞電圧と同期粒子の関係を表してる。
+\section{Evolution of Synchrotron Phase-Space Ellipses}
+式(3.18)から得られる軌跡$(\phi, \delta)$で囲まれた位相空間の面積は、エネルギーに依存しません。したがって、式(3.18)は粒子の追跡シミュレーションには使えません。(3.18)は加速中の粒子ビームの追跡シミュレーションには使用できません。加速中、$(\phi, \Delta E / \omega_0)$における位相空間領域は不変である。位相空間座標$(\phi, \Delta E / \omega_0)$に対する位相空間マッピング方程式を使用する必要があります。位相空間領域の断熱減衰は、位相空間座標$(\phi, \Delta E / \omega_0)$を$(\phi, \delta)$に変換することで得られます。
 
-\vspace{\baselineskip}
-
-\begin{tcolorbox}[title=\textgt{SuperKEKBにおける$f_{RF}$, $f_{0}$, $h$}の関係]
-  SuperKEKBの主リングでは、電子と陽電子はほぼ光速$c$で回っており、周長$C_0$は$\SI{3016.315}{\meter}$なので周回周波数$f_{rev}$は
-  %
-  \begin{equation}
-    f_{rev} = \frac{1}{T_{rev}}=\frac{c}{C_0}=\frac{\SI{2.99792458e8}{\meter / \second}}{\SI{3016.315}{\meter}}=\SI{99.39}{\kilo\hertz} \notag
-  \end{equation}
-  %
-  一方、加速周波数$f_{RF}$は$\SI{508.887}{\mega\hertz}$なので
-  %
-  \begin{equation}
-      f_{RF} = 5120 \times f_{rev} \notag
-  \end{equation}
-  となり、確かに(\ref{harmonic})を満たしている。
-\end{tcolorbox}
-
-\section{Dispersion effects in a synchrotron}
-シンクロトロンでは、偏向電磁石によって分散 (dispersion) が発生する為、粒子の横方向と縦方向の運動が結合する。この結合が、リングを周回する粒子の縦方向の運動において重要な役割を演じる。今、同期粒子の運動量を$p_s$とし、運動量偏差 (momentum deviation) を
-%
-\begin{equation}
-  \delta_p = \frac{p-p_s}{p_s}=\frac{\Delta p}{p_s}
-\end{equation}
-%
-\begin{figure}[hbt]
-  \begin{center}
-    \includegraphics[width=15cm,clip]{figs/dispersion.pdf}
-    \caption{偏光電磁石による基準軌道からのずれ (dispersion).}
-    \label{dispersion}
-  \end{center}
-\end{figure}
-%
-とした時、$\delta_p = 0$でない粒子が偏光磁石を通過する場合を考える(Fig.~\ref{dispersion})。$\delta_p >0$ の場合、運動量の大きな粒子ほど偏光磁石で曲げられにくく、粒子は基準軌道より外側の軌道を通ることになる。一方、$\delta_p<0$の場合、粒子は同期粒子より曲げられ基準軌道より内側の軌道を通ることになる。この軌道のずれ$x(s)$は分散関数 (dispersion function) $D_x(s)$を用いて、
-%
-\begin{equation}
-  x(s) = D_x(s)\frac{\Delta p}{p_s} = D_x(s)\delta_p 
-\end{equation}
-%
-と表される。今、基準軌道の曲率半径を$\rho$とすると$ds = \rho d\theta$より (Fig.~\ref{momentum_compaction})、
-%
-\begin{equation}
-  dC = (\rho + x) d\theta = (\rho + x) \frac{ds}{\rho}
-\end{equation}
-%
-\begin{figure}[hbt]
-  \begin{center}
-    \includegraphics[width=10cm,clip]{figs/momentum_compaction.pdf}
-    \caption{Momentum compaction factor.}
-    \label{momentum_compaction}
-  \end{center}
-\end{figure}
-%
-したがって、この粒子の軌道長 $C$ は、
-%
-\begin{align}
-  C &= \oint (\rho + x)\frac{ds}{\rho} = \int_0^{C_0} ds + \int_0^{C_0}\frac{x}{\rho} ds \notag \\
-  &= C_0 + \delta_p \int_0^{C_0}\frac{D_x(s)}{\rho} ds
-\end{align}
-%
-ここで運動量圧縮率 (momentum compaction factor) $\alpha_p$ を
-%
-\begin{equation}
-  \alpha_p \equiv \frac{1}{C_0} \oint \frac{D_x(s)}{\rho} ds
-\end{equation}
-%
-と定義すると、軌道長の差 $\Delta C = C-C_0$ は、
-%
-\begin{equation}
-  \frac{\Delta C}{C_0}=\alpha_p\frac{\Delta p}{p_s}=\alpha_p\delta_p
-  \label{delta_C}
-\end{equation}
-%
-となり$\alpha_p$は運動量の変化による相対的な軌道長の変化を表していることになる。
+図3.2に示したrfバケットのセパラトリックスは閉曲線である。加速勾配が高い急速循環型シンクロトロンや電子リニアックでは、セパラトリックスは閉曲線ではない。シンクロトロンの位相空間座標$(\phi, \Delta E)の$マッピング方程式は以下の通りである。
 
 \section{トランジション・エネルギー}
 加速空洞で加速された粒子は運動量が増加するため、先ほど見たように軌道長の増加と共に、速度も増加する。今、同期粒子の速度を$v_s$とし、同期粒子のローレンツ因子を
@@ -241,8 +149,6 @@ Hamilton形式では、高周波電場は加速器内で一様に分布してい
   \frac{\Delta T}{T_{rev}} = \frac{\Delta C}{C_0} - \frac{\Delta v}{v_s}
   \label{delta_T}
 \end{equation}
-%
-(\ref{delta_T}) に (\ref{delta_C}) と (\ref{delta_v})を代入すると、
 %
 \begin{equation}
   \frac{\Delta T}{T_{rev}} = \left(\alpha_p - \frac{1}{\gamma_s^2}\right)\frac{\Delta p}{p_s} = \eta_p \delta_p
