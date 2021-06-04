@@ -47,44 +47,44 @@
 周期が$T_0$の周期関数$f(t)$をFourier級数展開すると
 %
 \begin{equation}
-  f(t) = \sum_{n=-\infty}^{+\infty} c_n e^{i n \omega_0 t}
+  f(t) = \sum_{n=-\infty}^{\infty} c_n e^{j n \omega_0 t}
 \end{equation}
 %
 \begin{equation}
-  c_n = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} f(t) e^{- i n \omega_0 t} dt
+  c_n = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} f(t) e^{- j n \omega_0 t} dt
 \end{equation}
 %
 ただし、$\omega_0 = 2\pi/T_0$とおいた。
 %
 \section{Fourier変換}
 \begin{equation}
-  \mathcal{F}[f(t)] = F(\omega) = \int_{-\infty}^{+\infty} f(t) e^{-i\omega t} dt
+  \mathcal{F}[f(t)] = F(\omega) = \int_{-\infty}^{\infty} f(t) e^{-j\omega t} dt
 \end{equation}
 \begin{equation}
-  \mathcal{F}^{-1}[F(\omega)] = f(t) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} F(\omega) e^{i\omega t} d\omega
+  \mathcal{F}^{-1}[F(\omega)] = f(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(\omega) e^{j\omega t} d\omega
 \end{equation}
 
 \section{デルタ関数}
 \begin{equation}
-  \int_{-\infty}^{+\infty} \delta (x) dx = 1
+  \int_{-\infty}^{\infty} \delta (x) dx = 1
 \end{equation}
 %
 \begin{equation}
-  \int_{-\infty}^{+\infty} f(x) \delta (x) dx = f(0)
+  \int_{-\infty}^{\infty} f(x) \delta (x) dx = f(0)
 \end{equation}
 %
 \begin{equation}
-  \int_{-\infty}^{+\infty} f(x) \delta (x - a) dx = f(a)
+  \int_{-\infty}^{\infty} f(x) \delta (x - a) dx = f(a)
 \end{equation}
 %
 \section{デルタ関数のFourier変換}
 %
 \begin{equation}
-  \mathcal{F}[\delta (t)] = \int_{-\infty}^{+\infty} \delta (t) e^{- i \omega t} dt = 1 
+  \mathcal{F}[\delta (t)] = \int_{-\infty}^{\infty} \delta (t) e^{- j \omega t} dt = 1 
 \end{equation}
 %
 \begin{equation}
-  \mathcal{F}[\delta (t - t_0)] = \int_{-\infty}^{+\infty} \delta (t - t_0) e^{- i \omega t} dt = e^{-j \omega t_0}
+  \mathcal{F}[\delta (t - t_0)] = \int_{-\infty}^{\infty} \delta (t - t_0) e^{- j \omega t} dt = e^{-j \omega t_0}
   \label{fd2}
 \end{equation}
 %
@@ -92,29 +92,29 @@
 周期が$T_0$のくし型関数は以下のよう表せる。
 %
 \begin{equation}
-  \delta_T (t) = \sum_{n=-\infty}^{+\infty} \delta (t - n T_0 )
+  \delta_T (t) = \sum_{n=-\infty}^{\infty} \delta (t - n T_0 )
 \end{equation}
 %
 $\delta_T (t)$は周期$T_0$の周期関数なので、フーリエ級数展開でき、$\omega_0 = 2\pi / T_0$とすると
 %
 \begin{align}
-  \delta_T(t) &= \sum_{n = -\infty}^{\infty} \frac{1}{T_0} \left[\int_{-T_0/2}^{T_0/2}\delta (t) e^{-i n \omega_0 t} dt\right] 
+  \delta_T(t) &= \sum_{n = -\infty}^{\infty} \frac{1}{T_0} \left[\int_{-T_0/2}^{T_0/2}\delta (t) e^{-j n \omega_0 t} dt\right] 
   e^{i n \omega_0 t} \\
-              &= \frac{1}{T_0} \sum_{n = -\infty}^{\infty} e^{i n \omega_0 t} 
+              &= \frac{1}{T_0} \sum_{n = -\infty}^{\infty} e^{j n \omega_0 t} 
 \end{align}
 %
 となる。なお、区間$[-T_0/2, T_0/2]$においては$\delta_T(t)$は$\delta(t)$とみなせることを使った。ここで、式(\ref{fd2})より
 %
 \begin{align}
-  e^{i n \omega_0 t} &=  \int_{-\infty}^{\infty} \delta (\omega - n \omega_0) e^{i \omega t} d\omega \\ 
-      &= \frac{1}{2\pi} \int_{-\infty}^{\infty} 2\pi \delta (\omega - n \omega_0) e^{i \omega t} d\omega \\ 
+  e^{j n \omega_0 t} &=  \int_{-\infty}^{\infty} \delta (\omega - n \omega_0) e^{j \omega t} d\omega \\ 
+      &= \frac{1}{2\pi} \int_{-\infty}^{\infty} 2\pi \delta (\omega - n \omega_0) e^{j \omega t} d\omega \\ 
       &= \mathcal{F}^{-1}[2\pi \delta(\omega - n\omega_0)] 
 \end{align}
 %
 したがって、くし型関数のFourier変換は
 %
 \begin{align}
-  \mathcal{F}[\delta_T(t)] &= \mathcal{F}\left[\frac{1}{T_0} \sum_{n = -\infty}^{\infty} e^{i n \omega_0 t}\right] \\ 
+  \mathcal{F}[\delta_T(t)] &= \mathcal{F}\left[\frac{1}{T_0} \sum_{n = -\infty}^{\infty} e^{j n \omega_0 t}\right] \\ 
       & = \frac{1}{T_0} \sum_{n = -\infty}^{\infty} \mathcal{F}[\mathcal{F}^{-1}[2\pi \delta(\omega - n\omega_0)]] \\ 
       & = \frac{2 \pi}{T_0} \sum_{n = -\infty}^{\infty} \delta(\omega - n\omega_0)\\ 
       &= \omega_0 \sum_{n = -\infty}^{\infty} \delta(\omega - n\omega_0)
@@ -131,24 +131,23 @@ $\delta_T (t)$は周期$T_0$の周期関数なので、フーリエ級数展開�
 %
 %
 \begin{align}
-  f(t) &= \sum_{n = -\infty}^{\infty} \frac{M}{T_0} \left[\int_{-T_0/2M}^{T_0/2M}\delta (t) e^{-i n M \omega_0 t} dt\right] 
-  e^{i n M \omega_0 t} \\
-              &= \frac{M}{T_0} \sum_{n = -\infty}^{\infty} e^{i n M \omega_0 t} 
+  f(t) &= \sum_{n = -\infty}^{\infty} \frac{M}{T_0} \left[\int_{-T_0/2M}^{T_0/2M}\delta (t) e^{-j n M \omega_0 t} dt\right] 
+  e^{j n M \omega_0 t} \\
+              &= \frac{M}{T_0} \sum_{n = -\infty}^{\infty} e^{j n M \omega_0 t} 
 \end{align}
 %
 したがって、
 %
 \begin{align}
-  \mathcal{F}[f(t)] &= \mathcal{F}\left[\frac{M}{T_0} \sum_{n = -\infty}^{\infty} e^{i n M \omega_0 t}\right] \\ 
+  \mathcal{F}[f(t)] &= \mathcal{F}\left[\frac{M}{T_0} \sum_{n = -\infty}^{\infty} e^{j n M \omega_0 t}\right] \\ 
       & = \frac{M}{T_0} \sum_{n = -\infty}^{\infty} \mathcal{F}[\mathcal{F}^{-1}[2\pi \delta(\omega - n M \omega_0)]] \\ 
       & = \frac{2 \pi M}{T_0} \sum_{n = -\infty}^{\infty} \delta(\omega - n M \omega_0)\\ 
       &= M \omega_0 \sum_{n = -\infty}^{\infty} \delta(\omega - n M \omega_0)
 \end{align}
 %
 \begin{thebibliography}{9}
-  \bibitem{McMillan}
-  E.M. McMillan, Phys. Rev., 68, 143 (1945); V.I. Veksler, Compt. Rend. Acad. Sci. U.S.S.R., 43, 329 (1944); 44, 365 (1944).
-
+  \bibitem{Hiramatsu}
+  平松成範, 加速器のビームモニター (Beam Instrumentaion for Accelerrators), KEK Internal 2004-4 A.
 \end{thebibliography}
 %
 \end{document}
