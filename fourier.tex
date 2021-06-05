@@ -88,8 +88,8 @@
   \label{fd2}
 \end{equation}
 %
-\section{くし型関数のFourier変換}
-周期が$T_0$のくし型関数は以下のよう表せる。
+\section{Single-bunch Spectrum}
+リングに1個のバンチが周期が$T_0$で周回している時、ビームの信号は、くし型関数を用いて以下のよう表せる。
 %
 \begin{equation}
   \delta_T (t) = \sum_{n=-\infty}^{\infty} \delta (t - n T_0 )
@@ -119,6 +119,16 @@ $\delta_T (t)$は周期$T_0$の周期関数なので、フーリエ級数展開�
       & = \frac{2 \pi}{T_0} \sum_{n = -\infty}^{\infty} \delta(\omega - n\omega_0)\\ 
       &= \omega_0 \sum_{n = -\infty}^{\infty} \delta(\omega - n\omega_0)
 \end{align}
+%
+これより、周期$T_0$で周回するバンチのスペクトルをスペアナなどで観測すると、周回周波数$\omega_0$毎にピークを持つ信号が観測されることがわかる。
+%
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=12cm,clip]{single_bunch.pdf}
+    \caption{単バンチのビーム信号のスペクトル.}
+   \label{single_bunch}
+  \end{center}
+\end{figure}
 %
 \section{Multi-bunch Spectrum}
 リングにM個のバンチが均等に配置されている場合、ビームの信号は
