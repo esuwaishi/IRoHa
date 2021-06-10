@@ -49,10 +49,12 @@
 %
 \begin{equation}
   f(t) = \sum_{n=-\infty}^{\infty} c_n e^{j n \omega_0 t}
+  \label{fourier_series}
 \end{equation}
 %
 \begin{equation}
   c_n = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} f(t) e^{- j n \omega_0 t} dt　\; (n = 0, \pm 1, \pm 2, \pm 3, \dots)
+  \label{fourier_coef}
 \end{equation}
 %
 ただし、$\omega_0 = 2\pi/T_0$とおいた。
@@ -81,7 +83,8 @@
 \section{デルタ関数のFourier変換}
 %
 \begin{equation}
-  \mathcal{F}[\delta (t)] = \int_{-\infty}^{\infty} \delta (t) e^{- j \omega t} dt = 1 
+  \mathcal{F}[\delta (t)] = \int_{-\infty}^{\infty} \delta (t) e^{- j \omega t} dt = 1
+  \label{fd1}
 \end{equation}
 %
 \begin{equation}
@@ -97,6 +100,7 @@
 %
 \begin{equation}
   \mathcal{F}[1] = 2\pi\delta(\omega)
+  \label{f1}
 \end{equation}
 %
 \section{ポアソン和公式}
@@ -110,9 +114,25 @@ $F(\omega) = \mathcal{F}[f(t)]$とした時、
 が成り立つ。これをポアソン和公式 (Poisson summation formula) という。
 %
 \begin{proof}
+  (\ref{fd2})より
+  \begin{equation}
+    \sum_{n=-\infty}^{\infty} f(\alpha n) = \sum_{n=-\infty}^{\infty}\int_{-\infty}^{\infty} f(t) \delta(t - \alpha n) dt
+  \end{equation}
+  %
+  $\sum \delta(t - \alpha n)$は、周期$\alpha$の周期関数なのでフーリエ級数展開でき、区間$[-\alpha/2, \alpha/2]$において$\delta(t-\alpha n)$は$\delta(t)$とみなせるので、$\omega_0 = 2\pi/\alpha$とおくと(\ref{fourier_series}), (\ref{fourier_coef})より
+  %
   \begin{align}
-    \sum_{n=-\infty}^{\infty} F\left( \frac{2 \pi n}{\alpha}\right) 
-      &= \sum_{n=-\infty}^{\infty} \int_{-\infty}^{\infty} f(t) e^{-j \frac{2\pi n}{\alpha} t} dt
+    \sum_{n=-\infty}^{\infty}\delta(t - \alpha n) 
+    &= \sum_{n=-\infty}^{\infty} \frac{1}{\alpha} \left[ \int_{-\alpha/2}^{\alpha/2} \delta(t) e^{-j n\omega_0 t} dt \right] e^{j n \omega_0 t} \\
+    &= \frac{1}{\alpha} \sum_{n=-\infty}^{\infty} e^{j n\omega_0 t} = \frac{1}{\alpha} \sum_{n=-\infty}^{\infty} e^{-j n\omega_0 t} 
+  \end{align}
+  %
+  したがって、
+  %
+  \begin{align}
+    \sum_{n=-\infty}^{\infty} f(\alpha n) &=\frac{1}{\alpha} \sum_{n=-\infty}^{\infty} \int_{-\infty}^{\infty} f(t) e^{-j n \omega_0 t} dt \notag\\
+      &= \frac{1}{\alpha} \sum_{n=-\infty}^{\infty}F(n\omega_0) 
+      = \frac{1}{\alpha} \sum_{n=-\infty}^{\infty} F\left( \frac{2 \pi n}{\alpha}\right) \notag
   \end{align}
 \end{proof}
 %
@@ -126,8 +146,8 @@ $F(\omega) = \mathcal{F}[f(t)]$とした時、
 のように表すことができる。ここで、$i(t)$をフーリエ変換すると、
 %
 \begin{align}
-  I(\omega) &= \int_{-\infty}^{\infty} i(t) e^{-j \omega t} dt \notag \\
-    &= \sum_{n=-\infty}^{\infty} \int_{-\infty}^{\infty} \delta (t - n T_0 ) e^{-j \omega t} dt \notag \\ 
+  I(\omega) &= \int_{-\infty}^{\infty} i(t) e^{-j \omega t} dt
+    = \sum_{n=-\infty}^{\infty} \int_{-\infty}^{\infty} \delta (t - n T_0 ) e^{-j \omega t} dt \notag \\ 
     &= \sum_{n=-\infty}^{\infty} e^{-j\omega n T_0} = \sum_{n=-\infty}^{\infty} e^{-j 2\pi n \frac{\omega}{\omega_0}}
 \end{align}
 %
@@ -139,7 +159,8 @@ $F(\omega) = \mathcal{F}[f(t)]$とした時、
     = \frac{\omega_0}{2\pi} \sum_{n=-\infty}^{\infty} F(n \omega_0) \notag \\
     &= \frac{\omega_0}{2\pi} \sum_{n=-\infty}^{\infty} \int_{-\infty}^{\infty} f(t) e^{-j n \omega_0 t} dt \notag \\
     &= \frac{\omega_0}{2\pi} \sum_{n=-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-j (\omega + n \omega_0) t} dt \notag \\
-    &= \omega_0 \sum_{n=-\infty}^{\infty} \delta(\omega + n \omega_0) = \omega_0 \sum_{n=-\infty}^{\infty} \delta(\omega - n \omega_0)
+    &= \omega_0 \sum_{n=-\infty}^{\infty} \delta(\omega + n \omega_0) \qquad (\because (\ref{f1})) \notag \\
+    &= \omega_0 \sum_{n=-\infty}^{\infty} \delta(\omega - n \omega_0)
 \end{align}
 %
 これより、周期$T_0$で周回するバンチのスペクトルをスペアナなどで観測すると、周回周波数$\omega_0$毎にピークを持つ信号が観測されることがわかる。
@@ -156,10 +177,25 @@ $F(\omega) = \mathcal{F}[f(t)]$とした時、
 リングにM個のバンチが均等に配置されている場合、ビームの信号は
 %
 \begin{equation}
-  f(t) = \sum_{k=-\infty}^{\infty} \sum_{n=0}^{M-1}\delta (t - k T_0 -n T_0 / M)
+  i(t) = \sum_{k=-\infty}^{\infty} \sum_{n=0}^{M-1}\delta (t - k T_0 -n T_0 / M)
 \end{equation}
 %
-と表すことができる。くし型関数と同様に考えると、$f(t)$は周期$T_0/M$の周期関数で、区間$[-T_0/2M, T_0/2M]$においては$f(t)$は$\delta(t)$とみなせるから
+と表すことができる。先程と同様にフーリエ変換すると、
+%
+\begin{align}
+  I(\omega) &= \int_{-\infty}^{\infty} i(t) e^{-j \omega t} dt\notag\\
+    & = \sum_{k=-\infty}^{\infty} \sum_{n=-\infty}^{\infty} \int_{-\infty}^{\infty} \delta (t - k T_0 - n T_0/M) e^{-j \omega t} dt \notag \\ 
+    &= \sum_{k=-\infty}^{\infty} \sum_{n=-\infty}^{\infty} e^{-j\omega (k T_0 + n T_0 / M)} \\
+    &= \sum_{n=-\infty}^{\infty} e^{-j 2\pi n \frac{\omega}{\omega_0}}
+\end{align}
+%
+ただし、$T_0 = 2\pi / \omega_0$とした。ここで、$f(t) = e^{-j\omega t}, \alpha = 2\pi /\omega_0$として、ポワソン和公式を使うと、
+%
+
+
+
+
+くし型関数と同様に考えると、$f(t)$は周期$T_0/M$の周期関数で、区間$[-T_0/2M, T_0/2M]$においては$f(t)$は$\delta(t)$とみなせるから
 %
 %
 \begin{align}
@@ -176,6 +212,14 @@ $F(\omega) = \mathcal{F}[f(t)]$とした時、
       & = \frac{2 \pi M}{T_0} \sum_{n = -\infty}^{\infty} \delta(\omega - n M \omega_0)\\ 
       &= M \omega_0 \sum_{n = -\infty}^{\infty} \delta(\omega - n M \omega_0)
 \end{align}
+%
+\begin{figure}[hbt]
+  \begin{center}
+    \includegraphics[width=12cm,clip]{multi_bunch.pdf}
+    \caption{多バンチのビーム信号のスペクトル.}
+   \label{multi_bunch}
+  \end{center}
+\end{figure}
 %
 \section{Synchrotron oscillation}
 \begin{equation}
