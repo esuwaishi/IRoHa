@@ -2,7 +2,8 @@
 
 \usepackage{graphicx}
 \usepackage[pdfencoding=auto]{hyperref}
-\usepackage{amsmath,amssymb}
+\usepackage{amsmath,amssymb,amsthm}
+\theoremstyle{definition}
 \usepackage{bm}
 \usepackage{booktabs}
 %\usepackage{subfig}
@@ -51,7 +52,7 @@
 \end{equation}
 %
 \begin{equation}
-  c_n = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} f(t) e^{- j n \omega_0 t} dt
+  c_n = \frac{1}{T_0} \int_{-T_0/2}^{T_0/2} f(t) e^{- j n \omega_0 t} dt　\; (n = 0, \pm 1, \pm 2, \pm 3, \dots)
 \end{equation}
 %
 ただし、$\omega_0 = 2\pi/T_0$とおいた。
@@ -88,6 +89,34 @@
   \label{fd2}
 \end{equation}
 %
+\begin{equation}
+  \mathcal{F}^{-1} [\delta(\omega)] = \frac{1}{2\pi}\int_{-\infty}^{\infty} \delta (\omega) e^{j \omega t } d\omega = \frac{1}{2\pi}
+\end{equation}
+%
+したがって、
+%
+\begin{equation}
+  \mathcal{F}[1] = 2\pi\delta(\omega)
+\end{equation}
+%
+\section{ポアソン和公式}
+
+$F(\omega) = \mathcal{F}[f(t)]$とした時、
+
+\begin{equation}
+  \sum_{n=-\infty}^{\infty} f(\alpha n) = \frac{1}{\alpha} \sum_{n=-\infty}^{\infty} F\left( \frac{2 \pi n}{\alpha}\right)
+\end{equation}
+%
+が成り立つ。これをポアソン和公式 (Poisson summation formula) という。
+%
+\begin{proof}
+  \begin{align}
+    \sum_{n=-\infty}^{\infty} F\left( \frac{2 \pi n}{\alpha}\right) 
+      &= \sum_{n=-\infty}^{\infty} \int_{-\infty}^{\infty} f(t) e^{-j \frac{2\pi n}{\alpha} t} dt \\
+      &= 
+  \end{align}
+\end{proof}
+%
 \section{Single-bunch Spectrum}
 リングに1個のバンチが周期が$T_0$で周回している時、ビームの信号は、くし型関数を用いて以下のよう表せる。
 %
@@ -99,7 +128,7 @@ $\delta_T (t)$は周期$T_0$の周期関数なので、フーリエ級数展開�
 %
 \begin{align}
   \delta_T(t) &= \sum_{n = -\infty}^{\infty} \frac{1}{T_0} \left[\int_{-T_0/2}^{T_0/2}\delta (t) e^{-j n \omega_0 t} dt\right] 
-  e^{i n \omega_0 t} \\
+  e^{j n \omega_0 t} \\
               &= \frac{1}{T_0} \sum_{n = -\infty}^{\infty} e^{j n \omega_0 t} 
 \end{align}
 %
@@ -153,6 +182,30 @@ $\delta_T (t)$は周期$T_0$の周期関数なので、フーリエ級数展開�
       & = \frac{M}{T_0} \sum_{n = -\infty}^{\infty} \mathcal{F}[\mathcal{F}^{-1}[2\pi \delta(\omega - n M \omega_0)]] \\ 
       & = \frac{2 \pi M}{T_0} \sum_{n = -\infty}^{\infty} \delta(\omega - n M \omega_0)\\ 
       &= M \omega_0 \sum_{n = -\infty}^{\infty} \delta(\omega - n M \omega_0)
+\end{align}
+%
+\section{Synchrotron oscillation}
+\begin{equation}
+  i(t) = \sum_{n=-\infty}^{\infty}\delta[t - n T_0 - \tau_a \cos(\omega_s n T_0 + \phi)]
+\end{equation}
+%
+\begin{align}
+  F(\omega) &= \int_{-\infty}^{\infty} i(t) e^{-j\omega t} dt \\
+  &= \sum_{n = -\infty}^{\infty} e^{-j\omega\{n T_0 + \tau_a \cos(\omega_s n T_0 + \phi)\}} \\
+  &= \sum_{n = -\infty}^{\infty} \left[ e^{-j\omega n T_0 }+ e^{-j \omega \tau_a \cos(\omega_s n T_0 + \phi)} \right]
+\end{align}
+%
+ここで、
+%
+\begin{equation}
+  e^{jz\cos\theta} = \sum_{k = -\infty}^{\infty} j^k J_k(z) e^{j k \theta}
+\end{equation}
+%
+という関係を使うと（ただし、$J_n$はベッセル関数）
+%
+\begin{align}
+  F(\omega) &= \sum_{k = -\infty}^{\infty} (-j)^k J_k(\omega \tau_a) e^{j k \phi} \sum_{n = -\infty}^{\infty} e^{-j (\omega + k \omega_s) n T_0} \\
+    &= \omega_0 \sum_{k = -\infty}^{\infty} (-j)^k J_k(\omega \tau_a) e^{j k \phi} \sum_{n = -\infty}^{\infty} \delta(\omega + k\omega_s - n \omega_0)
 \end{align}
 %
 \begin{thebibliography}{9}
