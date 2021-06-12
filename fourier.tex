@@ -123,16 +123,16 @@ $i(t)$は、周期$T_0$の周期関数なのでフーリエ級数展開でき、
 %
 \begin{align}
   e^{j n \omega_0 t} &=  \int_{-\infty}^{\infty} \delta (\omega - n \omega_0) e^{j \omega t} d\omega \notag\\ 
-      &= \frac{1}{2\pi} \int_{-\infty}^{\infty} 2\pi \delta (\omega - n \omega_0) e^{j \omega t} d\omega \\ 
+      &= \frac{1}{2\pi} \int_{-\infty}^{\infty} 2\pi \delta (\omega - n \omega_0) e^{j \omega t} d\omega\notag \\ 
       &= \mathcal{F}^{-1}[2\pi \delta(\omega - n\omega_0)] 
 \end{align}
 %
 したがって、
 %
 \begin{align}
-  I(\omega) &= \mathcal{F}\left[\frac{1}{T_0} \sum_{n = -\infty}^{\infty} e^{j n \omega_0 t}\right] \\ 
-      & = \frac{1}{T_0} \sum_{n = -\infty}^{\infty} \mathcal{F}[\mathcal{F}^{-1}[2\pi \delta(\omega - n\omega_0)]] \\ 
-      & = \frac{2 \pi}{T_0} \sum_{n = -\infty}^{\infty} \delta(\omega - n\omega_0)\\ 
+  I(\omega) &= \mathcal{F}\left[\frac{1}{T_0} \sum_{n = -\infty}^{\infty} e^{j n \omega_0 t}\right] \notag\\ 
+      & = \frac{1}{T_0} \sum_{n = -\infty}^{\infty} \mathcal{F}[\mathcal{F}^{-1}[2\pi \delta(\omega - n\omega_0)]] \notag\\ 
+      & = \frac{2 \pi}{T_0} \sum_{n = -\infty}^{\infty} \delta(\omega - n\omega_0)\notag\\ 
       &= \omega_0 \sum_{n = -\infty}^{\infty} \delta(\omega - n\omega_0)
 \end{align}
 %
@@ -157,7 +157,7 @@ $i(t)$は、周期$T_0$の周期関数なのでフーリエ級数展開でき、
 %
 \begin{align}
   i(t) &= \sum_{n = -\infty}^{\infty} \frac{M}{T_0} \left[\int_{-T_0/2M}^{T_0/2M}\delta (t) e^{-j n M \omega_0 t} dt\right] 
-  e^{j n M \omega_0 t} \\
+  e^{j n M \omega_0 t} \notag\\
               &= \frac{M}{T_0} \sum_{n = -\infty}^{\infty} e^{j n M \omega_0 t} 
 \end{align}
 %
@@ -170,10 +170,12 @@ $i(t)$は、周期$T_0$の周期関数なのでフーリエ級数展開でき、
       &= M \omega_0 \sum_{n = -\infty}^{\infty} \delta(\omega - n M \omega_0)
 \end{align}
 %
+これより、時間領域で密になるほど、周波数領域では疎になることが分かる。
+%
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=12cm,clip]{multi_bunch.pdf}
-    \caption{多バンチのビーム信号のスペクトル ($M=4$).}
+    \caption{多バンチのビーム信号のスペクトル ($M=8$).}
    \label{multi_bunch}
   \end{center}
 \end{figure}
@@ -188,8 +190,8 @@ $i(t)$は、周期$T_0$の周期関数なのでフーリエ級数展開でき、
 と表せるので、フーリエ変換すると、
 %
 \begin{align}
-  I(\omega) &= \int_{-\infty}^{\infty} i(t) e^{-j\omega t} dt \\
-  &= \sum_{n = -\infty}^{\infty} e^{-j\omega\{n T_0 + \tau_a \cos(\omega_s n T_0 + \phi)\}} \\
+  I(\omega) &= \int_{-\infty}^{\infty} i(t) e^{-j\omega t} dt \notag\\
+  &= \sum_{n = -\infty}^{\infty} e^{-j\omega\{n T_0 + \tau_a \cos(\omega_s n T_0 + \phi)\}} \notag\\
   &= \sum_{n = -\infty}^{\infty} \left[ e^{-j\omega n T_0 } e^{-j \omega \tau_a \cos(\omega_s n T_0 + \phi)} \right]
 \end{align}
 %
@@ -203,7 +205,7 @@ $i(t)$は、周期$T_0$の周期関数なのでフーリエ級数展開でき、
 %
 \begin{align}
   I(\omega) &= \sum_{k = -\infty}^{\infty} (-j)^k J_k(\omega \tau_a) e^{j k \phi}
-      \sum_{n = -\infty}^{\infty} e^{-j (\omega + k \omega_s) n T_0} \\
+      \sum_{n = -\infty}^{\infty} e^{-j (\omega + k \omega_s) n T_0} \notag\\
     &= \omega_0 \sum_{k = -\infty}^{\infty} (-j)^k J_k(\omega \tau_a) e^{j k \phi}
         \sum_{n = -\infty}^{\infty} \delta(\omega + k\omega_s - n \omega_0)
 \end{align}
@@ -213,7 +215,7 @@ $i(t)$は、周期$T_0$の周期関数なのでフーリエ級数展開でき、
 \begin{figure}[hbt]
   \begin{center}
     \includegraphics[width=12cm,clip]{synchrotron_bunch.pdf}
-    \caption{シンクロトロン振動するバンチのビーム信号のスペクトル ($\omega_s/\omega_0 = 1/10$).}
+    \caption{シンクロトロン振動するバンチのビーム信号のスペクトル ($\omega_s/\omega_0 = 1/8$).}
    \label{synchro_bunch}
   \end{center}
 \end{figure}
@@ -243,7 +245,7 @@ $F(\omega) = \mathcal{F}[f(t)]$とした時、
   %
   \begin{align}
     \sum_{n=-\infty}^{\infty}\delta(t - \alpha n) 
-    &= \sum_{n=-\infty}^{\infty} \frac{1}{\alpha} \left[ \int_{-\alpha/2}^{\alpha/2} \delta(t) e^{-j n\omega_0 t} dt \right] e^{j n \omega_0 t} \\
+    &= \sum_{n=-\infty}^{\infty} \frac{1}{\alpha} \left[ \int_{-\alpha/2}^{\alpha/2} \delta(t) e^{-j n\omega_0 t} dt \right] e^{j n \omega_0 t} \notag\\
     &= \frac{1}{\alpha} \sum_{n=-\infty}^{\infty} e^{j n\omega_0 t} = \frac{1}{\alpha} \sum_{n=-\infty}^{\infty} e^{-j n\omega_0 t} 
   \end{align}
   %
@@ -259,6 +261,11 @@ $F(\omega) = \mathcal{F}[f(t)]$とした時、
 \begin{thebibliography}{9}
   \bibitem{Hiramatsu}
   平松成範, 加速器のビームモニター (Beam Instrumentaion for Accelerrators), KEK Internal 2004-4 A.
+  \bibitem{Kikutani}
+  菊谷英司, Fourier解析入門, KEK Internal 2006-2 AD.
+  \bibitem{Chao}
+  A. W. Chao, Physics of Collective Beam Instabilities in High Energy Accelerators, Wiley 1993, Chapter 4, pp. 165-169.
+  \url{https://www.slac.stanford.edu/~achao/wileybook.html}
 \end{thebibliography}
 %
 \end{document}
