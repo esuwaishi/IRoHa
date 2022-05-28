@@ -1,0 +1,314 @@
+\documentclass[]{jlreq}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsthm}
+%\usepackage{siunitx}
+\usepackage{physics}
+\usepackage{bm}
+
+\renewcommand{\today}{\the\year/\the\month/\the\day}
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\refname}{References}
+\renewcommand{\figurename}{Fig.~}
+\renewcommand{\tablename}{Table~}
+
+\begin{document}
+\title{加速器における力学系理論}
+\author{Shin-ichi YOSHIMOTO}
+\maketitle
+\tableofcontents
+\clearpage
+
+
+\section{離散時間力学系}
+\subsection{線形化方程式}
+
+次の離散時間系を考える。
+%
+\begin{equation}
+    x_i(k+1) = f_i(x_1(k),x_2(k),\dots, x_n(k)), \quad (i = 1,2,\dots,n)
+\end{equation}
+%
+これはベクトル表記を用いて
+%
+\begin{equation}
+    \bm{x}(k+1) = \bm{f}(\bm{x}(k))
+    \label{map}
+\end{equation}
+%
+と表すことにする。いま、$\bm{f}(x)$の固定点を$\bm{x}_0$とすると、
+%
+\begin{equation}
+    \bm{f}(\bm{x}_0) = \bm{x}_0
+\end{equation}
+%
+固定点からの微小な変動$\delta \bm{x}(k)$を考えると
+%
+\begin{equation}
+    \bm{x}(k) = \bm{x}_0 + \delta \bm{x}(k)
+\end{equation}
+%
+これを式(\ref{map})に代入して
+%
+\begin{equation}
+    \bm{x}(k+1) = \bm{x}_0 + \delta \bm{x}(k+1) = \bm{f}(\bm{x}_0+\delta \bm{x}(k))
+\end{equation}
+%
+右辺をテーラー展開して
+%
+\begin{equation}
+    \bm{f}(\bm{x}_0+\delta \bm{x}(k)) = \bm{f}(\bm{x_0})+\frac{\partial}{\partial\bm{x}}\bm{f}(\bm{x_0})\delta \bm{x}(k) + 
+    \mathcal{O}(|\delta \bm{x}(k)|^2)
+\end{equation}
+%
+ただし、変分$\delta \bm{x}(k)$が十分小さく、$\delta \bm{x}(k)$について2次以上の項$\mathcal{O}(|\delta \bm{x}(k)|^2)$を無視すると、固定点$\bm{x_0}$に関する線形化方程式は以下のようになる。
+%
+\begin{equation}
+    \delta\bm{x}(k+1) = A \delta \bm{x}(k) 
+\end{equation}
+%
+ただし、$A$はヤコビ行列で
+%
+\begin{equation}
+    A = D f(\bm{x}_0) = \frac{\partial}{\partial\bm{x}}\bm{f}(\bm{x_0})
+\end{equation}
+%
+\section{The Synchrotron Mapping Equation}
+
+\begin{equation}
+  \left\{
+    \begin{aligned}
+      \phi(k+1) &= \phi(k) + \frac{2\pi h \eta }{\beta^2 E_s}[E(k+1)-E_s] \\
+      E(k+1) &= E(k)+ e V \sin\phi(k)
+    \end{aligned}
+  \right.
+\end{equation}
+%
+いま、この写像の固定点$(\phi_s , E_s)$からの微小な変動$(\delta \phi(k) , \delta E(k))$を考えると
+%
+\begin{equation}
+    \left\{
+      \begin{aligned}
+        \phi(k) &= \phi_s + \delta \phi(k) \\
+        E(k) &= E_s + \delta E(k)
+      \end{aligned}
+    \right.
+\end{equation}
+%
+線形化方程式は
+%
+\begin{equation}
+  \begin{pmatrix}
+    \delta\phi (k+1)\\
+    \delta E (k+1)
+  \end{pmatrix}
+  = A
+  \begin{pmatrix}
+    \delta\phi(k)\\
+    \delta E(k)
+  \end{pmatrix}
+\end{equation}
+%
+となり、ヤコビ行列$A$は
+%
+\begin{equation}
+  A =
+  \begin{pmatrix}
+    \frac{\partial\phi(k+1)}{\partial\phi(k)} & \frac{\partial\phi(k+1)}{\partial E(k)} \\
+    \frac{\partial E(k+1)}{\partial\phi(k)} & \frac{\partial E(k+1)}{\partial E(k)}
+  \end{pmatrix}
+  _{\phi_s, E_s} =
+  \begin{pmatrix}
+    1+\frac{2\pi h \eta}{\beta^2 E_s} e V \cos\phi_s & \frac{2\pi h\eta}{\beta_s E_s} \\
+    e V \cos\phi_s & 1
+  \end{pmatrix}
+\end{equation}
+%
+行列$A$の固有方程式は
+%
+\begin{equation}
+    \lambda^2 -(\mathrm{Tr} A) \lambda +1 =0
+\end{equation}
+%
+となり$\lambda_1, \lambda_2$を$A$の固有値とすると、
+%
+\begin{equation}
+    \lambda_1+\lambda_2=\mathrm{tr} M ,\quad \lambda_1 \cdot \lambda_2 =\mathrm{det} A = 1
+\end{equation}
+%
+を満たす。$\mathrm{det}A=1$より、この写像は面積を保存する。\\
+%
+(1) $|\mathrm{tr}A| > 2$の時\\
+(2) $|\mathrm{tr}A| < 2$の時\\
+
+この実二次方程式の解$\lambda_1, \lambda_2$は$|\mathrm{tr}A| > 2$の時は実数であり、$|\mathrm{tr}A| < 2$の時は互いに共役な複素数である。先の場合には、固有値の絶対値は1つが1よりも大きく、1つは1よりも小さい、つまり写像$A$は双極的回転で不安定である。
+
+一方、後の場合には、固有値は単位円周上にある。
+%
+\begin{equation}
+    1 = \lambda_1 \cdot \lambda_2 = \lambda_1 \cdot \bar{\lambda}_1 = |\lambda_1|^2
+\end{equation}
+%
+\begin{equation}
+    \lambda_{1,2} = e^{\pm i \sigma}
+\end{equation}
+%
+したがって、このとき接戦軌道$(\delta\phi, \delta E)$は、固定点の周りを安定に回転し、
+%
+\begin{equation}
+    \mathrm{tr} A = e^{ i \sigma} + e^{- i \sigma} = 2 \cos\sigma
+\end{equation}
+%
+と書ける。$\sigma$は一周期あたりの平均回転角を与える。
+%
+\begin{equation}
+    \sigma = 2 \pi \nu_s
+\end{equation}
+%
+これより、synchrotron tune $\nu_s$は
+%
+\begin{align}
+    \nu_s &= \frac{1}{2\pi} \cos^{-1}\left(\frac{\mathrm{Tr A}}{2}\right) \\
+        &= \frac{1}{2\pi} \cos^{-1}\left(1+\frac{\pi h \eta}{\beta^2 E_s} e V \cos\phi_s\right)
+\end{align}
+%
+\section{周期係数を持つ線形方程式}
+\subsection{周期写像}
+\begin{equation}
+    \vb{F} = \vb{E} \times \vb{B}
+\end{equation}
+
+\section{Kicked rotator}
+%
+\begin{equation}
+    \mathcal{H}(\theta, p, t) = \frac{1}{2}p^2 + K \cos\theta \sum_{n=-\infty}^{\infty}\delta(t - n T)
+\end{equation}
+%
+\begin{align}
+    \frac{dp}{dt} &= -\frac{\partial \mathcal{H}}{\partial \theta} = K \sin\theta \sum_{n=-\infty}^{\infty}\delta(t - n T)\\
+    \frac{d\theta}{dt} &= \frac{\partial H}{\partial p} = p
+\end{align}
+%
+\section{Standard Map}
+%
+\begin{equation}
+    \left\{
+    \begin{aligned}
+        p_{n+1} &= p_n + K\sin\theta_n \\
+        \theta_{n+1} &= \theta_n + p_{n+1}
+        \label{standrd_map}
+    \end{aligned}
+    \right.
+\end{equation}
+%
+演算子$\tilde{h}$を
+%
+\begin{equation}
+    \tilde{h}\theta_n \equiv K \sin\theta_n
+\end{equation}
+%
+と定義すると、式(\ref{standrd_map})は
+%
+\begin{equation}
+    \begin{pmatrix}
+        p_{n+1}\\
+        \theta_{n+1}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1 & \tilde{h} \\
+        1 & 1+\tilde{h}
+    \end{pmatrix}
+    \begin{pmatrix}
+        p_n \\
+        \theta_n
+    \end{pmatrix}
+\end{equation}
+%
+と書ける。
+
+変換$(p_n, \theta_n)\mapsto (p_{n+1}, \theta_{n+1})$に対するJacobianは、
+
+\section{Linearization of a map at a fixed point}
+%
+\begin{equation}
+    \left\{
+    \begin{aligned}
+        x_{n+1} &= f(x_n, y_n) \\
+        y_{n+1} &= g(x_n, y_n)
+        \label{map1}
+    \end{aligned}
+    \right.
+\end{equation}
+%
+固定点$(x^*,y^*)$に対して
+%
+\begin{equation}
+    \left\{
+    \begin{aligned}
+        f(x^*, y^*) &= x^* \\
+        g(x^*, y^*) &= y^*
+        \label{fixedpoints}
+    \end{aligned}
+    \right.
+\end{equation}
+%
+$f(x,y)$と$g(x,y)$を$(x^*,y^*)$の周りでテーラー展開すると
+%
+\begin{equation}
+    \left\{
+    \begin{aligned}
+        f(x,y) &= f(x^*, y^*) +f_x(x^*,y^*)(x-x^*)+f_y(x^*,y^*)(y-y^*)+ ... \\
+        g(x,y) &= g(x^*, y^*) +g_x(x^*,y^*)(x-x^*)+g_y(x^*,y^*)(y-y^*)+ ...
+    \end{aligned}
+    \right.
+\end{equation}
+%
+$\delta x_n = x_n - x^*,\; \delta y_n = y_n - y^*$と置くと、
+$x_{n+1} = \delta x_{n+1} + x^*,\; y_{n+1} = \delta y_{n+1}+y^*$だから
+%
+\begin{equation}
+    \left\{
+    \begin{aligned}
+        \delta x_{n+1} + x^* &= f(x^*, y^*) +f_x(x^*,y^*)\delta x_n+f_y(x^*,y^*)\delta y_n \\
+        \delta y_{n+1} + y^* &= g(x^*, y^*) +g_x(x^*,y^*)\delta x_n + g_y(x^*,y^*)\delta y_n
+    \end{aligned}
+    \right.
+\end{equation}
+%
+式(\ref{fixedpoints})より、
+%
+\begin{equation}
+    \begin{pmatrix}
+        \delta x_{n+1}\\
+        \delta y_{n+1}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        f_x(x^*,y^*) & f_y(x^*,y^*)\\
+        g_x(x^*,y^*) & g_y(x^*,y^*)
+    \end{pmatrix}
+    \begin{pmatrix}
+        \delta x_n \\
+        \delta y_n
+    \end{pmatrix}
+\end{equation}
+
+
+
+
+
+\subsubsection{例: 2次元離散時間系}
+%
+\begin{thebibliography}{9}
+    \bibitem{Arnold}
+    アーノルド, 古典力学の数学的方法
+    \bibitem{Ichikawa}
+    市川芳彦, プラズマにおける非線形現象の諸問題 (3), 核融合研究, 1988, 59巻, 5号, p. 362-391.
+    \bibitem{Kawakami}
+    川上博, 非線形現象入門 定性的接近法, 2005
+    \bibitem{Ito_1}
+    伊藤大輔, 非線形力学系における分岐理論の解析・応用 I, システム/制御/情報, Vol. 64, No. 2, pp. 70-75, 2020
+  \end{thebibliography}
+%
+\end{document}
