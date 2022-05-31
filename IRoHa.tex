@@ -81,7 +81,7 @@
   \label{momentum_B}
 \end{equation}
 %
-粒子の運動量は加速空洞で加速される毎に増加するので、曲率半径と周回軌道を一定に保つためには、(\ref{momentum_B}) より、偏向電磁石の磁場$B$は運動量に比例して増加しなければならない。また、回転周波数$f_{rev}$も運動量と共に増加するので、粒子と加速電圧の同期を維持するために加速周波数$f_{RF}$も追随する必要がある。
+粒子の運動量は加速空洞で加速される毎に増加するので、曲率半径と周回軌道を一定に保つためには、(\ref{momentum_B}) より、偏向電磁石の磁場$B$は運動量に比例して増加しなければならない。また、回転周波数$f_{0}$も運動量と共に増加するので、粒子と加速電圧の同期を維持するために加速周波数$f_{rf}$も追随する必要がある。
 
 \section{同期粒子}
 
@@ -93,19 +93,19 @@
   \end{center}
 \end{figure}
 
-基準軌道を周回し、毎周同じ位相で加速空洞を通過する粒子を同期粒子 (synchronous particle) と呼び、その位相$\phi_s$のことを同期位相 (synchronous phase) と言う。同期粒子であるためには、周回周波数$f_{rev}$と空洞の加速周波数$f_{RF}$の間に、ある整数$h$を用いて、
+基準軌道を周回し、毎周同じ位相で加速空洞を通過する粒子を同期粒子 (synchronous particle) と呼び、その位相$\phi_s$のことを同期位相 (synchronous phase) と言う。同期粒子であるためには、周回周波数$f_{0}$と空洞の加速周波数$f_{rf}$の間に、ある整数$h$を用いて、
 %
 \begin{equation}
-  f_{RF} = h f_{rev}
+  f_{rf} = h f_{0}
   \label{harmonic}
 \end{equation}
 %
-という関係が必要である。この整数$h$のことをharmonic numberと言い、加速周波数$f_{RF}$で加速できる最大の粒子数になる。この時、空洞の加速電圧は
+という関係が必要である。この整数$h$のことをharmonic numberと言い、加速周波数$f_{rf}$で加速できる最大の粒子数になる。この時、空洞の加速電圧は
 %
 \begin{equation}
   \begin{split}
-    V_c (t) = V_0 \sin \phi_{RF}(t) \\
-    \phi_{RF}(t) = \int_0^t \omega_{RF}(t) dt
+    V_c (t) = V_0 \sin \phi_{rf}(t) \\
+    \phi_{rf}(t) = \int_0^t \omega_{rf}(t) dt
   \end{split}
 \end{equation}
 %
@@ -113,17 +113,17 @@
 
 \vspace{\baselineskip}
 
-\begin{tcolorbox}[title=\textgt{SuperKEKBにおける$f_{RF}$, $f_{0}$, $h$}の関係]
-  SuperKEKBの主リングでは、電子と陽電子はほぼ光速$c$で回っており、周長$C_0$は$\SI{3016.315}{\meter}$なので周回周波数$f_{rev}$は
+\begin{tcolorbox}[title=\textgt{SuperKEKBにおける$f_{rf}$, $f_{0}$, $h$}の関係]
+  SuperKEKBの主リングでは、電子と陽電子はほぼ光速$c$で回っており、周長$C_0$は$\SI{3016.315}{\meter}$なので周回周波数$f_{0}$は
   %
   \begin{equation}
-    f_{rev} = \frac{1}{T_{rev}}=\frac{c}{C_0}=\frac{\SI{2.99792458e8}{\meter / \second}}{\SI{3016.315}{\meter}}=\SI{99.39}{\kilo\hertz} \notag
+    f_{0} = \frac{1}{T_{0}}=\frac{c}{C_0}=\frac{\SI{2.99792458e8}{\meter / \second}}{\SI{3016.315}{\meter}}=\SI{99.39}{\kilo\hertz} \notag
   \end{equation}
   %
-  一方、加速周波数$f_{RF}$は$\SI{508.887}{\mega\hertz}$なので
+  一方、加速周波数$f_{rf}$は$\SI{508.887}{\mega\hertz}$なので
   %
   \begin{equation}
-      f_{RF} = 5120 \times f_{rev} \notag
+      f_{rf} = 5120 \times f_{0} \notag
   \end{equation}
   となり、確かに(\ref{harmonic})を満たしている。
 \end{tcolorbox}
@@ -199,34 +199,34 @@
   \label{delta_v}
 \end{equation}
 %
-このように運動量の変化$\Delta p$によって、速度$\Delta v$と軌道長$\Delta C$が変化するが、それによって回転周期$T$は同期粒子の周期$T_{rev}=C_0/v_s$とすると、
+このように運動量の変化$\Delta p$によって、速度$\Delta v$と軌道長$\Delta C$が変化するが、それによって回転周期$T$は同期粒子の周期$T_{0}=C_0/v_s$とすると、
 %
 \begin{equation}
-  T = T_{rev} + \Delta T = \frac{C_0 + \Delta C}{v_s + \Delta v} \notag
+  T = T_{0} + \Delta T = \frac{C_0 + \Delta C}{v_s + \Delta v} \notag
 \end{equation}
 %
 と変化する。分母を払って整理すると、(二次の微小量は無視する)
 %
 \begin{align}
-  & (T_{rev} + \Delta T)(v_s + \Delta v) = C_0 + \Delta C \notag \\
-  \Longleftrightarrow\quad & \underset{C_0}{\uwave{\cancel{v_s T_{rev}}}} + \Delta v T_{rev} + v_s \Delta T +
+  & (T_{0} + \Delta T)(v_s + \Delta v) = C_0 + \Delta C \notag \\
+  \Longleftrightarrow\quad & \underset{C_0}{\uwave{\cancel{v_s T_{0}}}} + \Delta v T_{0} + v_s \Delta T +
   \underset{0}{\uwave{\cancel{\Delta v \Delta T}}}
   = \cancel{C_0} + \Delta C \notag \\
-  \Longleftrightarrow\quad & v_s \Delta T = \Delta C- \Delta v T_{rev} \notag \\
-  \Longleftrightarrow\quad & \frac{\Delta T}{T_{rev}} = \frac{\Delta C_0}{\underset{C_0}{\uwave{v_s T_{rev}}}} - \frac{\Delta v}{v_s} \notag
+  \Longleftrightarrow\quad & v_s \Delta T = \Delta C- \Delta v T_{0} \notag \\
+  \Longleftrightarrow\quad & \frac{\Delta T}{T_{0}} = \frac{\Delta C_0}{\underset{C_0}{\uwave{v_s T_{0}}}} - \frac{\Delta v}{v_s} \notag
 \end{align}
 %
 したがって、$\Delta T$, $\Delta C$, $\Delta v$の関係は以下のようになる。
 %
 \begin{equation}
-  \frac{\Delta T}{T_{rev}} = \frac{\Delta C}{C_0} - \frac{\Delta v}{v_s}
+  \frac{\Delta T}{T_{0}} = \frac{\Delta C}{C_0} - \frac{\Delta v}{v_s}
   \label{delta_T}
 \end{equation}
 %
 (\ref{delta_T}) に (\ref{delta_C}) と (\ref{delta_v})を代入すると、
 %
 \begin{equation}
-  \frac{\Delta T}{T_{rev}} = \left(\alpha_p - \frac{1}{\gamma_s^2}\right)\frac{\Delta p}{p_s} = \eta_p \delta_p
+  \frac{\Delta T}{T_{0}} = \left(\alpha_p - \frac{1}{\gamma_s^2}\right)\frac{\Delta p}{p_s} = \eta_p \delta_p
   \label{deltat_eta_deltap}
 \end{equation}
 %
@@ -238,8 +238,8 @@
 \end{equation}
 %
 はphase slip factorと言い、運動量の変化による相対的な回転周期$T$の変化率を表している。
-%
-運動量圧縮率が正の場合 ($\alpha_p>0$) を考える。このとき、粒子の運動量を増加させると経路長が増加する。 しかし、粒子の運動量がまだ低く、光度よりも十分遅い場合、粒子の運動量の増加による速度の増加は、運動量の増加による経路長の増加を越えることがあり得る。その結果、粒子の回転周期は短くなる ($\eta_p < 0$)。
+
+運動量圧縮率が正の場合 ($\alpha_p>0$) を考える。このとき、粒子の運動量を増加させると経路長が増加する。 しかし、粒子の運動量がまだ低く、光速よりも十分遅い場合、粒子の運動量の増加による速度の増加は、運動量の増加による経路長の増加を越えることがあり得る。その結果、粒子の回転周期は短くなる ($\eta_p < 0$)。
 一方、粒子の運動量が十分高く超相対論的粒子の場合、粒子の速度は既に光速に十分近く、運動量の増加による速度の増加は極僅かである。この場合、経路長の増加が速度の増加を上回り、粒子の回転周期は長くなる ($\eta_p>0$) 。$\eta_p = 0$の時、つまり
 %
 \begin{equation}
@@ -280,10 +280,10 @@
 $\eta_p < 0$ の時、同期粒子より大きい運動量を持つ粒子 $(p>p_s$) は、同期粒子より回転周期が短いので、同期粒子より早く加速空洞に到着する。したがって、同期位相$\phi_s$を$0<\phi_s<\pi/2$に選べば、より大きい運動量を持つ粒子は、同期粒子より少ないエネルギーを加速空洞から得ることになる。同様に、同期粒子より小さな運動量を持つ粒子 $(p<p_s)$ は、同期粒子より遅く加速空洞に到達するので、同期粒子より多いエネルギーを加速空洞から得る。この過程を繰り返すことで、同期粒子の持つ運動量から外れた運動量を持つ粒子は同期粒子の周りを安定に運動することが分かる。$\eta_p > 0$ の時は、同期位相を$\pi/2<\phi_s<\pi$に選べば同様にこの運動は安定である。
 
 \section{Difference Equations for Longitudinal Motion in a Synchrotron}
-ここでは、粒子の周回毎の縦方向の運動について、これまでと同様にリングに加速空洞は一台だけ設置されている場合を考える。空洞電圧のゼロクロス点からの相対時間を$\tau$、相対位相を$\phi\pmod{2\pi}$とする (Fig.~\ref{coordinates})。今、$n+1$周回目の粒子の空洞への到着時間$\tau(n+1)$と$n$周回目の到着時間$\tau(n)$との差は、粒子の$n+1$周回目の回転周期$T(n+1)$と同期粒子の回転周期$T_{rev}(n+1)$との差に等しいので、
+ここでは、粒子の周回毎の縦方向の運動について、これまでと同様にリングに加速空洞は一台だけ設置されている場合を考える。空洞電圧のゼロクロス点からの相対時間を$\tau$、相対位相を$\phi\pmod{2\pi}$とする (Fig.~\ref{coordinates})。今、$n+1$周回目の粒子の空洞への到着時間$\tau(n+1)$と$n$周回目の到着時間$\tau(n)$との差は、粒子の$n+1$周回目の回転周期$T(n+1)$と同期粒子の回転周期$T_{0}(n+1)$との差に等しいので、
 %
 \begin{equation}
-  \tau(n+1) - \tau(n) = T(n+1) -T_{rev}(n+1)
+  \tau(n+1) - \tau(n) = T(n+1) -T_{0}(n+1)
   \label{tau_T}
 \end{equation}
 %
@@ -295,30 +295,30 @@ $\eta_p < 0$ の時、同期粒子より大きい運動量を持つ粒子 $(p>p_
   \end{center}
 \end{figure}
 %
-$\phi(n+1) = \omega_{RF}(n+1) \tau(n+1)$から、この関係を用いると、
+$\phi(n+1) = \omega_{rf}(n+1) \tau(n+1)$から、この関係を用いると、
 %
 \begin{align}
-  \phi(n+1) &=\omega_{RF}(n+1)\{\tau(n) + T(n+1) -T_{rev}(n+1)\} \notag \\
-    &= \frac{\omega_{RF}(n+1)}{\omega_{RF}(n)} \phi(n) + \omega_{RF}(n+1)\{T(n+1) -T_{rev}(n+1)\}  \notag
+  \phi(n+1) &=\omega_{rf}(n+1)\{\tau(n) + T(n+1) -T_{0}(n+1)\} \notag \\
+    &= \frac{\omega_{rf}(n+1)}{\omega_{rf}(n)} \phi(n) + \omega_{rf}(n+1)\{T(n+1) -T_{0}(n+1)\}  \notag
 \end{align}
 %
 (\ref{deltat_eta_deltap})より
 %
 \begin{equation}
-    \frac{T(n+1)-T_{rev}(n+1)}{T_{rev}(n+1)} = \eta \delta_p(n+1)
+    \frac{T(n+1)-T_{0}(n+1)}{T_{0}(n+1)} = \eta \delta_p(n+1)
 \end{equation}
 %
 を用いると、
 %
 \begin{align}
-  \phi(n+1) &= \frac{\omega_{RF}(n+1)}{\omega_{RF}(n)}\phi(n) + \omega_{RF}(n+1)T_{rev}(n+1)\eta \delta_p(n+1) \notag \\
-  &=\frac{\omega_{RF}(n+1)}{\omega_{RF}(n)}\phi(n) + 2\pi h \eta \delta_p(n+1)
+  \phi(n+1) &= \frac{\omega_{rf}(n+1)}{\omega_{rf}(n)}\phi(n) + \omega_{rf}(n+1)T_{0}(n+1)\eta \delta_p(n+1) \notag \\
+  &=\frac{\omega_{rf}(n+1)}{\omega_{rf}(n)}\phi(n) + 2\pi h \eta \delta_p(n+1)
 \end{align}
 %
 ここで、
 %
 \begin{equation}
-  \frac{\omega_{RF}(n+1)}{\omega_{RF}(n)} \approx 1
+  \frac{\omega_{rf}(n+1)}{\omega_{rf}(n)} \approx 1
 \end{equation}
 %
 という近似を行うと、位相に関して次の関係が成り立つ。
@@ -381,23 +381,23 @@ $\phi(n+1) = \omega_{RF}(n+1) \tau(n+1)$から、この関係を用いると、
 $\phi$と$\delta_p$のリング一周あたりの変化が十分小さい時、離散的な差分方程式である (\ref{map}) は、連続的な微分方程式に書き換えることができる。この場合、$\phi$と$\delta_p$のリング一周あたりの変化はそれぞれ、近似的に
 %
 \begin{equation}
-  \frac{\delta_p(n+1)-\delta_p(n)}{T_{rev}(n+1)} \approx \frac{d\delta_p}{dt}=\dot{\delta_p},\quad 
-  \frac{\phi(n+1)-\phi(n)}{T_{rev}(n+1)} \approx \frac{d\phi}{dt}= \dot{\phi}
+  \frac{\delta_p(n+1)-\delta_p(n)}{T_{0}(n+1)} \approx \frac{d\delta_p}{dt}=\dot{\delta_p},\quad 
+  \frac{\phi(n+1)-\phi(n)}{T_{0}(n+1)} \approx \frac{d\phi}{dt}= \dot{\phi}
 \end{equation}
 %
 と書けるので、(\ref{map}) は
 %
 \begin{align}
     \begin{split}
-      \dot{\delta_p} &= \frac{e V \omega_{rev}}{2\pi \beta_s^2 E_s}(\sin\phi - \sin\phi_s) \\
-      \dot{\phi} &= h \omega_{rev} \eta \delta_p
+      \dot{\delta_p} &= \frac{e V \omega_{0}}{2\pi \beta_s^2 E_s}(\sin\phi - \sin\phi_s) \\
+      \dot{\phi} &= h \omega_{0} \eta \delta_p
     \end{split}
 \end{align}
 %
 この二つの式をまとめると、
 %
 \begin{equation}
-  \ddot{\phi} = \frac{h\omega_{rev}^2 e V \eta}{2\pi\beta_s^2 E_s}(\sin\phi-\sin\phi_s)
+  \ddot{\phi} = \frac{h\omega_{0}^2 e V \eta}{2\pi\beta_s^2 E_s}(\sin\phi-\sin\phi_s)
   \label{ddot_phi}
 \end{equation}
 %
@@ -410,13 +410,13 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
 より (\ref{ddot_phi}) は
 %
 \begin{equation}
-  \ddot{\Delta\phi} = \frac{h \omega_{rev}^2 e V \eta}{2\pi \beta_s^2 E_s} \cos\phi_s \Delta\phi = - \omega_s^2 \Delta\phi
+  \ddot{\Delta\phi} = \frac{h \omega_{0}^2 e V \eta}{2\pi \beta_s^2 E_s} \cos\phi_s \Delta\phi = - \omega_s^2 \Delta\phi
 \end{equation}
 %
 となり、この運動は$\phi_s$の周りの単振動であることが分かる。また、この振動の振動数$\omega_s$は
 %
 \begin{equation}
-  \omega_s = \omega_{rev} \sqrt{-\frac{h e V \eta }{2\pi \beta_s^2 E_s} \cos\phi_s}
+  \omega_s = \omega_{0} \sqrt{-\frac{h e V \eta }{2\pi \beta_s^2 E_s} \cos\phi_s}
 \end{equation}
 %
 となり、これをシンクロトロン振動数と呼ぶ。
@@ -435,7 +435,7 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
       Momentum Compaction & $\alpha_p$ & $3.20\times 10^{-4}$& $4.55\times 10^{-4}$ & \\
       Total Cavity Voltage & $V_c$ & 9.4   &   15.0  &   MV \\
       Energy Loss/turn & $U_s$   & 1.76  &   2.43  & MeV \\
-      RF frequency & $f_{RF}$ & \multicolumn{2}{c|}{508.887} & MHz \\
+      RF frequency & $f_{rf}$ & \multicolumn{2}{c|}{508.887} & MHz \\
       Harmonic number & $h$       &   \multicolumn{2}{c|}{5120}  &
     \end{tabular}
   \end{center}
@@ -453,22 +453,22 @@ $\Delta\phi = \phi - \phi_s$が非常に小さい時、
     \gamma = \frac{E_s}{E_0}\,, \quad \eta = \alpha_p - \frac{1}{\gamma^2}\,, \quad \beta_s = \sqrt{1-\frac{1}{\gamma^2}} \notag
   \end{equation}
   %
-  から求まる。また、周回周波数$f_{rev}$は
+  から求まる。また、周回周波数$f_{0}$は
   %
   \begin{equation}
-    f_{rev} = \frac{f_{RF}}{h} = \frac{\SI{508.887}{\mega\hertz}}{5120} = \SI{99.39}{\kilo\hertz} \notag
+    f_{0} = \frac{f_{rf}}{h} = \frac{\SI{508.887}{\mega\hertz}}{5120} = \SI{99.39}{\kilo\hertz} \notag
   \end{equation}
   %
   以上より、LERのシンクロトロン周波数は
   %
   \begin{equation}
-    f_s = \sqrt{\frac{e V_c h \eta f_{rev}^2 \cos \phi_s}{2\pi \beta_s E_s}} = \SI{2.438}{\kilo\hertz}\notag
+    f_s = \sqrt{\frac{e V_c h \eta f_{0}^2 \cos \phi_s}{2\pi \beta_s E_s}} = \SI{2.438}{\kilo\hertz}\notag
   \end{equation}
   %
   また、LERのシンクロトロン・チューン$\nu_s$は
   %
   \begin{equation}
-    \nu_s = \frac{f_s}{f_{rev}} = 0.0245 \notag
+    \nu_s = \frac{f_s}{f_{0}} = 0.0245 \notag
   \end{equation}
   %
   となり、約41周で1回振動することになる。同様にしてHERの方も求めると
